@@ -1,0 +1,22 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <link id="loadFirst" href="css/beforeload.css" rel="stylesheet">
+<!--    <script src="http://www.jtopo.com/demo/js/toolbar.js"></script>-->
+    <script src="../../vendor/jquery/dist/jquery.min.js"></script>
+    <script src="../../plugin/jtopo/jtopo-0.4.8-min.js"></script>
+    <title>Title</title>
+</head>
+<body>
+<div id="canvas"></div>
+</body>
+</html>
+<script>
+    var canvas = document.getElementById('canvas');
+    var stage = new JTopo.Stage(canvas); // 创建一个舞台对象
+    var scene = new JTopo.Scene(stage); // 创建一个场景对象
+    var node = new JTopo.Node("Hello");    // 创建一个节点
+    node.setLocation(300, 200);    // 设置节点坐标
+    scene.add(node); // 放入到场景中
+</script>

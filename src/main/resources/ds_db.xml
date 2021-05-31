@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <bean id="propertyConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="order" value="1"/>
+        <property name="ignoreUnresolvablePlaceholders" value="true"/>
+        <property name="location" value="classpath:config.properties"/>
+        <property name="fileEncoding" value="utf-8"/>
+    </bean>
+
+    <bean id="db" class="com.alibaba.druid.pool.DruidDataSource"
+          destroy-method="close">
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <!-- 配置初始化大小、最小、最大 -->
+        <property name="initialSize" value="${jdbc.initialSize}"/>
+        <property name="minIdle" value="${jdbc.minIdle}"/>
+        <property name="maxActive" value="${jdbc.maxActive}"/>
+
+        <!-- 配置获取连接等待超时的时间 -->
+        <property name="maxWait" value="${jdbc.maxWait}"/>
+
+        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+        <property name="timeBetweenEvictionRunsMillis" value="60000"/>
+
+        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+        <property name="minEvictableIdleTimeMillis" value="300000"/>
+        <!-- 申请连接的时候检测 -->
+        <property name="testWhileIdle" value="true"/>
+
+        <!-- 这里建议配置为TRUE，防止取到的连接不可用 -->
+        <!-- 申请连接时执行validationQuery检测连接是否有效，配置为true会降低性能 -->
+        <property name="testOnBorrow" value="false"/>
+        <!-- 归还连接时执行validationQuery检测连接是否有效，配置为true会降低性能 -->
+        <property name="testOnReturn" value="false"/>
+
+        <!-- 打开PSCache，并且指定每个连接上PSCache的大小,mysql下建议关闭 -->
+        <property name="poolPreparedStatements" value="true"/>
+        <property name="maxPoolPreparedStatementPerConnectionSize" value="100"/>
+
+        <!-- 默认true,解释为,那么方法中如果自己捕获了异常，事务是不会回滚的，如果没有自己捕获异常则事务会回滚,spring会将底层连接的自动提交特性设置为false -->
+        <property name="defaultAutoCommit" value="true"/>
+
+        <!-- 验证连接有效与否的SQL，不同的数据配置不同 -->
+        <property name="validationQuery" value="${jdbc.validationQuery}"/>
+
+        <!-- 打开 removeAbandoned 功能,处理连接泄露 -->
+        <property name="removeAbandoned" value="false"/>
+        <!-- 1800 秒，也就是 30 分钟,datasource.getConnontion() 取得的连接必须在removeAbandonedTimeout这么多秒内调用close() -->
+        <property name="removeAbandonedTimeout" value="3600"/>
+        <property name="logAbandoned" value="true"/>
+        <property name="proxyFilters">
+            <list>
+                <ref bean="statFilter"/>
+                <ref bean="logFilter"/>
+                <ref bean="wallFilter"/>
+            </list>
+        </property>
+    </bean>
+
+    <!-- 慢SQL记录 *start* -->
+    <bean id="statFilter"
+          class="com.alibaba.druid.filter.stat.StatFilter">
+        <!-- 开启合并sql -->
+        <property name="mergeSql" value="true"/>
+        <!-- 开启慢查询语句,1秒 -->
+        <property name="slowSqlMillis" value="2000"/>
+        <property name="logSlowSql" value="true"/>
+    </bean>
+
+    <!-- logFilter -->
+    <bean id="logFilter"
+          class="com.alibaba.druid.filter.logging.Slf4jLogFilter">
+        <property name="connectionLogEnabled" value="false"/>
+        <property name="statementLogEnabled" value="true"/>
+        <property name="resultSetLogEnabled" value="true"/>
+        <property name="statementExecutableSqlLogEnable" value="true"/>
+    </bean>
+    <bean id="wallFilter" class="com.alibaba.druid.wall.WallFilter">
+        <property name="dbType" value="${jdbc.dbtype}"/>
+    </bean>
+
+    <!-- 配置事务 -->
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="db"/>
+        <qualifier value="transactionManager"></qualifier>
+    </bean>
+
+    <!-- 使用注释事务 -->
+    <tx:annotation-driven
+            transaction-manager="transactionManager" proxy-target-class="true"/>
+
+    <!-- do开头方法传播机制是required，其它的是supports -->
+    <!-- 默认情况下如果抛出了RuntimeException 或者Rrror 对象就会回滚事务。 （注意： 这里注意一下，在tx:method中配置了rollback_for
+        中配置的Exception 这个是运行时的异常才会回滚不然其他异常是不会回滚的！） -->
+<!--    <tx:advice id="transactionAdvice"-->
+<!--               transaction-manager="transactionManager">-->
+<!--        <tx:attributes>-->
+<!--            <tx:method name="*" read-only="false"-->
+<!--                       propagation="REQUIRED"/>-->
+<!--        </tx:attributes>-->
+<!--    </tx:advice>-->
+
+<!--    &lt;!&ndash; 配置切面 &ndash;&gt;-->
+<!--    <aop:config proxy-target-class="true">-->
+<!--        &lt;!&ndash;配置事务切点 &ndash;&gt;-->
+<!--        <aop:pointcut id="services"-->
+<!--                      expression="execution(* com.dt.module.*.service.impl.*.* (..)) ||execution(* com.dt.module.*.controller.*.* (..)) ||execution(* com.dt.module.*.service.*.* (..))|| execution(* com.dt.module.*.controller.*.* (..))"/>-->
+<!--        <aop:advisor pointcut-ref="services"-->
+<!--                     advice-ref="transactionAdvice"/>-->
+<!--    </aop:config>-->
+
+
+
+    <!--以下是UFLO的配置要求-->
+    <bean id="sessionFactory"
+          class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <property name="dataSource" ref="db"/>
+        <!--官方要求，在使用uflo时都需要添加这一属性，并且需要添加一个com.bstek.uflo.model*的值-->
+        <property name="packagesToScan">
+            <list>
+                <value>com.bstek.uflo.model*</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+<!--                <prop key="hibernate.hbm2ddl.use_outer_join">true</prop>-->
+            </props>
+        </property>
+    </bean>
+
+    <!-- 使用xml方式管理事务 -->
+    <bean id="txManager"
+          class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory" />
+        <property name="dataSource" ref="db"/>
+        <qualifier value="flow"></qualifier>
+    </bean>
+
+<!--    <tx:annotation-driven-->
+<!--            transaction-manager="txManager" proxy-target-class="true"/>-->
+
+    <bean class="com.dt.module.flow.base.UfloEnvironmentProvider">
+        <property name="sessionFactory" ref="sessionFactory" />
+        <property name="platformTransactionManager" ref="txManager" />
+    </bean>
+
+
+</beans>

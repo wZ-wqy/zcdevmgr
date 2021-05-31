@@ -1,0 +1,129 @@
+<style>
+    @media ( min-width: 992px) {
+        .modal-blg {
+            width: 100%;
+        }
+    }
+</style>
+<script language="javascript">
+    //防止页面后退
+    history.pushState(null, null, document.URL);
+    window.addEventListener('popstate', function () {
+        history.pushState(null, null, document.URL);
+    });
+</script>
+<script>
+    var E = window.wangEditor
+    editor = new E('#editor');
+    // editor.highlight = window.hljs
+    editor.config.height = 345
+    editor.config.uploadImgMaxSize = 1 * 1024 * 1024 // 1M
+    editor.config.uploadImgAccept = ['jpg', 'jpeg', 'png', 'gif', 'bmp']
+    editor.config.uploadImgShowBase64 = true
+    editor.config.uploadImgMaxLength = 5
+    editor.config.focus = false
+    editor.create()
+</script>
+<div class="modal-content">
+    <div class="modal-header">
+        <button class="close" ng-click="cancel()" type="button">
+            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+        </button>
+        <h4 class="modal-title">新增知识</h4>
+    </div>
+    <div class="modal-body">
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <form class="form-horizontal ng-pristine ng-valid" method="get"
+                  name="myForm" novalidate>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"><span
+                            class="text-danger">*</span>标题:</label>
+                    <div class="col-sm-10">
+						<input class="form-control ng-pristine ng-untouched ng-valid ng-empty" name="title"  ng-maxlength="200"
+                                  ng-model="data.title"
+                                  placeholder="请输入标题" required type="text"></input>
+                        <div class="text-danger"
+                             ng-if="myForm.title.$dirty && myForm.title.$invalid">
+                            <span ng-if="myForm.title.$error.required"> 输入不能为空 </span> <span
+                                ng-show="myForm.title.$error.maxlength">不能超过200个字符 </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"><span
+                            class="text-danger">*</span>简介:</label>
+                    <div class="col-sm-10">
+                        <textarea style="height:60px" class="form-control ng-pristine ng-untouched ng-valid ng-empty" name="profile"  ng-maxlength="200"
+                               ng-model="data.profile"
+                               placeholder="请输入简介" required type="text"></textarea>
+                        <div class="text-danger"
+                             ng-if="myForm.profile.$dirty && myForm.profile.$invalid">
+                            <span ng-if="myForm.profile.$error.required"> 输入不能为空 </span> <span
+                                ng-show="myForm.profile.$error.maxlength">不能超过200个字符 </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">关键字:</label>
+                    <div class="col-sm-10">
+						<input class="form-control ng-pristine ng-untouched ng-valid ng-empty" name="label"
+                                  ng-model="data.label"
+                                  placeholder="请输入搜索关键字"  type="text"></input>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"><span
+                            class="text-danger">*</span>知识分类:</label>
+                    <div class="col-sm-10">
+                        <select   chosen class="chosen-select" data-placeholder-text-single="'请选择...'"
+                                  disable-search="false"
+                                  search_contains="true"
+                                  ng-model="typeSel" ng-options="item.routeName for item in typeOpt"
+                                  no-results-text="'没有找到相应条目'">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"><span
+                            class="text-danger">*</span>状态:</label>
+                    <div class="col-sm-10">
+                        <select   chosen class="chosen-select" data-placeholder-text-single="'请选择...'"
+                                  disable-search="true"
+                                  search_contains="true"
+                                  ng-model="showSel" ng-options="item.name for item in showOpt"
+                                  no-results-text="'没有找到相应条目'">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">附件</label>
+                    <div class="col-sm-10">
+                        <div class="dropzone" drop-zone dzconfig="dzconfig"
+                             dzeventHandlers="dtldzevent" enctype="multipart/form-data">
+                            <div class="fallback" id="dropzone">
+                                <input multiple="" name="file" type="file"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">内容</label>
+
+                </div>
+            </form>
+            <div id="editor" style="margin-top: 3rem; margin-bottom: 1.25rem; height: 300px;width:100%" ng-model="sendPromt"></div>
+        </div>
+    </div>
+    <div class="modal-footer" style="text-align:center">
+        <button class="btn btn-warning" ng-click="cancel()">取消</button>
+        <button class="btn btn-primary" ng-click="sure()"
+                ng-disabled="myForm.$invalid">确认
+        </button>
+    </div>
+</div>
+<script>
+
+
+</script>

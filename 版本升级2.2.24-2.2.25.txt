@@ -1,0 +1,48 @@
+ALTER TABLE `res_c_basicinformation_item` ADD `fbelongcomp` VARCHAR(50)  NULL  DEFAULT NULL  after `tuseduserid`;
+ALTER TABLE `res_c_basicinformation_item` ADD `tbelongcomp` VARCHAR(50)  NULL  DEFAULT NULL  after `tuseduserid`;
+ALTER TABLE `res_c_basicinformation_item` ADD `tbelongcompstatus` VARCHAR(50)  NULL  DEFAULT NULL  after `tuseduserid`;
+ALTER TABLE `res_c_basicinformation` ADD `tbelongcomp` VARCHAR(50)  NULL  DEFAULT NULL  after `tuseduserid`;
+ALTER TABLE `res_c_basicinformation` ADD `tbelongcompstatus` VARCHAR(50)  NULL  DEFAULT NULL  after `tuseduserid`;
+ALTER TABLE `res_c_basicinformation` ADD `tlabel2` VARCHAR(500)  NULL  DEFAULT NULL  after `tuseduserid`;
+ALTER TABLE `res_c_basicinformation` ADD `tlabel2status` VARCHAR(50)  NULL  DEFAULT NULL  after `tuseduserid`;
+ALTER TABLE `res_c_basicinformation` ADD `tbatch` VARCHAR(500)  NULL  DEFAULT NULL  after `tuseduserid`;
+ALTER TABLE `res_c_basicinformation` ADD `tbatchstatus` VARCHAR(50)  NULL  DEFAULT NULL  after `tuseduserid`;
+ALTER TABLE `res_c_basicinformation_item` ADD `flabel2` VARCHAR(500)  NULL  DEFAULT NULL  after `tuseduserid`;
+ALTER TABLE `res_c_basicinformation_item` ADD `tlabel2` VARCHAR(500)  NULL  DEFAULT NULL  after `tuseduserid`;
+ALTER TABLE `res_c_basicinformation_item` ADD `tlabel2status` VARCHAR(50)  NULL  DEFAULT NULL  after `tuseduserid`;
+ALTER TABLE `res_c_basicinformation_item` ADD `fbatch` VARCHAR(500)  NULL  DEFAULT NULL  after `tuseduserid`;
+ALTER TABLE `res_c_basicinformation_item` ADD `tbatch` VARCHAR(500)  NULL  DEFAULT NULL  after `tuseduserid`;
+ALTER TABLE `res_c_basicinformation_item` ADD `tbatchstatus` VARCHAR(50)  NULL  DEFAULT NULL  after `tuseduserid`;
+
+ALTER TABLE `res_c_maintenance` ADD `twbauto` VARCHAR(500)  NULL  DEFAULT NULL  after `twboutdate`;
+ALTER TABLE `res_c_maintenance` ADD `twbautostatus` VARCHAR(50)  NULL  DEFAULT NULL  after `twboutdate`;
+ALTER TABLE `res_c_maintenance_item` ADD `fwbauto` VARCHAR(50)  NULL  DEFAULT NULL  after `twboutdate`;
+ALTER TABLE `res_c_maintenance_item` ADD `twbauto` VARCHAR(50)  NULL  DEFAULT NULL  after `twboutdate`;
+ALTER TABLE `res_c_maintenance_item` ADD `twbautostatus` VARCHAR(50)  NULL  DEFAULT NULL  after `twboutdate`;
+update sys_params set value='2.2.25' where id='version';
+insert into sys_params(id,name,value,type,dr) values('assetsuuid','资产序列',1,'system',0);
+insert into ct_category_root(id,name,od,dr)values('15','资产库存',1,1);
+ALTER TABLE `hrm_org_employee` ADD `user_id` VARCHAR(50)  NULL  DEFAULT NULL  AFTER `update_time`;
+update hrm_org_employee t set user_id=(select user_id from sys_user_info where empl_id=t.empl_id);
+INSERT INTO `sys_job` (`seq`, `node`, `jobname`, `jobgroup`, `jobclassname`, `jobcron`, `jobtype`, `jobenable`, `mark`, `recdate`, `last_run`, `inited`, `update_by`, `create_by`, `create_time`, `update_time`, `dr`)VALUES ('4', 'local', '资产管理部门数据', 'systemgroup', 'com.dt.module.base.job.AssetsCheckPartJob', '*/5 * * * * ?', 'user', 'true', NULL, NULL, NULL, 'Y', NULL, NULL, NULL, NULL, '0');
+INSERT INTO `sys_job` (`seq`, `node`, `jobname`, `jobgroup`, `jobclassname`, `jobcron`, `jobtype`, `jobenable`, `mark`, `recdate`, `last_run`, `inited`, `update_by`, `create_by`, `create_time`, `update_time`, `dr`)VALUES('5', 'local', '资产管理维保', 'systemgroup', 'com.dt.module.base.job.AssetsCheckWbJob', '*/5 * * * * ?', 'user', 'true', NULL, NULL, NULL, 'Y', NULL, NULL, NULL, NULL, '0');
+CREATE TABLE `res_uuid_strategy` (
+  `id` varchar(50) NOT NULL COMMENT '主键',
+  `name` varchar(50) DEFAULT NULL,
+  `seq` decimal(4,0) DEFAULT '5',
+  `split` varchar(5) DEFAULT '-',
+  `str1` varchar(10) DEFAULT NULL,
+  `def` varchar(1) DEFAULT '0',
+  `uuidrule` varchar(100) DEFAULT NULL,
+  `ct` varchar(500) DEFAULT NULL,
+  `dr` varchar(1) DEFAULT NULL,
+  `create_by` varchar(50) DEFAULT NULL,
+  `update_by` varchar(50) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='编号生成策略';
+INSERT INTO `res_uuid_strategy` (`id`, `name`, `seq`, `split`, `str1`, `def`, `uuidrule`, `ct`, `dr`, `create_by`, `update_by`, `create_time`, `update_time`)VALUES ('1368502885167407106', '编码规则1', 4, '#', 'AS', '1', 'AS{year}{month}{day}{seq}', '[{\"id\":\"{str}\",\"txt\":\"自定义字符串\"},{\"id\":\"{year}\",\"txt\":\"年\"},{\"id\":\"{month}\",\"txt\":\"月\"},{\"id\":\"{day}\",\"txt\":\"日\"},{\"id\":\"{seq}\",\"txt\":\"序列\"}]', '0', '1151420235196588033', '1151420235196588033', '2021-03-07 18:04:48', '2021-03-07 19:15:41');
+
+
+

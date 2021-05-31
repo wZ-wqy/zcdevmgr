@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dt.module.flow.mapper.UfloBlobMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.dt.module.flow.entity.UfloBlob">
+        <id column="ID_" property="id" />
+        <result column="BLOB_VALUE_" property="blobValue" />
+        <result column="NAME_" property="name" />
+        <result column="PROCESS_ID_" property="processId" />
+    </resultMap>
+
+</mapper>

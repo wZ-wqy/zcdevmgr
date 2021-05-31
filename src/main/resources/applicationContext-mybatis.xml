@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop.xsd">
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="order" value="1" />
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+		<property name="location" value="classpath:config.properties" />
+		<property name="fileEncoding" value="utf-8" />
+	</bean>
+	<!-- 扫描所有自定义service -->
+	<context:component-scan base-package="**.impl" />
+	<!-- 自定义处理器 -->
+	<bean id="myMetaObjectHandler"
+		class="com.dt.core.mybatis.MetaObjectHandlerConfig" />
+
+	<bean id="logicSqlInjector"
+		class="com.baomidou.mybatisplus.extension.injector.LogicSqlInjector" />
+	<bean id="id_type"
+		class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean">
+		<property name="staticField"
+			value="com.baomidou.mybatisplus.annotation.IdType.ID_WORKER_STR" />
+	</bean>
+	<bean id="globalConfig"
+		class="com.baomidou.mybatisplus.core.config.GlobalConfig">
+		<property name="sqlInjector" ref="logicSqlInjector" />
+		<property name="metaObjectHandler" ref="myMetaObjectHandler" />
+		<property name="dbConfig">
+			<bean
+				class="com.baomidou.mybatisplus.core.config.GlobalConfig$DbConfig">
+				<property name="logicDeleteValue" value="1" />
+				<property name="logicNotDeleteValue" value="0" />
+				<property name="idType" ref="id_type" />
+
+			</bean>
+		</property>
+	</bean>
+	<!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->
+	<bean id="sqlSessionFactory"
+		class="com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean">
+		<property name="dataSource" ref="db" />
+		<property name="configLocation"
+			value="classpath:mybatis/mybatis-config.xml" />
+		<property name="mapperLocations"
+			value="classpath*:mybatis/**/**Mapper.xml" />
+		<property name="globalConfig" ref="globalConfig" />
+		<property name="plugins">
+			<array>
+				<!-- 分页插件配置 -->
+				<bean id="paginationInterceptor"
+					class="com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor">
+					<property name="dialectType" value="${jdbc.dbtype}" />
+				</bean>
+			</array>
+		</property>
+	</bean>
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="**.mapper" />
+		<property name="sqlSessionFactoryBeanName"
+			value="sqlSessionFactory"></property>
+	</bean>
+</beans>
+
+
+  

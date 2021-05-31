@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dt.module.zc.mapper.ResLoanreturnMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.dt.module.zc.entity.ResLoanreturn">
+        <id column="id" property="id"/>
+        <result column="dr" property="dr"/>
+        <result column="create_time" property="createTime"/>
+        <result column="create_by" property="createBy"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="update_by" property="updateBy"/>
+        <result column="busuuid" property="busuuid"/>
+        <result column="busdate" property="busdate"/>
+        <result column="status" property="status"/>
+        <result column="pinst" property="pinst"/>
+        <result column="lruserid" property="lruserid"/>
+        <result column="lrusername" property="lrusername"/>
+        <result column="lprocessuserid" property="lprocessuserid"/>
+        <result column="lprocessusername" property="lprocessusername"/>
+        <result column="tusedcompanyid" property="tusedcompanyid"/>
+        <result column="tpartid" property="tpartid"/>
+        <result column="tloc" property="tloc"/>
+        <result column="tlocdtl" property="tlocdtl"/>
+        <result column="returndate" property="returndate"/>
+        <result column="rreturndate" property="rreturndate"/>
+        <result column="isreturn" property="isreturn"/>
+        <result column="returnuuid" property="returnuuid"/>
+        <result column="mark" property="mark"/>
+        <result column="busstatus" property="busstatus"/>
+        <result column="rprocessuserid" property="rprocessuserid"/>
+        <result column="rprocessusername" property="rprocessusername"/>
+        <result column="name" property="name"/>
+        <result column="rmark" property="rmark"/>
+
+    </resultMap>
+
+</mapper>

@@ -1,0 +1,234 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <button class="close" ng-click="cancel()" type="button">
+            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+        </button>
+        <h4 class="modal-title">合同信息</h4>
+    </div>
+    <div class="modal-body">
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <form action="" class="form-horizontal m-t-md " name="myForm"
+                  novalidate>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"><span
+                            class="text-danger">*</span>合同类型:</label>
+                    <div class="col-sm-10">
+                        <select chosen class="chosen-select"
+                                data-placeholder-text-single="'请选择...'" disable-search="true"
+                                ng-model="typeSel" ng-options="item.name for item in typeOpt"
+                                no-results-text="'没有找到相应条目'">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"><span
+                            class="text-danger">*</span>合同方向:</label>
+                    <div class="col-sm-10">
+                        <select chosen class="chosen-select"
+                                data-placeholder-text-single="'请选择...'" disable-search="true"
+                                ng-model="directionSel" ng-options="item.name for item in directionOpt"
+                                no-results-text="'没有找到相应条目'">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"><span
+                            class="text-danger">*</span>状态:</label>
+                    <div class="col-sm-10">
+                        <select chosen class="chosen-select"
+                                data-placeholder-text-single="'请选择...'" disable-search="true"
+                                ng-model="statusSel" ng-options="item.name for item in statusOpt"
+                                no-results-text="'没有找到相应条目'">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"><span
+                            class="text-danger">*</span>标题:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control ng-pristine ng-untouched ng-valid ng-empty" name="title"
+                               ng-maxlength="500" ng-minlength="2"
+                               ng-model="item.title"
+                               placeholder="请输入标题" required type="text">
+                        <div class="text-danger"
+                             ng-if="myForm.title.$dirty && myForm.title.$invalid">
+                            <span ng-if="myForm.title.$error.required"> 输入不能为空 </span> <span
+                                ng-show="myForm.title.$error.maxlength">不能超过500个字符 </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">描述:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                               ng-model="item.about"
+                               placeholder="请输入描述" type="text">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">合同总金额:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                               ng-model="item.totalamount"
+                               placeholder="请输入合同金额" type="number">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">生效日期:</label>
+                    <div class="col-sm-10">
+                        <input
+                                auto-close="true" class="form-control" date-change="changeDate"
+                                date-time format="YYYY-MM-DD" min-view="date"
+                                ng-model="date.effectivedate" time-zone="Asia/Hong_Kong" type="datetime"
+                                view="year">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">截止日期:</label>
+                    <div class="col-sm-10">
+                        <input
+                                auto-close="true" class="form-control" date-change="changeDate"
+                                date-time format="YYYY-MM-DD" min-view="date"
+                                ng-model="date.closingdate" time-zone="Asia/Hong_Kong" type="datetime"
+                                view="year">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"><span
+                            class="text-danger">*</span>{{'BELONGCOMP' | translate}}:</label>
+                    <div class="col-sm-10">
+                        <select chosen class="chosen-select"
+                                data-placeholder-text-single="'请选择...'" disable-search="true"
+                                ng-model="compSel" ng-options="item.name for item in compOpt"
+                                no-results-text="'没有找到相应条目'">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"><span
+                            class="text-danger">*</span>{{'BELONGPART' | translate}}:</label>
+                    <div class="col-sm-10">
+                        <select chosen class="chosen-select"
+                                data-placeholder-text-single="'请选择...'" disable-search="true"
+                                ng-model="partSel" ng-options="item.name for item in partOpt"
+                                no-results-text="'没有找到相应条目'">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"><span
+                            class="text-danger">*</span>我方签约单位:</label>
+                    <div class="col-sm-10">
+                        <select chosen class="chosen-select"
+                                data-placeholder-text-single="'请选择...'" disable-search="true"
+                                ng-model="firstpartySel" ng-options="item.name for item in firstpartyOpt"
+                                no-results-text="'没有找到相应条目'">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">我方负责人:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                               ng-model="item.firstpartyuser"
+                               placeholder="请输入负责人" type="text">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">我方联系方式:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                               ng-model="item.firstpartycontact"
+                               placeholder="请输入联系方式" type="text">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"><span
+                            class="text-danger">*</span>相对方单位:</label>
+                    <div class="col-sm-10">
+                        <select chosen class="chosen-select"
+                                data-placeholder-text-single="'请选择...'" disable-search="true"
+                                ng-model="secondpartySel" ng-options="item.name for item in secondpartyOpt"
+                                no-results-text="'没有找到相应条目'">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">相对方负责人:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                               ng-model="item.secondpartyuser"
+                               placeholder="请输入负责人" type="text">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">相对方联系方式:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                               ng-model="item.secondpartycontact"
+                               placeholder="请输入联系方式" type="text">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">关联方单位:</label>
+                    <div class="col-sm-10">
+                        <select chosen class="chosen-select"
+                                data-placeholder-text-single="'请选择...'" disable-search="true"
+                                ng-model="relatedpartySel" ng-options="item.name for item in relatedpartyOpt"
+                                no-results-text="'没有找到相应条目'">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">关联方负责人:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                               ng-model="item.relatedpartyuser"
+                               placeholder="请输入负责人" type="text">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">关联方联系方式:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                               ng-model="item.relatedpartycontact"
+                               placeholder="请输入联系方式" type="text">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">合同文件:</label>
+                    <div class="col-sm-10">
+                        <div class="dropzone" drop-zone dzconfig="dzconfig"
+                             dzeventHandlers="dtldzevent" enctype="multipart/form-data">
+                            <div class="fallback" id="dropzone">
+                                <input multiple="" name="file" type="file"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">备注:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                               ng-model="item.mark"
+                               placeholder="请输入备注" type="text">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer" style="text-align: center">
+        <button class="btn btn-warning" ng-click="cancel()">取消</button>
+        <button class="btn btn-primary" ng-click="sure()"
+                ng-disabled="myForm.$invalid">确认
+        </button>
+    </div>
+</div>

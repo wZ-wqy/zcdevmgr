@@ -1,0 +1,100 @@
+<style>
+    @media ( min-width: 992px) {
+        .modal-blg {
+            width: 95%;
+        }
+    }
+</style>
+<div class="modal-content">
+    <div class="modal-header">
+        <button class="close" ng-click="cancel()" type="button">
+            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+        </button>
+        <h4 class="modal-title">流程配置</h4>
+    </div>
+    <div class="modal-body">
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <form action="" class="form-horizontal m-t-md " name="myForm"
+                  novalidate>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"><span
+                            class="text-danger">*</span>名称:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control ng-pristine ng-untouched ng-valid ng-empty" name="name" ng-maxlength="100"
+                               ng-model="data.name"
+                               placeholder="请输入名称" required type="text">
+                        <div class="text-danger"
+                             ng-if="myForm.name.$dirty && myForm.name.$invalid">
+                            <span ng-if="myForm.name.$error.required"> 输入不能为空 </span> <span
+                                ng-show="myForm.name.$error.maxlength">不能超过100个字符 </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">类型:</label>
+                    <div class="col-sm-10">
+                        <select chosen class="chosen-select" data-placeholder-text-single="'请选择...'"
+                                disable-search="true" ng-model="catSel"
+                                ng-options="item.name for item in catOpt"
+                                no-results-text="'没有找到相应条目'">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">状态:</label>
+                    <div class="col-sm-10">
+                        <select chosen class="chosen-select" data-placeholder-text-single="'请选择...'"
+                                disable-search="true" ng-model="statusSel"
+                                ng-options="item.name for item in statusOpt"
+                                no-results-text="'没有找到相应条目'">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">流程:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control " name="mark" ng-disabled="true"
+                               ng-model="data.ptplkey" placeholder="请选择流程" type="text"> <span
+                            class="btn btn-primary"
+                            ng-click="selectprocess()" style="margin-top: 3px;">选择流程实例</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">表单类型:</label>
+                    <div class="col-sm-10">
+                        <select chosen class="chosen-select" data-placeholder-text-single="'请选择...'"
+                                disable-search="true" ng-model="catSel"
+                                ng-options="item.name for item in catOpt"
+                                no-results-text="'没有找到相应条目'">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">表单:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control " name="mark" ng-disabled="true"
+                               ng-model="data.formname" placeholder="请选择表单" type="text">
+                        <span class="btn btn-primary"
+                              ng-click="selectform()" style="margin-top: 3px;">选择表单</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">备注:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control " name="mark" ng-model="data.mark"
+                               placeholder="请输入备注" type="text">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer" style="text-align: center">
+        <button class="btn btn-warning" ng-click="cancel()">取消</button>
+        <button class="btn btn-primary" ng-click="sure()"
+                ng-disabled="myForm.$invalid">确认
+        </button>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dt.module.zc.mapper.ResTranferItemMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.dt.module.zc.entity.ResTranferItem">
+    <result column="dr" property="dr" />
+    <result column="update_time" property="updateTime" />
+    <result column="create_time" property="createTime" />
+    <result column="create_by" property="createBy" />
+    <result column="update_by" property="updateBy" />
+        <result column="id" property="id" />
+        <result column="resid" property="resid" />
+        <result column="resname" property="resname" />
+        <result column="tranfercnt" property="tranfercnt" />
+        <result column="rtransferdate" property="rtransferdate" />
+        <result column="busid" property="busid" />
+        <result column="tranferstatus" property="tranferstatus" />
+        <result column="frecycle" property="frecycle" />
+        <result column="trecycle" property="trecycle" />
+        <result column="fbelongcompid" property="fbelongcompid" />
+        <result column="fbelongcompname" property="fbelongcompname" />
+        <result column="fusedcompid" property="fusedcompid" />
+        <result column="fusedcompname" property="fusedcompname" />
+        <result column="fusedpartid" property="fusedpartid" />
+        <result column="fusedpartname" property="fusedpartname" />
+        <result column="fuseduserid" property="fuseduserid" />
+        <result column="fusedusername" property="fusedusername" />
+        <result column="floc" property="floc" />
+        <result column="flocname" property="flocname" />
+        <result column="flocdtl" property="flocdtl" />
+        <result column="tusedcompid" property="tusedcompid" />
+        <result column="tusedcompname" property="tusedcompname" />
+        <result column="tusedpartid" property="tusedpartid" />
+        <result column="tusedpartname" property="tusedpartname" />
+        <result column="tuseduserid" property="tuseduserid" />
+        <result column="tusedusername" property="tusedusername" />
+        <result column="tloc" property="tloc" />
+        <result column="tlocname" property="tlocname" />
+        <result column="tlocdtl" property="tlocdtl" />
+        <result column="mark" property="mark" />
+    </resultMap>
+
+</mapper>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dt.module.base.mapper.SysMenusNodeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.dt.module.base.entity.SysMenusNode">
+        <id column="NODE_ID" property="nodeId" />
+    <result column="UPDATE_BY" property="updateBy" />
+    <result column="CREATE_BY" property="createBy" />
+    <result column="CREATE_TIME" property="createTime" />
+    <result column="UPDATE_TIME" property="updateTime" />
+    <result column="DR" property="dr" />
+        <result column="NODE_NAME" property="nodeName" />
+        <result column="PARENT_ID" property="parentId" />
+        <result column="MODULE_ID" property="moduleId" />
+        <result column="MENU_ID" property="menuId" />
+        <result column="MARK" property="mark" />
+        <result column="LOGO" property="logo" />
+        <result column="MENU_LEVEL" property="menuLevel" />
+        <result column="ORG_ID" property="orgId" />
+        <result column="SORT" property="sort" />
+        <result column="KEYVALUE" property="keyvalue" />
+        <result column="ROUTE" property="route" />
+        <result column="IS_ACTION" property="isAction" />
+        <result column="DELETED" property="deleted" />
+        <result column="IS_G_SHOW" property="isGShow" />
+        <result column="TYPE" property="type" />
+        <result column="ROUTE_NAME" property="routeName" />
+    </resultMap>
+
+</mapper>

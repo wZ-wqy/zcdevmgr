@@ -1,0 +1,2 @@
+controller.jsp会返回同目录下的config.json文件，大家要把它当作是后端返回的数据即可,和重要
+"imageUrlPrefix" = http://localhost:8081/Test/

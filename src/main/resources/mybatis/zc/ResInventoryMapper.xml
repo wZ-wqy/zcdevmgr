@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dt.module.zc.mapper.ResInventoryMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.dt.module.zc.entity.ResInventory">
+        <id column="id" property="id" />
+    <result column="create_by" property="createBy" />
+    <result column="create_time" property="createTime" />
+    <result column="update_by" property="updateBy" />
+    <result column="update_time" property="updateTime" />
+    <result column="dr" property="dr" />
+        <result column="name" property="name" />
+        <result column="batchid" property="batchid" />
+        <result column="syncstatus" property="syncstatus" />
+        <result column="status" property="status" />
+        <result column="resstartdate" property="resstartdate" />
+        <result column="resenddate" property="resenddate" />
+        <result column="usedcomp" property="usedcomp" />
+        <result column="usedcompname" property="usedcompname" />
+        <result column="usedpart" property="usedpart" />
+        <result column="usedpartname" property="usedpartname" />
+        <result column="usedpartdata" property="usedpartdata" />
+        <result column="belongcomp" property="belongcomp" />
+        <result column="belongcompname" property="belongcompname" />
+        <result column="rescat" property="rescat" />
+        <result column="rescatname" property="rescatname" />
+        <result column="rescatdata" property="rescatdata" />
+        <result column="area" property="area" />
+        <result column="areaname" property="areaname" />
+        <result column="areadata" property="areadata" />
+        <result column="adminuserid" property="adminuserid" />
+        <result column="adminusername" property="adminusername" />
+        <result column="starttime" property="starttime" />
+        <result column="finishtime" property="finishtime" />
+        <result column="pduserlist" property="pduserlist" />
+        <result column="pduserdata" property="pduserdata" />
+        <result column="manualinventory" property="manualinventory" />
+        <result column="allusersinventory" property="allusersinventory" />
+        <result column="cnt" property="cnt" />
+        <result column="mark" property="mark" />
+        <result column="inventoryloss" property="inventoryloss" />
+        <result column="inventorysurplus" property="inventorysurplus" />
+    </resultMap>
+
+</mapper>

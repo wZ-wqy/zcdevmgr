@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>表单设计器</title>
+    <meta charset="UTF-8">
+    <link href="../../../plugin/form/k-form-design.css" rel="stylesheet">
+</head>
+<body>
+<div id="app">
+    <k-form-design @save="handleSave" ref='kfd'
+                   title="表单设计器"/>
+</div>
+<script src="../../../vendor/jquery/dist/jquery.min.js"></script>
+<script src="../../../plugin/form/vue.min.js"></script>
+<script src="../../../plugin/form/k-form-design.umd.min.js?v=1"></script>
+<script src="../../../plugin/form/vue-resource.min.js"></script>
+</body>
+<script>
+    function getArgs() {
+        var args = {};
+        var query = location.search.substring(1);
+        // Get query string
+        var pairs = query.split("&");
+        // Break at ampersand
+        for (var i = 0; i < pairs.length; i++) {
+            var pos = pairs[i].indexOf('=');
+            // Look for "name=value"
+            if (pos == -1) continue;
+            // If not found, skip
+            var argname = pairs[i].substring(0, pos);// Extract the name
+            var value = pairs[i].substring(pos + 1);// Extract the value
+            value = decodeURIComponent(value);// Decode it, if needed
+            args[argname] = value;
+            // Store as a property
+        }
+        return args;// Return the object
+    }
+
+    var getpar = getArgs();
+    var gurl = window.location.host;
+    console.log(gurl);
+    Vue.http.get('http://' + gurl + '/dt/api/form/sysForm//selectById.do?id=' + getpar.id).then(function (res) {
+        let jsonData = {
+            "list": [],
+            "config": {
+                "layout": "horizontal",
+                "labelCol": {"span": 4},
+                "wrapperCol": {"span": 18},
+                "hideRequiredMark": false,
+                "customStyle": ""
+            }
+        }
+        var ct2 = decodeURI(res.body.data.ct);
+        var jsonData2 = {};
+        if (typeof (ct2) == 'undefined' || ct2 == undefined || ct2 == 'undefined') {
+        } else {
+            jsonData = JSON.parse(ct2);
+        }
+        var defaultValue = {};
+        console.log("jsondata", jsonData);
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                jsonData
+            },
+            mounted() {
+                this.init()
+            },
+            methods: {
+                handleSave(values) {
+                },
+                init() {
+                    this.$refs.kfd.handleSetData(this.jsonData);
+                    $("header").remove();
+                },
+                handleSave(val) {
+                    var valstr = JSON.stringify(val);
+                    console.log(valstr);
+                    var url = ""
+                    this.$http({
+                        url: 'http://' + gurl + "/dt/api/form/sysForm/insertOrUpdate.do",
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
+                        },
+                        emulateJSON: true, //以application/x-www-form-urlencoded的请求头部发送参数
+                        method: "POST",
+                        body: {
+                            id: getpar.id, ct: encodeURI(val)
+                        }
+                    }).then(reponse => {
+                        if (reponse.status == "200") {
+                            alert("操作成功");
+                        }
+                    })
+                },
+                handleSubmit() {
+                }
+            }
+        })
+    }, function () {
+        console.log('请求数据失败');
+    });
+</script>
+</html>

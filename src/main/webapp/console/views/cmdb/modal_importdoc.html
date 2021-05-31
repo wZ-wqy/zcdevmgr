@@ -1,0 +1,21 @@
+<style>
+    @media ( min-width: 992px) {
+        .modal-blg {
+            width: 95%;
+        }
+    }
+</style>
+<div class="modal-content">
+    <div class="modal-header">
+        <button class="close" ng-click="cancel()" type="button">
+            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+        </button>
+        <h4 class="modal-title">说明</h4>
+    </div>
+    <div class="modal-body">
+        1>按照导出模版进行导入 <br> 2>Excel文件中标题说明:不支持表示不进行数据更改,必需表示必填项 <br>
+        2>字段中，下拉框为可选项,可不填或者必需是数据字段项中定义的名称<br>
+        <button class="btn btn-primary" ng-click="downdict()">数据字典可选项下载</button>
+        <button class="btn btn-primary" ng-click="downTpl()">模版(Excel)下载</button>
+    </div>
+</div>

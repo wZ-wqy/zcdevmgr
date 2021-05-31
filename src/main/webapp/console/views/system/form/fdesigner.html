@@ -1,0 +1,55 @@
+<div ng-controller="fdesignerCtl">
+    <!--    <div class="wrapper wrapper-content animated fadeInRight">-->
+    <div id="app">
+        <k-form-design toolbarsTop=true @save="handleSave" ref='kfd'/>
+    </div>
+    <!--    </div>-->
+</div>
+<script>
+    var jsonData = {
+        list: [{
+            "type": "input",
+            "name": "单行文本",
+            "options": {"width": "100%", "defaultValue": "", "placeholder": "请输入", "disabled": false},
+            "model": "input_1574002292465",
+            "key": "input_1574002292465",
+            "rules": [{"required": false, "message": "必填项"}]
+        }],
+        "config": {
+            "layout": "horizontal",
+            "labelCol": {"span": 4},
+            "wrapperCol": {"span": 18},
+            "hideRequiredMark": false,
+            "width": "100%",
+            "marginTop": "0px",
+            "marginRight": "0px",
+            "marginBottom": "0px",
+            "marginLeft": "0px"
+        }
+    }
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            jsonData
+        },
+        mounted() {
+            this.init()
+        },
+        methods: {
+            init() {
+                console.log(this);
+                this.$refs.kfd.handleSetData(this.jsonData);
+                //隐藏标题
+                $("header").remove();
+            },
+            dict() {
+                alert(1);
+            },
+            handleSave(values) {
+                alert(111);
+            },
+            handleSubmit() {
+            }
+        }
+    })
+</script>

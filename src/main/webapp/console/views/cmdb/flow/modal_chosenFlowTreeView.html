@@ -1,0 +1,54 @@
+<style>
+    @media ( min-width: 992px) {
+        .modal-blg {
+            width: 95%;
+        }
+    }
+</style>
+<div class="modal-content">
+    <div class="modal-header">
+        <button class="close" ng-click="cancel()" type="button">
+            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+        </button>
+        <h4 class="modal-title">送审</h4>
+    </div>
+    <div class="modal-body">
+        <div class="wrapper wrapper-content animated fadeInRight">
+
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="ibox">
+                        <div class="ibox-content" style="min-height: 250px;">
+                            <div js-tree="treeConfig" ng-model="treeData" tree="treeInstance"
+                                 tree-events="ready:readyCB;create_node:createNodeCB"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="ibox float-e-margins" tyle="min-height:250px;">
+                        <div class="ibox-title">
+                            <div class="ibox-tools" style="text-align: left !important">
+                                <a class="btn btn-primary btn-xs" href="" ng-click="preview()">流程预览</a>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <table class="table table-hover" datatable="ed"
+                                   dt-column-defs="dtColumnDefs" dt-columns="dtColumns"
+                                   dt-instance="dtInstance" dt-options="dtOptions">
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="modal-footer" style="text-align: center">
+        <button class="btn btn-warning" ng-click="cancel()">取消</button>
+        <button class="btn btn-primary" ng-click="sure()"
+                ng-disabled="myForm.$invalid">确认
+        </button>
+    </div>
+</div>

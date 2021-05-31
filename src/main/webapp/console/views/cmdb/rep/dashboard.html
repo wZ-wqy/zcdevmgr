@@ -1,0 +1,148 @@
+<div ng-controller="cmdbdashboardCtl">
+    <div class="wrapper wrapper-content">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <span class="label label-success pull-right">数量</span>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins">{{item.total_count||0}}</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <span class="label label-info pull-right">资产金额</span>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins">{{item.total_sum||0}}</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <span class="label label-primary pull-right">待维修数</span>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins">0</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <span class="label label-danger pull-right">待审批数</span>
+                    </div>
+                    <div class="ibox-content">
+                        <h1 class="no-margins">0</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>资产统计</h5>
+                        <div class="pull-right"></div>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="flot-chart" style="height: 350px">
+                                    <div class="flot-chart">
+                                        <div class="flot-chart-content" dataset="charts.flotChartData" flot
+                                             options="charts.flotBarOptions"
+                                             style="height: 350px"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>脱保提醒</h5>
+                        <!-- <div ibox-tools></div> -->
+                    </div>
+                    <!-- <div class="ibox-content ibox-heading"></div> -->
+                    <div class="ibox-content">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>资产编号</th>
+                                <th>资产类别</th>
+                                <th>规格型号</th>
+                                <th>资产状态</th>
+                                <th>位置</th>
+                                <th>脱保日期</th>
+                                <th>{{'USEDPART' | translate}}</th>
+                                <th>{{'USEDUSER' | translate}}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="y in item.res_tb_notice">
+                                <td>{{y.uuid}}</td>
+                                <td>{{y.classname}}</td>
+                                <td>{{y.model}}</td>
+                                <td>{{y.recyclestr}}</td>
+                                <td>{{y.locstr}}</td>
+                                <td>{{y.wbout_datestr}}</td>
+                                <td>{{y.part_name}}</td>
+                                <td>{{y.used_username}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>报修列表</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>资产编号</th>
+                                <th>资产类别</th>
+                                <th>规格型号</th>
+                                <th>资产状态</th>
+                                <th>位置</th>
+                                <th>报修时间</th>
+                                <th>报修原因</th>
+                                <th>{{'USEDPART' | translate}}</th>
+                                <th>{{'USEDUSER' | translate}}</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="y in item.res_fault">
+                                <td>{{y.uuid}}</td>
+                                <td>{{y.classname}}</td>
+                                <td>{{y.model}}</td>
+                                <td>{{y.recyclestr}}</td>
+                                <td>{{y.locstr}}</td>
+                                <td>{{y.f_processtime}}</td>
+                                <td>{{y.f_reason}}</td>
+                                <td>{{y.part_name}}</td>
+                                <td>{{y.used_username}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

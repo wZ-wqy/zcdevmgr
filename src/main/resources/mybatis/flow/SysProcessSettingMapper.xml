@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dt.module.flow.mapper.SysProcessSettingMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.dt.module.flow.entity.SysProcessSetting">
+        <id column="id" property="id"/>
+        <result column="update_by" property="updateBy"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="create_by" property="createBy"/>
+        <result column="create_time" property="createTime"/>
+        <result column="dr" property="dr"/>
+        <result column="name" property="name"/>
+        <result column="code" property="code"/>
+        <result column="processdefid" property="processdefid"/>
+        <result column="processdefname" property="processdefname"/>
+        <result column="type" property="type"/>
+        <result column="form" property="form"/>
+        <result column="formname" property="formname"/>
+        <result column="mark" property="mark"/>
+    </resultMap>
+
+</mapper>

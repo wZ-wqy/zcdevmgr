@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dt.module.cmdb.mapper.ResAttrsMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.dt.module.cmdb.entity.ResAttrs">
+        <id column="id" property="id" />
+    <result column="create_by" property="createBy" />
+    <result column="create_time" property="createTime" />
+    <result column="update_time" property="updateTime" />
+    <result column="update_by" property="updateBy" />
+    <result column="dr" property="dr" />
+        <result column="attrname" property="attrname" />
+        <result column="attrcode" property="attrcode" />
+        <result column="inputtype" property="inputtype" />
+        <result column="catid" property="catid" />
+        <result column="ifneed" property="ifneed" />
+        <result column="ifinheritable" property="ifinheritable" />
+        <result column="dict" property="dict" />
+        <result column="sort" property="sort" />
+    </resultMap>
+
+</mapper>

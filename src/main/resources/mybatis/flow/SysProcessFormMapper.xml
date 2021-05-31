@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dt.module.flow.mapper.SysProcessFormMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.dt.module.flow.entity.SysProcessForm">
+        <id column="id" property="id" />
+    <result column="dr" property="dr" />
+    <result column="create_by" property="createBy" />
+    <result column="create_time" property="createTime" />
+    <result column="update_by" property="updateBy" />
+    <result column="update_time" property="updateTime" />
+        <result column="fdata" property="fdata" />
+        <result column="ftpldata" property="ftpldata" />
+        <result column="processdataid" property="processdataid" />
+        <result column="duuid" property="duuid" />
+        <result column="dtitle" property="dtitle" />
+        <result column="dct" property="dct" />
+        <result column="durl" property="durl" />
+        <result column="dname" property="dname" />
+        <result column="dmark" property="dmark" />
+        <result column="dmessage" property="dmessage" />
+        <result column="dsex" property="dsex" />
+        <result column="dstatus" property="dstatus" />
+        <result column="dtype" property="dtype" />
+        <result column="dsubtype" property="dsubtype" />
+        <result column="dpwd" property="dpwd" />
+        <result column="daddr" property="daddr" />
+        <result column="dcontact" property="dcontact" />
+        <result column="dpic1" property="dpic1" />
+        <result column="dpic2" property="dpic2" />
+        <result column="dpic3" property="dpic3" />
+        <result column="duser" property="duser" />
+        <result column="dresult" property="dresult" />
+        <result column="dtotal" property="dtotal" />
+        <result column="dbacktime" property="dbacktime" />
+        <result column="dlevel" property="dlevel" />
+        <result column="dmethod" property="dmethod" />
+        <result column="dfile" property="dfile" />
+        <result column="ddict" property="ddict" />
+        <result column="dattach1" property="dattach1" />
+        <result column="dattach2" property="dattach2" />
+        <result column="dattach3" property="dattach3" />
+        <result column="dcard" property="dcard" />
+        <result column="df1" property="df1" />
+        <result column="df2" property="df2" />
+        <result column="df3" property="df3" />
+        <result column="df4" property="df4" />
+        <result column="df5" property="df5" />
+        <result column="df6" property="df6" />
+        <result column="df7" property="df7" />
+        <result column="df8" property="df8" />
+        <result column="df9" property="df9" />
+        <result column="df10" property="df10" />
+        <result column="dn1" property="dn1" />
+        <result column="dn2" property="dn2" />
+        <result column="dn3" property="dn3" />
+        <result column="dn4" property="dn4" />
+        <result column="dn5" property="dn5" />
+        <result column="dn6" property="dn6" />
+        <result column="dn7" property="dn7" />
+        <result column="dn8" property="dn8" />
+        <result column="dn9" property="dn9" />
+        <result column="dn10" property="dn10" />
+        <result column="ftpldatamd5" property="ftpldatamd5" />
+    </resultMap>
+
+</mapper>

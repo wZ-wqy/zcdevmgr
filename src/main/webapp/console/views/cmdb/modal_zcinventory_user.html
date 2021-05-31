@@ -1,0 +1,40 @@
+<style>
+    @media ( min-width: 992px) {
+        .modal-blg {
+            width: 95%;
+        }
+    }
+</style>
+<div class="modal-content">
+    <div class="modal-header">
+        <button class="close" ng-click="cancel()" type="button">
+            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+        </button>
+        <h4 class="modal-title">盘点单据分配用户</h4>
+    </div>
+    <div class="modal-body">
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <form action="" class="form-horizontal m-t-md" name="myForm"
+                  novalidate>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">分配用户:</label>
+                    <div class="col-sm-10">
+                        <select chosen class="chosen-select" data-placeholder-text-multiple="'请选择...'" data-placeholder-text-single="'请选择...'"
+                                disable-search="true" multiple
+                                ng-model="pduserSel"
+                                ng-options="item.name for item in pduserOpt"
+                                no-results-text="'没有找到相应条目'">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer" style="text-align:center">
+        <button class="btn btn-warning" ng-click="cancel()">取消</button>
+        <button class="btn btn-primary" ng-click="sure()" ng-disabled="myForm.$invalid"
+                ng-hide="ctl.surebtn">确认
+        </button>
+    </div>
+</div>

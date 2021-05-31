@@ -1,0 +1,37 @@
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav metismenu" id="side-menu" side-navigation>
+            <li ng-class="{active: $state.includes('{{first.state}}')}"
+                ng-repeat="first in menu"><a
+                    class="" ui-sref="{{first.state}}"> <i
+                    ng-class="{false: 'fa fa-th-large',true:'{{first.logo}}'}[menuLogoIsExist(first.logo)]"></i>
+                <span class="nav-lank nav-label nav-first-level">{{first.node_name}}</span>
+                <span class="fa arrow" ng-if="first.children_cnt>0"></span>
+            </a>
+                <ul class="nav nav-second-level collapse "
+                    ng-class="{in: $state.includes('{{first.state}}')}"
+                    ng-if="first.children_cnt>0">
+					
+					
+					<a  href="" ng-if="first.state=='ewcenter'">报废到期预警</a>
+					
+                    <li ng-class="{active: $state.includes('{{second.state}}')}"
+                        ng-repeat="second in first.children"><a
+                            id="menu_{{second.state}}" ui-sref="{{second.state}}{{second.params}}"
+                            ui-sref-opts="{reload: true, notify: true ,custom:{btns:'{{second.btn}}'} }"
+                    >{{second.node_name}} <span
+                            class="fa arrow" ng-if="second.children_cnt>0"></span>
+                    </a>
+                        <ul class="nav nav-third-level collapse "
+                            ng-class="{in: $state.includes('{{third.state}}')}"
+                            ng-if="second.children_cnt>0">
+                            <li ng-repeat="third in second.children"
+                                ui-sref-active="active22"><a
+                                    ui-sref="{{third.state}}">{{third.node_name}} </a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>

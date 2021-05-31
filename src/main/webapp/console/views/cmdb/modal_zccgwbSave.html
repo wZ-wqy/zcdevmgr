@@ -1,0 +1,179 @@
+<style>
+    @media ( min-width: 992px) {
+        .modal-blg {
+            width: 95%;
+        }
+    }
+</style>
+<div class="modal-content">
+    <div class="modal-header">
+        <button class="close" ng-click="cancel()" type="button">
+            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+        </button>
+        <h4 class="modal-title">维保信息变更</h4>
+    </div>
+    <div class="modal-body">
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <form class="form-inline" role="form">
+                <button class="btn btn-sm btn-primary" ng-click="selectall()"
+                        type="submit">全选
+                </button>
+                <button class="btn btn-sm btn-primary" ng-click="selectnall()"
+                        type="submit">全不选
+                </button>
+            </form>
+            <form action="" class="form-horizontal m-t-md" name="myForm"
+                  novalidate>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">处理人:</label>
+                    <div class="col-sm-10">
+                        <select ng-disabled="ctl.processuser" chosen class="chosen-select"
+                                data-placeholder-text-single="'请选择...'"
+                                disable-search="false"
+                                search_contains="true"
+                                ng-model="adminuserSel"
+                                ng-options="item.name for item in adminuserOpt"
+                                no-results-text="'没有找到相应条目'">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">备注:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control ng-pristine ng-untouched ng-valid ng-empty" name="mark"
+                               ng-model="item.mark" placeholder="请输入备注" type="text">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        <table style="width:100%">
+                            <tr>
+                                <td style="text-align: left">
+                                     <span style="margin-right:5px"><span
+                                             style="font-weight:bold;color:green;margin-right:2px">是否更新</span>
+                        <input icheck ng-model="item.twbstatus"
+                               type="checkbox"></span>
+                                </td>
+                                <td style="text-align: right"><span style="font-weight:bold">维保状态:</span></td>
+                        </table>
+                    </label>
+                    <div class="col-sm-10">
+                        <select chosen class="chosen-select" data-placeholder-text-multiple="'请选择...'"
+                                data-placeholder-text-single="'请选择...'"
+                                disable-search="true"
+                                ng-model="statusSel"
+                                ng-options="item.name for item in statusOpt"
+                                no-results-text="'没有找到相应条目'">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        <table style="width:100%">
+                            <tr>
+                                <td style="text-align:left"> <span style="margin-right:5px"><span
+                                        style="font-weight:bold;color:green;margin-right:2px">是否更新</span>
+                        <input icheck ng-model="item.twbsupplierstatus"
+                               type="checkbox"></span></td>
+                                <td style="text-align:right"><span style="font-weight:bold">维保商:</span></td>
+                        </table>
+                    </label>
+                    <div class="col-sm-10">
+                        <select chosen class="chosen-select" data-placeholder-text-multiple="'请选择...'"
+                                data-placeholder-text-single="'请选择...'"
+                                disable-search="false"
+                                search_contains="true"
+                                ng-model="compSel"
+                                ng-options="item.name for item in compOpt"
+                                no-results-text="'没有找到相应条目'">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        <table style="width:100%">
+                            <tr>
+                                <td style="text-align:left"> <span style="margin-right:5px"><span
+                                        style="font-weight:bold;color:green;margin-right:2px">是否更新</span>
+                        <input icheck ng-model="item.twbautostatus"
+                               type="checkbox"></span></td>
+                                <td style="text-align:right"><span style="font-weight:bold">维保计算:</span></td>
+                        </table>
+                    </label>
+                    <div class="col-sm-10">
+                        <select chosen class="chosen-select" data-placeholder-text-multiple="'请选择...'"
+                                data-placeholder-text-single="'请选择...'"
+                                disable-search="false"
+                                search_contains="true"
+                                ng-model="wbautoSel"
+                                ng-options="item.name for item in wbautoOpt"
+                                no-results-text="'没有找到相应条目'">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        <table style="width:100%">
+                            <tr>
+                                <td style="text-align: left">
+                                     <span style="margin-right:5px"><span
+                                             style="font-weight:bold;color:green;margin-right:2px">是否更新</span>
+                        <input icheck ng-model="item.twboutdatestatus"
+                               type="checkbox"></span></td>
+                                <td style="text-align: right"><span style="font-weight:bold">脱保时间:</span></td>
+                        </table>
+                    </label>
+                    <div class="col-sm-10">
+                        <input auto-close="true" class="form-control" date-change="datachange"
+                               date-time format="YYYY-MM-DD"
+                               min-view="date" ng-model="date.wboutdate" time-zone="Asia/Hong_Kong"
+                               type="datetime" view="year">
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        <table style="width:100%">
+                            <tr>
+                                <td style="text-align: left">
+                                    <span style="margin-right:5px"><span
+                                            style="font-weight:bold;color:green;margin-right:2px">是否更新</span>
+                        <input icheck ng-model="item.twbctstatus"
+                               type="checkbox"></span>
+                                </td>
+                                <td style="text-align: right"><span style="font-weight:bold">维保说明:</span></td>
+                        </table>
+                    </label>
+                    <div class="col-sm-10">
+                        <input class="form-control "
+                               ng-model="item.twbct"
+                               placeholder="请输入维保说明" type="text">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"></label>
+                    <div class="col-sm-10">
+						<span class="btn btn-primary"
+                              ng-click="review()">资产选择范围</span>
+                        <table class="table table-hover" datatable="ed"
+                               dt-column-defs="dtColumnDefs" dt-columns="dtColumns"
+                               dt-instance="dtInstance" dt-options="dtOptions">
+                        </table>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer" style="text-align:center">
+        <button class="btn btn-warning" ng-click="cancel()">取消</button>
+        <button class="btn btn-primary" ng-click="sure()" ng-disabled="myForm.$invalid">确认
+        </button>
+    </div>
+</div>

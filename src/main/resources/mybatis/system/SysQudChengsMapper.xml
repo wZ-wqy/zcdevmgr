@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dt.module.base.mapper.SysQudChengsMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.dt.module.base.entity.SysQudChengs">
+        <id column="ID" property="id" />
+    <result column="UPDATE_BY" property="updateBy" />
+    <result column="CREATE_BY" property="createBy" />
+    <result column="CREATE_TIME" property="createTime" />
+    <result column="UPDATE_TIME" property="updateTime" />
+    <result column="DR" property="dr" />
+        <result column="MINGC" property="mingc" />
+        <result column="JIB" property="jib" />
+        <result column="SHENGF_ID" property="shengfId" />
+        <result column="YOUB" property="youb" />
+        <result column="QUH" property="quh" />
+        <result column="CHENGSID_TQ" property="chengsidTq" />
+        <result column="JIANC" property="jianc" />
+        <result column="GUOBM" property="guobm" />
+        <result column="RENKSL" property="renksl" />
+        <result column="RENJSR" property="renjsr" />
+        <result column="RENJXSZC" property="renjxszc" />
+        <result column="RENJFZZC" property="renjfzzc" />
+        <result column="XIUGR" property="xiugr" />
+        <result column="XIUGRQ" property="xiugrq" />
+    </resultMap>
+
+</mapper>

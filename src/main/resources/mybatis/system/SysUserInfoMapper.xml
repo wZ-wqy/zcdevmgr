@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dt.module.base.mapper.SysUserInfoMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.dt.module.base.entity.SysUserInfo">
+        <id column="USER_ID" property="userId" />
+        <result column="EMPL_ID" property="emplId" />
+        <result column="USER_NAME" property="userName" />
+        <result column="USER_TYPE" property="userType" />
+        <result column="NICKNAME" property="nickname" />
+        <result column="NAME" property="name" />
+        <result column="PWD" property="pwd" />
+        <result column="STATUS" property="status" />
+        <result column="ORG_ID" property="orgId" />
+        <result column="LOCKED" property="locked" />
+        <result column="TOKEN" property="token" />
+        <result column="TEL" property="tel" />
+        <result column="QQ" property="qq" />
+        <result column="MAIL" property="mail" />
+        <result column="PROFILE" property="profile" />
+        <result column="MARK" property="mark" />
+        <result column="HOMEADDR_DEF" property="homeaddrDef" />
+        <result column="RECEADDR_DEF" property="receaddrDef" />
+        <result column="BIRTH" property="birth" />
+        <result column="WEIXIN" property="weixin" />
+        <result column="SEX" property="sex" />
+        <result column="DR" property="dr" />
+        <result column="PHOTO" property="photo" />
+        <result column="CREATE_TIME" property="createTime" />
+        <result column="CREATE_IP" property="createIp" />
+        <result column="LAST_LOGIN_TIME" property="lastLoginTime" />
+        <result column="LAST_LOGIN_IP" property="lastLoginIp" />
+        <result column="SYSTEM_ID" property="systemId" />
+        <result column="OPEN_ID" property="openId" />
+        <result column="SCORE" property="score" />
+        <result column="SHOP_ID" property="shopId" />
+        <result column="AVATARURL" property="avatarurl" />
+        <result column="BALANCE" property="balance" />
+        <result column="CARD" property="card" />
+        <result column="AMOUNT" property="amount" />
+        <result column="FAMOUNT" property="famount" />
+        <result column="TIXAMOUNT" property="tixamount" />
+        <result column="CREDIT_SCORE" property="creditScore" />
+        <result column="IDENTITY_CARD" property="identityCard" />
+        <result column="DRIVER_CARD" property="driverCard"/>
+        <result column="UPDATE_TIME" property="updateTime"/>
+        <result column="NATION" property="nation"/>
+        <result column="NATIVE_PLACE" property="nativePlace"/>
+        <result column="SELF_EVALUATE" property="selfEvaluate"/>
+        <result column="ALI_PAY_USERNAME" property="aliPayUsername"/>
+        <result column="ALI_PAY_ACCOUNT" property="aliPayAccount"/>
+        <result column="SHORTMOBILE" property="shortmobile"/>
+        <result column="CREATE_BY" property="createBy"/>
+        <result column="UPDATE_BY" property="updateBy"/>
+        <result column="sposition" property="sposition"/>
+        <result column="fposition" property="fposition"/>
+        <result column="hrmstatus" property="hrmstatus"/>
+        <result column="islogoff" property="islogoff"/>
+        <result column="approval" property="approval"/>
+
+
+    </resultMap>
+    
+     <!--  select a.*,b.url from ( select * from sys_user_info where user_id= #{USER_ID}) a left join sys_log_access b on a.user_id=b.user_id
+     -->
+    
+      <select id="selectById"  resultMap="BaseResultMap">
+      select * from sys_user_info where user_id=#{USER_ID}
+ 	 </select>  
+ 	 
+     <select id="selectUserT2"  resultType="String">
+ 		       select count(1) from sys_log_access where user_id=#{USER_ID}
+ 	 </select>
+
+     <select id="listMyMenus"  resultMap="com.dt.module.base.mapper.SysMenusMapper.BaseResultMap">
+ 		  select * from sys_menus where dr=0 and used=1 and menu_id in ( select distinct menu_id from sys_user_role a,sys_role_module b,sys_menus_node c where c.dr='0' and a.role_id=b.role_id and c.node_id=b.module_id and user_id=#{user_id}) order by sort
+ 	 </select>
+ 	 
+ 	 <select id="listUserRoles"  resultType="java.util.HashMap" >
+ 	  		select a.role_id,b.role_name from sys_user_role a,sys_role_info b where b.dr='0' and a.role_id=b.role_id and user_id=#{user_id}
+ 	</select>
+
+</mapper>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dt.module.zc.mapper.ResInspectionPlanMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.dt.module.zc.entity.ResInspectionPlan">
+        <id column="id" property="id" />
+    <result column="create_by" property="createBy" />
+    <result column="create_time" property="createTime" />
+    <result column="update_by" property="updateBy" />
+    <result column="update_time" property="updateTime" />
+    <result column="dr" property="dr" />
+        <result column="name" property="name" />
+        <result column="status" property="status" />
+        <result column="cron" property="cron" />
+        <result column="actionusers" property="actionusers" />
+        <result column="mark" property="mark" />
+        <result column="busid" property="busid" />
+        <result column="retention" property="retention" />
+        <result column="method" property="method" />
+    </resultMap>
+
+</mapper>

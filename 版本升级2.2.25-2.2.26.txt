@@ -1,0 +1,1 @@
+update sys_params set value='2.2.25' where id='version';

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dt.module.base.mapper.SysSessionMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.dt.module.base.entity.SysSession">
+        <id column="ID" property="id" />
+    <result column="DR" property="dr" />
+    <result column="UPDATE_BY" property="updateBy" />
+    <result column="CREATE_BY" property="createBy" />
+    <result column="CREATE_TIME" property="createTime" />
+    <result column="UPDATE_TIME" property="updateTime" />
+        <result column="TOKEN" property="token" />
+        <result column="LASTACCESS" property="lastaccess" />
+        <result column="EXPIRE" property="expire" />
+        <result column="COOKIE" property="cookie" />
+        <result column="DTSESSION" property="dtsession" />
+        <result column="USER_ID" property="userId" />
+        <result column="START_TIME" property="startTime" />
+        <result column="LOGIN_TIME" property="loginTime" />
+        <result column="IP" property="ip" />
+        <result column="AGENT" property="agent" />
+        <result column="CLIENT" property="client" />
+    </resultMap>
+
+</mapper>

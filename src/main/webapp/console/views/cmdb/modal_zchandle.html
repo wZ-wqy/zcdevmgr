@@ -1,0 +1,108 @@
+<style>
+    @media ( min-width: 992px) {
+        .modal-blg {
+            width: 95%;
+        }
+    }
+</style>
+<div class="modal-content">
+    <div class="modal-header">
+        <button class="close" ng-click="cancel()" type="button">
+            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+        </button>
+        <h4 class="modal-title">处置单据</h4>
+    </div>
+    <div class="modal-body">
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <form action="" class="form-horizontal m-t-md " name="myForm"
+                  novalidate>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">单据编号:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control ng-pristine ng-untouched ng-valid ng-empty" name="uuid"
+                               ng-disabled="true"
+                               ng-model="data.busuuid" placeholder="系统自动生成" type="text">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"><span
+                            class="text-danger">*</span>标题:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control ng-pristine ng-untouched ng-valid ng-empty" name="title" ng-disabled="ctl.title" ng-maxlength="100"
+                               ng-model="data.title"
+                               placeholder="请输入标题" required type="text">
+                        <div class="text-danger"
+                             ng-if="myForm.title.$dirty && myForm.title.$invalid">
+                            <span ng-if="myForm.title.$error.required"> 输入不能为空 </span> <span
+                                ng-show="myForm.title.$error.maxlength">不能超过100个字符 </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"><span
+                            class="text-danger">*</span>处置类型:</label>
+                    <div class="col-sm-10">
+                        <select   chosen class="chosen-select" data-placeholder-text-single="'请选择...'"
+                                disable-search="false"
+                                search_contains="true"
+                                ng-disabled="ctl.type"
+                                ng-model="typeSel" ng-options="item.name for item in typeOpt"
+                                no-results-text="'没有找到相应条目'">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"><span
+                            class="text-danger">*</span>原因:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control ng-pristine ng-untouched ng-valid ng-empty" name="ct" ng-disabled="ctl.ct" ng-maxlength="100"
+                               ng-model="data.ct"
+                               placeholder="请输入原因" required type="text">
+                        <div class="text-danger"
+                             ng-if="myForm.ct.$dirty && myForm.ct.$invalid">
+                            <span ng-if="myForm.ct.$error.required"> 输入不能为空 </span> <span
+                                ng-show="myForm.ct.$error.maxlength">不能超过100个字符 </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"><span
+                            style="color: red">*</span>业务日期:</label>
+                    <div class="col-sm-10">
+                        <input auto-close="true" class="form-control" date-change="changeDate" date-time
+                               format="YYYY-MM-DD" min-view="date"
+                               ng-disabled="ctl.ywtime" ng-model="data.ywtime" style="width:100"
+                               style="width: 160px;!important" time-zone="Asia/Hong_Kong" type="datetime"
+                               view="date">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">备注:</label>
+                    <div class="col-sm-10">
+						 	<textarea class="form-control " name="mark" ng-disabled="ctl.remark" ng-model="data.mark"
+                                      placeholder="请输入备注" type="text"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"><span
+                            class="text-danger">*</span>资产列表:</label>
+                    <div class="col-sm-10">
+                        <a class="btn btn-primary" href="javascript:void(0)" ng-click="zcselect()"
+                           ng-hide="ctl.selectlist" style="margin-top: 3px;">选择资产</a>
+                        <table class="table table-hover" datatable="ed"
+                               dt-column-defs="dtColumnDefs" dt-columns="dtColumns"
+                               dt-instance="dtInstance" dt-options="dtOptions">
+                        </table>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer" ng-hide="ctl.footer" style="text-align:center">
+        <button class="btn btn-warning" ng-click="cancel()">取消</button>
+        <button class="btn btn-primary" ng-click="sure()" ng-disabled="myForm.$invalid"
+                ng-hide="ctl.surebtn">确认
+        </button>
+    </div>
+</div>

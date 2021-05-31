@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>adfasdfsad1d</title>
+    <meta charset="UTF-8">
+    <link href="http://unpkg.com/k-form-design/lib/k-form-design.css" rel="stylesheet">
+</head>
+<body>
+<div class="app">
+    <k-form-build :data="dynamicData" :value="jsonData" @submit="handleSubmit"
+                  ref="KFB"></k-form-build>
+    <button @click="getData">78</button>
+</div>
+<script src="http://cdn.kcz66.com/vue.min.js"></script>
+<script src="http://127.0.0.1:8080/dt//console/plugin/form/k-form-design.umd.min.js"></script>
+<!--	  <script src="http://unpkg.com/k-form-design/lib/k-form-design.umd.min.js"></script>-->
+<script>
+    let jsonData = {
+        "list": [{
+            "type": "input",
+            "label": "输入框",
+            "options": {
+                "type": "text",
+                "width": "100%",
+                "defaultValue": "",
+                "placeholder": "请输入",
+                "clearable": false,
+                "maxLength": null,
+                "disabled": false
+            },
+            "model": "input_1585372521401",
+            "key": "input_1585372521401",
+            "rules": [{"required": false, "message": "必填项"}]
+        }, {
+            "type": "select",
+            "label": "下拉选择器",
+            "options": {
+                "width": "100%",
+                "multiple": false,
+                "disabled": false,
+                "clearable": false,
+                "placeholder": "请选择",
+                "options": [{"value": "1", "label": "下拉框1"}, {"value": "2", "label": "下拉框2"}],
+                "filterable": false,
+                "defaultValue": "1"
+            },
+            "model": "select_1585372710325",
+            "key": "select_1585372710325",
+            "rules": [{"required": false, "message": "必填项"}]
+        }, {
+            "type": "input",
+            "label": "输入框",
+            "options": {
+                "type": "text",
+                "width": "100%",
+                "defaultValue": "",
+                "placeholder": "请输入",
+                "clearable": false,
+                "maxLength": null,
+                "disabled": false
+            },
+            "model": "input_1585372714507",
+            "key": "input_1585372714507",
+            "rules": [{"required": false, "message": "必填项"}]
+        }],
+        "config": {
+            "layout": "horizontal",
+            "labelCol": {"span": 4},
+            "wrapperCol": {"span": 18},
+            "hideRequiredMark": false,
+            "customStyle": ""
+        }
+    }
+    let dynamicData = {
+        "input_1585372521401": "adsfafasdfasdfaasdf",
+        "select_1585372710325": "2",
+        "input_1585372714507": "1asdfasdf"
+    };
+    let vm = new Vue({
+        el: '.app',
+        data: {
+            jsonData,
+            dynamicData,
+        },
+        methods: {
+            handleSave(values) {
+                alert(111);
+            },
+            handleSubmit(p) {
+                // 通过表单提交按钮触发，获取promise对象
+                p().then(res => {
+                    // 获取数据成功
+                    alert(222222222);
+                    //  alert(JSON.stringify(res))
+                })
+                    .catch(err => {
+                        console.log(err, '校验失败')
+                    })
+            },
+            importData() {
+                this.$refs.KFB.form.setFieldsValue(dynamicData);
+            },
+            getData() {
+                this.$refs.KFB.form.setFieldsValue(dynamicData);
+                //  // 通过函数获取数据
+                // this.importData();
+                //   this.$refs.KFB.getData().then(res => {
+                //    // 获取数据成功
+                //
+                //    alert(JSON.stringify(res))
+                //  })
+                //    .catch(err => {
+                //      console.log(err, '校验失败')
+                //    })
+            }
+        }
+    })
+</script>
+</body>
+</html>

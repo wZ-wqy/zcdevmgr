@@ -1,0 +1,50 @@
+var meta = {
+		tablehide:false,
+		tools : [
+				{
+					id : "input",
+					label : "212",
+					label_hide : true,
+					type : "input",
+					placeholder : "1212",
+					ct : ""
+				},
+				{
+					id : "select",
+					label : "选择",
+					type : "select",
+					disablesearch : true,
+					dataOpt : opt,
+					dataSel : opt[0]
+				},
+				{
+					id : "btn",
+					label : "",
+					type : "btn",
+					template : ' <button ng-click="abcd1()" class="btn btn-sm btn-primary" type="submit">查询c</button>'
+				}, {
+					id : "btn_query",
+					label : "查询",
+					type : "btn_query"
+				}, {
+					id : "btn_add",
+					fun : "",
+					label : "新增",
+					type : "btn_add"
+				}, {
+					id : "btn_del",
+					fun : "",
+					label : "删除",
+					type : "btn_del"
+				}, {
+					id : "btn_modify",
+					fun : "",
+					label : "修改",
+					type : "btn_modify"
+				} ,{
+					id : "btn_actiona",
+					fun : "",
+					label : "action",
+					type : "btn_actiona"
+				} ]
+	}

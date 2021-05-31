@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dt.module.zc.mapper.ResTranferMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.dt.module.zc.entity.ResTranfer">
+        <id column="id" property="id" />
+    <result column="dr" property="dr" />
+    <result column="update_time" property="updateTime" />
+    <result column="create_time" property="createTime" />
+    <result column="create_by" property="createBy" />
+    <result column="update_by" property="updateBy" />
+        <result column="busid" property="busid" />
+        <result column="status" property="status" />
+        <result column="pinst" property="pinst" />
+        <result column="name" property="name" />
+        <result column="busdate" property="busdate" />
+        <result column="tranfercnt" property="tranfercnt" />
+        <result column="tranferstatus" property="tranferstatus" />
+        <result column="transfertype" property="transfertype" />
+        <result column="transfertypename" property="transfertypename" />
+        <result column="transfercatid" property="transfercatid" />
+        <result column="transfercatname" property="transfercatname" />
+        <result column="bustype" property="bustype" />
+        <result column="transferdate" property="transferdate" />
+        <result column="transferuserid" property="transferuserid" />
+        <result column="transferusername" property="transferusername" />
+        <result column="receiveruserid" property="receiveruserid" />
+        <result column="receivedate" property="receivedate" />
+        <result column="receiverusername" property="receiverusername" />
+        <result column="fbelongcompid" property="fbelongcompid" />
+        <result column="fbelongcompname" property="fbelongcompname" />
+        <result column="fusedcompid" property="fusedcompid" />
+        <result column="fusedcompname" property="fusedcompname" />
+        <result column="fusedpartid" property="fusedpartid" />
+        <result column="fusedpartname" property="fusedpartname" />
+        <result column="fuseduserid" property="fuseduserid" />
+        <result column="fusedusername" property="fusedusername" />
+        <result column="floc" property="floc" />
+        <result column="flocname" property="flocname" />
+        <result column="flocdtl" property="flocdtl" />
+        <result column="tusedcompid" property="tusedcompid" />
+        <result column="tusedcompname" property="tusedcompname" />
+        <result column="tusedpartid" property="tusedpartid" />
+        <result column="tusedpartname" property="tusedpartname" />
+        <result column="tuseduserid" property="tuseduserid" />
+        <result column="tusedusername" property="tusedusername" />
+        <result column="tloc" property="tloc" />
+        <result column="tlocname" property="tlocname" />
+        <result column="tlocdtl" property="tlocdtl" />
+        <result column="flowapply" property="flowapply" />
+        <result column="mark" property="mark" />
+    </resultMap>
+
+</mapper>

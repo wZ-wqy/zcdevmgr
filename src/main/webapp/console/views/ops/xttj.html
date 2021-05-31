@@ -1,0 +1,144 @@
+
+<!-- Wrapper-->
+<div id="wrapper">
+    <!-- Navigation -->
+    <div ng-include="'views/common/navigation.html?v=1'"></div>
+    <!-- Page wraper -->
+    <div class="gray-bg {{$state.current.name}}" id="page-wrapper">
+        <!-- Page wrapper -->
+        <div ng-include="'views/common/topnavbar.html?v=1'"></div>
+        <div ng-controller="opsxttjCtl">
+            <div class="wrapper wrapper-content">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <span class="label label-success pull-right">操作系统总数</span>
+                            </div>
+                            <div class="ibox-content">
+                                <h1 class="no-margins">{{item.oscnt||0}}</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <span class="label label-success pull-right">系统监控总数</span>
+                            </div>
+                            <div class="ibox-content">
+                                <h1 class="no-margins">{{item.monitorcnt||0}}</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <span class="label label-info pull-right">数据库总数</span>
+                            </div>
+                            <div class="ibox-content">
+                                <h1 class="no-margins">{{item.dbcnt||0}}</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <span class="label label-info pull-right">数据库实例总数</span>
+                            </div>
+                            <div class="ibox-content">
+                                <h1 class="no-margins">{{item.dbinstancecnt||0}}</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <span class="label label-primary pull-right">中间件总数</span>
+                            </div>
+                            <div class="ibox-content">
+                                <h1 class="no-margins">{{item.midcnt||0}}</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <span class="label label-danger pull-right">数据异常数</span>
+                            </div>
+                            <div class="ibox-content">
+                                <h1 class="no-margins">{{item.exceptioncnt||0}}</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>操作系统统计</h5>
+                                <div class="pull-right"></div>
+                            </div>
+                            <div class="ibox-content">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="flot-chart" style="height: 250px">
+                                            <div class="flot-chart">
+                                                <div class="flot-chart-content" dataset="charts.flotChartData" flot
+                                                     options="charts.flotBarOptions"
+                                                     style="height: 250px"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>数据库统计</h5>
+                                <div class="pull-right"></div>
+                            </div>
+                            <div class="ibox-content">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="flot-chart" style="height: 250px">
+                                            <div class="flot-chart">
+                                                <div class="flot-chart-content" dataset="charts.dbflotChartData" flot
+                                                     options="charts.dbflotBarOptions"
+                                                     style="height: 250px"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>中间件统计</h5>
+                                <div class="pull-right"></div>
+                            </div>
+                            <div class="ibox-content">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="flot-chart" style="height: 250px">
+                                            <div class="flot-chart">
+                                                <div class="flot-chart-content" dataset="charts.midflotChartData" flot
+                                                     options="charts.midflotBarOptions"
+                                                     style="height: 250px"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

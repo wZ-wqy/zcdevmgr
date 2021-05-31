@@ -1,0 +1,37 @@
+<div ng-controller="flowapprovalCommonCtl" ng-hide="hideapproval" class="panel panel-default"
+     style="margin-left: 100px;margin-right: 100px">
+    <div class="panel-heading"><h3 class="panel-title">审批区</h3></div>
+    <div class="panel-body" style="padding:0px">
+        <div class="form-group" style="margin-top:10px;margin-right:10px">
+            <label class="col-sm-2 control-label"><span
+                    class="text-danger">*</span>审批意见:</label>
+            <div class="col-sm-10">
+
+                    <textarea
+                            class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                            ng-model="spsuggest"
+                            placeholder="请输入审批意见" style="padding-bottom: 50px"
+                            type="text"> </textarea>
+            </div>
+        </div>
+        <div ng-switch="data.pstatus">
+            <div ng-switch-when="rollback"></div>
+            <div ng-switch-default>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer">
+        <div style="text-align:center">
+            <div ng-switch="data.pstatus">
+                <div ng-switch-when="rollback">
+                    <!--                    <button class="btn btn-primary btn-sm" ng-click="submit()">提交审批</button>-->
+                </div>
+                <div ng-switch-default>
+                    <!--                    <button class="btn btn-warning btn-sm" ng-click="rollback()">退回</button>-->
+                    <button class="btn btn-danger btn-sm" ng-click="refuse()">拒绝</button>
+                    <button class="btn btn-success btn-sm" ng-click="agreen()">同意</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

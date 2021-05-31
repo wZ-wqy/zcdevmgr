@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dt.module.zc.mapper.ResCBasicinformationMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.dt.module.zc.entity.ResCBasicinformation">
+        <id column="id" property="id"/>
+        <result column="dr" property="dr"/>
+        <result column="create_time" property="createTime"/>
+        <result column="create_by" property="createBy"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="update_by" property="updateBy"/>
+        <result column="busuuid" property="busuuid"/>
+        <result column="resid" property="resid"/>
+        <result column="status" property="status"/>
+        <result column="processuserid" property="processuserid"/>
+        <result column="processusername" property="processusername"/>
+        <result column="tclassid" property="tclassid"/>
+        <result column="tmodel" property="tmodel"/>
+        <result column="tsn" property="tsn"/>
+        <result column="tzcsource" property="tzcsource"/>
+        <result column="tzccnt" property="tzccnt"/>
+        <result column="tsupplier" property="tsupplier"/>
+        <result column="tbrand" property="tbrand"/>
+        <result column="tbuytime" property="tbuytime"/>
+        <result column="tloc" property="tloc"/>
+        <result column="tusefullife" property="tusefullife"/>
+        <result column="tusedcompanyid" property="tusedcompanyid"/>
+        <result column="tpartid" property="tpartid"/>
+        <result column="tuseduserid" property="tuseduserid"/>
+        <result column="mark" property="mark"/>
+        <result column="tclassidstatus" property="tclassidstatus"/>
+        <result column="tmodelstatus" property="tmodelstatus"/>
+        <result column="tsnstatus" property="tsnstatus"/>
+        <result column="tzcsourcestatus" property="tzcsourcestatus"/>
+        <result column="tzccntstatus" property="tzccntstatus"/>
+        <result column="tsupplierstatus" property="tsupplierstatus"/>
+        <result column="tbrandstatus" property="tbrandstatus"/>
+        <result column="tbuytimestatus" property="tbuytimestatus"/>
+        <result column="tlocstatus" property="tlocstatus"/>
+        <result column="tusefullifestatus" property="tusefullifestatus"/>
+        <result column="tusedcompanyidstatus" property="tusedcompanyidstatus"/>
+        <result column="tpartidstatus" property="tpartidstatus"/>
+        <result column="tuseduseridstatus" property="tuseduseridstatus"/>
+        <result column="tlabel1" property="tlabel1"/>
+        <result column="tunit" property="tunit"/>
+        <result column="tconfdesc" property="tconfdesc"/>
+        <result column="tlocdtl" property="tlocdtl"/>
+        <result column="tlabel1status" property="tlabel1status"/>
+        <result column="tunitstatus" property="tunitstatus"/>
+        <result column="tconfdescstatus" property="tconfdescstatus"/>
+        <result column="tlocdtlstatus" property="tlocdtlstatus"/>
+        <result column="pinst" property="pinst"/>
+        <result column="tfs20" property="tfs20"/>
+        <result column="tfd1" property="tfd1"/>
+        <result column="tmark" property="tmark"/>
+        <result column="tfs20status" property="tfs20status"/>
+        <result column="tfd1status" property="tfd1status"/>
+        <result column="tmarkstatus" property="tmarkstatus"/>
+
+        <result column="tnamestatus" property="tnamestatus"/>
+        <result column="tname" property="tname"/>
+
+        <result column="tbelongcomp" property="tbelongcomp"/>
+        <result column="tbelongcompstatus" property="tbelongcompstatus"/>
+        <result column="tlabel2" property="tlabel2"/>
+        <result column="tlabel2status" property="tlabel2status"/>
+        <result column="tbatch" property="tbatch"/>
+        <result column="tbatchstatus" property="tbatchstatus"/>
+
+
+    </resultMap>
+
+</mapper>

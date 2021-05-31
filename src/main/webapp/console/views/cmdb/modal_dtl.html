@@ -1,0 +1,575 @@
+<style>
+    @media ( min-width: 992px) {
+        .modal-blg {
+            width: 95%;
+        }
+    }
+</style>
+<div class="modal-content">
+    <div class="modal-header">
+        <button class="close" ng-click="cancel()" type="button">
+            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+        </button>
+        <h4 class="modal-title">资产详情</h4>
+    </div>
+    <div class="modal-body">
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="panel panel-success">
+                <div class="panel-body">资产信息</div>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">资产类目:</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" ng-disabled="true" ng-model="item.classrootname"
+                                               type="text">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-3">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">资产编号:</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" ng-disabled="true" ng-model="item.uuid"
+                                               type="text">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-3">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">资产类别:</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" ng-disabled="true"
+                                               ng-model="item.classname" type="text">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-3">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">序列:</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" ng-disabled="true" ng-model="item.sn"
+                                               type="text">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">资产名称:</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" ng-disabled="true" ng-model="item.name"
+                                               type="text">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-3">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">资产状态:</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" ng-disabled="true"
+                                               ng-model="item.recyclestr" type="text">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-3">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">供应商:</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" ng-disabled="true" ng-model="item.supplierstr"
+                                               type="text">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-3">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">品牌:</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" ng-disabled="true" ng-model="item.brandstr"
+                                               type="text">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">计量单位:</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" ng-disabled="true" ng-model="item.unit"
+                                               type="text">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-3">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">使用期限:</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" ng-disabled="true" ng-model="item.usefullifestr"
+                                               type="text">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-3">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">来源:</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" ng-disabled="true" ng-model="item.zcsourcestr"
+                                               type="text">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-3">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">其他编号:</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" ng-disabled="true" ng-model="item.fs20"
+                                               type="text">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">{{'BELONGCOMP' | translate}}:</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" ng-disabled="true" ng-model="item.belongcomp_name"
+                                               type="text">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+<!--                        <div class="col-md-3">-->
+<!--                            <form class="form-horizontal">-->
+<!--                                <div class="form-group">-->
+<!--                                    <label class="col-sm-4 control-label">{{'USEDCOMP' | translate}}:</label>-->
+<!--                                    <div class="col-sm-8">-->
+<!--                                        <input class="form-control" ng-disabled="true"-->
+<!--                                               ng-model="item.comp_name" type="text">-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </form>-->
+<!--                        </div>-->
+                        <div class="col-md-3">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">{{'USEDPART' | translate}}:</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" ng-disabled="true"
+                                               ng-model="item.part_name" type="text">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-3">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">{{'USEDUSER' | translate}}:</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" ng-disabled="true"
+                                               ng-model="item.used_username" type="text">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+						<div class="col-md-3">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">报废日期:</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" ng-disabled="true"
+                                               ng-model="item.bfout_datestr" type="text">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">生产时间:</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" ng-disabled="true"
+                                               ng-model="item.fd1str" type="text">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-3">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">采购日期:</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" ng-disabled="true"
+                                               ng-model="item.buy_timestr" type="text">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-3">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">录入时间:</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" ng-disabled="true"
+                                               ng-model="item.create_time" type="text">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-3">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">更新时间:</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" ng-disabled="true"
+                                               ng-model="item.update_time" type="text">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">批次号:</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" ng-disabled="true"
+                                               ng-model="item.batch" type="text">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="col-md-3">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">录入人:</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" ng-disabled="true"
+                                               ng-model="item.create_username" type="text">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-3">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">更新人:</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" ng-disabled="true"
+                                               ng-model="item.update_username" type="text">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+<!--                        <div class="col-md-3">-->
+<!--                            <form class="form-horizontal">-->
+<!--                                <div class="form-group">-->
+<!--                                    <label class="col-sm-4 control-label">复核人:</label>-->
+<!--                                    <div class="col-sm-8">-->
+<!--                                        <input class="form-control" ng-disabled="true"-->
+<!--                                               ng-model="item.review_username" type="text">-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </form>-->
+<!--                        </div>-->
+<!--                        <div class="col-md-3">-->
+<!--                            <form class="form-horizontal">-->
+<!--                                <div class="form-group">-->
+<!--                                    <label class="col-sm-4 control-label">复核状态:</label>-->
+<!--                                    <div class="col-sm-8">-->
+<!--                                        <input class="form-control" ng-disabled="true"-->
+<!--                                               ng-model="item.reviewstr" type="text">-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </form>-->
+<!--                        </div>-->
+                    </div>
+                    <!--财务信息-->
+                    <div>
+                        <table style="width:100%">
+                            <tbody>
+                            <tr>
+                                <td style="width:50%">
+                                    <div class="hr-line-dashed"></div>
+                                </td>
+                                <td style="color:#C0C0C0;width:80px;padding-left:10px;padding-right:10px">财务信息</td>
+                                <td style="width:50%">
+                                    <div class="hr-line-dashed"></div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">采购单价:</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" ng-disabled="true"
+                                               ng-model="item.buy_price" type="text">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-3">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">资产净值:</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" ng-disabled="true"
+                                               ng-model="item.net_worth" type="text">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="col-md-3">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">累计折旧:</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" ng-disabled="true"
+                                               ng-model="item.accumulateddepreciation" type="text">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="col-md-3">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">设置残值:</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" ng-disabled="true"
+                                               ng-model="item.residualvalue" type="text">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!--维保信息-->
+                    <div>
+                        <table style="width:100%">
+                            <tbody>
+                            <tr>
+                                <td style="width:50%">
+                                    <div class="hr-line-dashed"></div>
+                                </td>
+                                <td style="color:#C0C0C0;width:80px;padding-left:10px;padding-right:10px">维保信息</td>
+                                <td style="width:50%">
+                                    <div class="hr-line-dashed"></div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">维保商:</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" ng-disabled="true"
+                                               ng-model="item.wbsupplierstr" type="text">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-3">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">维保状态:</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" ng-disabled="true"
+                                               ng-model="item.wbstr" type="text">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-3">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">脱保日期:</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" ng-disabled="true"
+                                               ng-model="item.wbout_datestr" type="text">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-3">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-4 control-label">维保说明:</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" ng-disabled="true"
+                                               ng-model="item.wbct" type="text">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!--扩展属性-->
+                    <div ng-include="'views/cmdb/dtl_extattr.html'"></div>
+                    <!--自定义扩展属性 -->
+                    <div ng-switch="item.classname">
+						<span ng-switch-when="X86">
+							<div ng-include="'views/cmdb/dtl_itdev.html'"></div>
+						</span> <span ng-switch-when="小机">
+							<div ng-include="'views/cmdb/dtl_itdev.html'"></div>
+						</span> <span ng-switch-when="route">
+							<div ng-include="'views/cmdb/dtl_itdev.html'"></div>
+						</span> <span ng-switch-when="safety">
+							<div ng-include="'views/cmdb/dtl_itdev.html'"></div>
+						</span> <span ng-switch-when="storage">
+							<div ng-include="'views/cmdb/dtl_itdev.html'"></div>
+						</span> <span ng-switch-when="switch">
+							<div ng-include="'views/cmdb/dtl_itdev.html'"></div>
+						</span> <span ng-switch-when="bjpj">
+							<div ng-include="'views/cmdb/dtl_itdev.html'"></div>
+						</span> <span ng-switch-when="pc">
+							<div ng-include="'views/cmdb/dtl_itdev.html'"></div>
+						</span> <span ng-switch-when="pointdev">
+							<div ng-include="'views/cmdb/dtl_itdev.html'"></div>
+						</span> <span ng-switch-when="zcotherhard">
+							<div ng-include="'views/cmdb/dtl_itdev.html'"></div>
+						</span>
+                    </div>
+                    <div class="hr-line-dashed"></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-1 control-label">配置描述:</label>
+                                    <div class="col-sm-11">
+                                        <input class="form-control" ng-disabled="true" ng-model="item.confdesc"
+                                               type="text">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-1 control-label">存放区域:</label>
+                                    <div class="col-sm-11">
+                                        <input class="form-control" ng-disabled="true" ng-model="item.locstr"
+                                               type="text">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-1 control-label">位置:</label>
+                                    <div class="col-sm-11">
+                                        <input class="form-control" ng-disabled="true" ng-model="item.locdtl"
+                                               type="text">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-1 control-label">备注:</label>
+                                    <div class="col-sm-11">
+                                        <input class="form-control" ng-disabled="true" ng-model="item.mark"
+                                               type="text">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-1 control-label">图片:</label>
+                                    <div class="col-sm-11" ng-show="item.img">
+                                        <img ng-src="../api/file/filedown.do?id={{item.img}}"
+                                             style="height:80px"></img>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-sm-1 control-label">附件:</label>
+                                    <div class="col-sm-11" ng-show="item.attach">
+                                        <span><a href="../api/file/filedown.do?id={{item.attach}}">附件下载</a></span>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-success">
+                <div class="panel-body">维护记录</div>
+                <div class="panel-footer">
+                    <div class="row">
+                        <table class="table table-hover" datatable="ed"
+                               dt-column-defs="dtColumnDefs" dt-columns="dtColumns"
+                               dt-instance="dtInstance" dt-options="dtOptions">
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-success">
+                <div class="panel-body">操作记录</div>
+                <div class="panel-footer">
+                    <div class="row">
+                        <table class="table table-hover" datatable="ed2"
+                               dt-column-defs="dtColumnDefs2" dt-columns="dtColumns2"
+                               dt-instance="dtInstance2" dt-options="dtOptions2">
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

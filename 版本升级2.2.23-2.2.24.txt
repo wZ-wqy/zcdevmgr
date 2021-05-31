@@ -1,0 +1,183 @@
+update sys_params set value='2.2.24' where id='version';
+ALTER TABLE res ADD ishandle varchar(1) DEFAULT 0 NULL;
+ALTER TABLE res ADD handledate DATETIME NULL;
+update sys_dict set dict_level ='inter' where dict_id ='devrack';
+insert into ct_category_root(id,name,od,dr) values('1','知识库',1,0);
+
+CREATE TABLE `hrm_position` (
+  `id` varchar(50) NOT NULL COMMENT '主键',
+  `code` varchar(100) DEFAULT NULL COMMENT '岗位编码',
+  `type` varchar(50) DEFAULT NULL COMMENT '类型',
+  `mark` varchar(100) DEFAULT NULL COMMENT '备注',
+  `name` varchar(100) DEFAULT NULL COMMENT '岗位名称',
+  `dr` char(1) DEFAULT NULL,
+  `update_by` varchar(50) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  `create_by` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='岗位';
+
+CREATE TABLE `hrm_position_type` (
+  `id` varchar(50) NOT NULL COMMENT '主键',
+  `ptname` varchar(100) DEFAULT NULL COMMENT '名称',
+  `mark` varchar(100) DEFAULT NULL COMMENT '备注',
+  `dr` char(1) DEFAULT NULL,
+  `create_by` varchar(50) DEFAULT NULL,
+  `update_by` varchar(50) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='岗位类型';
+
+CREATE TABLE `kn_base` (
+  `id` varchar(50) NOT NULL COMMENT '主键',
+  `catid` varchar(50) DEFAULT NULL COMMENT '分类',
+  `catname` varchar(50) DEFAULT NULL COMMENT '分类',
+  `title` varchar(50) DEFAULT NULL COMMENT '标题',
+  `profile` varchar(1000) DEFAULT NULL COMMENT '简介',
+  `label` varchar(2000) DEFAULT NULL COMMENT '标签',
+  `ct` longtext COMMENT '内容',
+  `reviewcnt` decimal(5,0) DEFAULT NULL,
+  `attach` varchar(1000) DEFAULT NULL COMMENT '附件',
+  `lasttime` datetime DEFAULT NULL,
+  `inserttime` datetime DEFAULT NULL,
+  `luserid` varchar(50) DEFAULT NULL COMMENT '最后编辑人ID',
+  `lusername` varchar(500) DEFAULT NULL COMMENT '最后编辑人员',
+  `shareurl` varchar(500) DEFAULT NULL COMMENT '分享URL',
+  `dr` varchar(1) DEFAULT NULL,
+  `create_by` varchar(50) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `update_by` varchar(50) DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  `isshow` varchar(1) DEFAULT NULL,
+  `type` varchar(50) DEFAULT NULL,
+  `seclevel` decimal(5,0) DEFAULT '0',
+  PRIMARY KEY (`id`),
+  FULLTEXT KEY `knbaseind1` (`title`,`label`,`ct`) /*!50100 WITH PARSER `ngram` */
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='知识库';
+
+CREATE TABLE `kn_base_user` (
+  `id` varchar(50) NOT NULL,
+  `knbaseid` varchar(50) NOT NULL,
+  `userid` varchar(50) DEFAULT NULL,
+  `username` varchar(500) DEFAULT NULL,
+  `ct` varchar(500) DEFAULT NULL,
+  `dr` varchar(1) DEFAULT NULL,
+  `create_by` varchar(50) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `update_by` varchar(50) DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `kn_label` (
+  `id` varchar(50) NOT NULL COMMENT '主键',
+  `userid` varchar(50) NOT NULL COMMENT '用户',
+  `catid` varchar(50) DEFAULT NULL COMMENT '分类',
+  `name` varchar(50) DEFAULT NULL COMMENT '标签名称',
+  `mark` varchar(500) DEFAULT NULL COMMENT '标签备注',
+  `dr` varchar(1) DEFAULT NULL,
+  `create_by` varchar(50) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `update_by` varchar(50) DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='知识库标签';
+
+CREATE TABLE `ops_rack` (
+  `id` varchar(50) NOT NULL COMMENT '主键',
+  `layerid` varchar(50) DEFAULT NULL,
+  `rackid` varchar(50) DEFAULT NULL,
+  `dr` varchar(1) DEFAULT NULL,
+  `create_by` varchar(50) DEFAULT NULL,
+  `update_by` varchar(50) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `ops_rack_info` (
+  `id` varchar(50) NOT NULL COMMENT '主键',
+  `name` varchar(500) DEFAULT NULL COMMENT '名称',
+  `code` varchar(50) DEFAULT NULL,
+  `mark` varchar(500) DEFAULT NULL,
+  `capacity` decimal(5,0) DEFAULT NULL,
+  `dr` varchar(1) DEFAULT NULL,
+  `create_by` varchar(50) DEFAULT NULL,
+  `update_by` varchar(50) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `ops_area` (
+  `id` varchar(50) NOT NULL COMMENT '主键',
+  `locid` varchar(50) DEFAULT NULL COMMENT '位置ID',
+  `name` varchar(50) DEFAULT NULL COMMENT '名称',
+  `mark` varchar(500) DEFAULT NULL COMMENT '备注',
+  `type` varchar(50) DEFAULT NULL COMMENT '类型',
+  `dr` varchar(1) DEFAULT NULL,
+  `create_by` varchar(50) DEFAULT NULL,
+  `update_by` varchar(50) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='区域';
+
+CREATE TABLE `ops_layer` (
+  `id` varchar(50) NOT NULL COMMENT '主键',
+  `name` varchar(500) DEFAULT NULL COMMENT '名称',
+  `locid` varchar(50) DEFAULT NULL,
+  `areaid` varchar(50) DEFAULT NULL,
+  `dr` varchar(1) DEFAULT NULL,
+  `create_by` varchar(50) DEFAULT NULL,
+  `update_by` varchar(50) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+CREATE TABLE `res_handle` (
+  `id` varchar(50) NOT NULL COMMENT '主键',
+  `uuid` varchar(50) DEFAULT NULL COMMENT '单据',
+  `pinst` varchar(50) DEFAULT NULL COMMENT '流程ID',
+  `title` varchar(500) DEFAULT NULL COMMENT '标题',
+  `processuserid` varchar(50) DEFAULT NULL COMMENT '处理人ID',
+  `processusername` varchar(500) DEFAULT NULL COMMENT '处理人',
+  `processdate` datetime DEFAULT NULL COMMENT '处理时间',
+  `type` varchar(50) DEFAULT NULL COMMENT '类型',
+  `typename` varchar(50) DEFAULT NULL COMMENT '类型名称',
+  `status` varchar(50) DEFAULT NULL COMMENT '状态',
+  `ct` varchar(500) DEFAULT NULL COMMENT '内容',
+  `busidate` date DEFAULT NULL COMMENT '处理时间',
+  `mark` varchar(500) DEFAULT NULL COMMENT '备注',
+  `cnt` decimal(10,0) DEFAULT NULL COMMENT '数量',
+  `dr` varchar(1) DEFAULT NULL,
+  `create_by` varchar(50) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `update_by` varchar(50) DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='处置';
+
+CREATE TABLE `res_handle_item` (
+  `id` varchar(50) NOT NULL COMMENT '主键',
+  `uuid` varchar(50) DEFAULT NULL COMMENT '单据',
+  `resid` varchar(50) DEFAULT NULL COMMENT '资产ID',
+  `mark` varchar(500) DEFAULT NULL COMMENT '备注',
+  `dr` varchar(1) DEFAULT NULL,
+  `create_by` varchar(50) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `update_by` varchar(50) DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='处置明细';
+
+insert into ops_rack_info(id,name,code,dr) select dict_item_id,name,code,'0' dr from sys_dict_item where dict_id='devrack';
+update ops_rack_info set capacity =45  where capacity is null ;
+update kn_base set reviewcnt=0,create_time =now(),update_time =now(),inserttime =now(),lasttime =now() where id<>'1';
+commit;
+
+

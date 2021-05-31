@@ -1,0 +1,110 @@
+<div ng-controller="sysUserAddCtl">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox">
+                    <div class="ibox-content">
+                        <form class="form-inline" role="form">
+                            <button class="btn btn-sm btn-primary" ng-click="reset()"
+                                    type="submit">重置
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>用户基本信息</h5>
+                        <div class="ng-scope" ibox-tools="">
+                            <div class="ibox-tools dropdown" uib-dropdown="">
+                                <a ng-click="showhide()"> <i class="fa fa-chevron-up"></i></a> <a
+                                    aria-expanded="false" aria-haspopup="true" class="dropdown-toggle"
+                                    href="" uib-dropdown-toggle=""> <i
+                                    class="fa fa-wrench"></i>
+                            </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <form class="form-horizontal ng-pristine ng-valid" method="get"
+                              name="myForm" novalidate>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label"><span
+                                        class="text-danger">*</span>登录名:</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control ng-pristine ng-untouched ng-valid ng-empty" name="username" ng-maxlength="20"
+                                           ng-model="item.userName"
+                                           placeholder="请输入登录名" required type="text"
+                                    >
+                                    <div class="text-danger"
+                                         ng-if="myForm.username.$dirty && myForm.username.$invalid">
+                                        <span ng-if="myForm.username.$error.required"> 输入不能为空 </span> <span
+                                            ng-show="myForm.username.$error.maxlength">不能超过20个字符 </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label"><span
+                                        class="text-danger">*</span>姓名:</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control ng-pristine ng-untouched ng-valid ng-empty" name="name" ng-maxlength="20"
+                                           ng-model="item.name"
+                                           placeholder="请输入姓名" required type="text"
+                                    >
+                                    <div class="text-danger"
+                                         ng-if="myForm.name.$dirty && myForm.name.$invalid">
+                                        <span ng-if="myForm.name.$error.required"> 输入不能为空 </span> <span
+                                            ng-show="myForm.name.$error.maxlength">不能超过20个字符 </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">手机号:</label>
+                                <div class="col-sm-10">
+                                    <input placeholder="请输入手机" class="form-control" ng-model="item.tel" type="text">
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">备注:</label>
+                                <div class="col-sm-10" style="height: 150px;">
+									<textarea placeholder="请输入备注" class="form-control" ng-model="item.mark"
+                                              style="height: 150px;" type="text"></textarea>
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">帐号状态:</label>
+                                <div class="col-sm-10">
+                                    <select chosen class="chosen-select" data-placeholder-text-single="'请选择...'"
+                                            disable-search="true" ng-model="userStatusSel"
+                                            ng-options="item.name for item in userStatusOpt"
+                                            no-results-text="'没有找到相应条目'">
+                                        <option value=""></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group">
+                                <div class="col-sm-4 col-sm-offset-2">
+                                    <button class="btn btn-primary" ng-click="ok()" ng-disabled="myForm.$invalid"
+                                            type="submit">提 交
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

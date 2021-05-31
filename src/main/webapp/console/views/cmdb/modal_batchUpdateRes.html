@@ -1,0 +1,231 @@
+<style>
+    @media ( min-width: 992px) {
+        .modal-blg {
+            width: 98%;
+        }
+    }
+</style>
+<div class="modal-content">
+    <div class="modal-header">
+        <button class="close" ng-click="cancel()" type="button">
+            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+        </button>
+        <h4 class="modal-title">批量更新</h4>
+    </div>
+    <div class="modal-body">
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <form action="" class="form-horizontal m-t-md " name="myForm"
+                  novalidate>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">资产状态:</label>
+                    <div class="col-sm-1">
+                        <select chosen class="chosen-select" data-placeholder-text-single="'请选择...'"
+                                disable-search="true" ng-model="ifrecycleSel"
+                                ng-options="item.name for item in ifrecycleOpt"
+                                no-results-text="'没有找到相应条目'">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                    <div class="col-sm-9">
+                        <select chosen class="chosen-select" data-placeholder-text-single="'请选择...'"
+                                disable-search="true" ng-model="recycleSel"
+                                ng-options="item.name for item in recycleOpt"
+                                no-results-text="'没有找到相应条目'">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">风险等级:</label>
+                    <div class="col-sm-1">
+                        <select chosen class="chosen-select" data-placeholder-text-single="'请选择...'"
+                                disable-search="true" ng-model="ifriskSel"
+                                ng-options="item.name for item in ifriskOpt"
+                                no-results-text="'没有找到相应条目'">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                    <div class="col-sm-9">
+                        <select chosen class="chosen-select" data-placeholder-text-single="'请选择...'"
+                                disable-search="true" ng-model="riskSel"
+                                ng-options="item.name for item in riskOpt"
+                                no-results-text="'没有找到相应条目'">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">采购日期:</label>
+                    <div class="col-sm-1">
+                        <select chosen class="chosen-select" data-placeholder-text-single="'请选择...'"
+                                disable-search="true" ng-model="ifbuySel"
+                                ng-options="item.name for item in ifbuyOpt"
+                                no-results-text="'没有找到相应条目'">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                    <div class="col-sm-9">
+                        <input auto-close="true" class="form-control" date-change="datachange"
+                               date-time format="YYYY-MM-DD" id="i1"
+                               min-view="date" ng-model="date.buytime2" time-zone="Asia/Hong_Kong"
+                               type="datetime" view="year">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">脱保日期:</label>
+                    <div class="col-sm-1">
+                        <select chosen class="chosen-select" data-placeholder-text-single="'请选择...'"
+                                disable-search="true" ng-model="ifTbSel"
+                                ng-options="item.name for item in ifTbOpt"
+                                no-results-text="'没有找到相应条目'">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                    <div class="col-sm-9">
+                        <input auto-close="true" class="form-control" date-change="datachange"
+                               date-time format="YYYY-MM-DD" id="i2"
+                               min-view="date" ng-model="date.wboutdate2" time-zone="Asia/Hong_Kong"
+                               type="datetime" view="year">
+                    </div>
+                </div>
+				<div class="form-group">
+                    <label class="col-sm-2 control-label">报废日期:</label>
+                    <div class="col-sm-1">
+                        <select chosen class="chosen-select" data-placeholder-text-single="'请选择...'"
+                                disable-search="true" ng-model="ifTbSel"
+                                ng-options="item.name for item in ifTbOpt"
+                                no-results-text="'没有找到相应条目'">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                    <div class="col-sm-9">
+                        <input auto-close="true" class="form-control" date-change="datachange"
+                               date-time format="YYYY-MM-DD" id=""
+                               min-view="date" ng-model="date.bfoutdate" time-zone="Asia/Hong_Kong"
+                               type="datetime" view="year">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">脱保计算:</label>
+                    <div class="col-sm-1">
+                        <select chosen class="chosen-select" data-placeholder-text-single="'请选择...'"
+                                disable-search="true" ng-model="iftbComputeSel"
+                                ng-options="item.name for item in iftbComputeOpt"
+                                no-results-text="'没有找到相应条目'">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                    <div class="col-sm-9">
+                        <select chosen class="chosen-select" data-placeholder-text-single="'请选择...'"
+                                disable-search="true" ng-model="tbSel"
+                                ng-options="item.name for item in tbOpt"
+                                no-results-text="'没有找到相应条目'">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">维保状态:</label>
+                    <div class="col-sm-1">
+                        <select chosen class="chosen-select" data-placeholder-text-single="'请选择...'"
+                                disable-search="true" ng-model="ifwbSel"
+                                ng-options="item.name for item in ifwbOpt"
+                                no-results-text="'没有找到相应条目'">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                    <div class="col-sm-9">
+                        <select chosen class="chosen-select" data-placeholder-text-single="'请选择...'"
+                                disable-search="true" ng-model="wbSel"
+                                ng-options="item.name for item in wbOpt"
+                                no-results-text="'没有找到相应条目'">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">运行环境:</label>
+                    <div class="col-sm-1">
+                        <select chosen class="chosen-select" data-placeholder-text-single="'请选择...'"
+                                disable-search="true" ng-model="ifenvSel"
+                                ng-options="item.name for item in ifenvOpt"
+                                no-results-text="'没有找到相应条目'">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                    <div class="col-sm-9">
+                        <select chosen class="chosen-select" data-placeholder-text-single="'请选择...'"
+                                disable-search="true" ng-model="envSel"
+                                ng-options="item.name for item in envOpt"
+                                no-results-text="'没有找到相应条目'">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">{{'USEDPART' | translate}}:</label>
+                    <div class="col-sm-1">
+                        <select chosen class="chosen-select" data-placeholder-text-single="'请选择...'"
+                                disable-search="true" ng-model="ifusedPartSel"
+                                ng-options="item.name for item in ifusedPartOpt"
+                                no-results-text="'没有找到相应条目'">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                    <div class="col-sm-9">
+                        <select chosen class="chosen-select" data-placeholder-text-single="'请选择...'"
+                                disable-search="true" ng-model="partSel"
+                                ng-options="item.name for item in partOpt"
+                                no-results-text="'没有找到相应条目'">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">{{'USEDUSER' | translate}}:</label>
+                    <div class="col-sm-1">
+                        <select chosen class="chosen-select" data-placeholder-text-single="'请选择...'"
+                                disable-search="true" ng-model="ifusedUserSel"
+                                ng-options="item.name for item in ifusedUserOpt"
+                                no-results-text="'没有找到相应条目'">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                    <div class="col-sm-9">
+                        <select chosen class="chosen-select" data-placeholder-text-single="'请选择...'"
+                                disable-search="true" ng-model="usedunameSel"
+                                ng-options="item.name for item in usedunameOpt"
+                                no-results-text="'没有找到相应条目'">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">位置:</label>
+                    <div class="col-sm-1">
+                        <select chosen class="chosen-select" data-placeholder-text-single="'请选择...'"
+                                disable-search="true" ng-model="iflocSel"
+                                ng-options="item.name for item in iflocOpt"
+                                no-results-text="'没有找到相应条目'">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                    <div class="col-sm-9">
+                        <select chosen class="chosen-select" data-placeholder-text-single="'请选择...'"
+                                disable-search="true" ng-model="locSel"
+                                ng-options="item.name for item in locOpt"
+                                no-results-text="'没有找到相应条目'">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer" style="text-align:center">
+        <button class="btn btn-warning" ng-click="cancel()">取消</button>
+        <button class="btn btn-primary" ng-click="sure()"
+                ng-disabled="myForm.$invalid">确认
+        </button>
+    </div>
+</div>

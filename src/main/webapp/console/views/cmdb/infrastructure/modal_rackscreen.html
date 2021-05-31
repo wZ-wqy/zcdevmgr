@@ -1,0 +1,335 @@
+<style>
+    @media ( min-width: 992px) {
+        .modal-blg {
+            width: 100%;
+        }
+    }
+</style>
+<style>
+    [data-tooltip] {
+        text-align: left;
+        position: relative;
+        cursor: pointer
+    }
+
+    [data-tooltip]:after, [data-tooltip]:before {
+        position: absolute;
+        pointer-events: none;
+        will-change: transform;
+        transform: translate3d(0, 0, 0);
+        transition: all 0.3s ease-in;
+        z-index: 9;
+        opacity: 0
+    }
+
+    [data-tooltip]:before {
+        font-size: 0.95em;
+        content: attr(data-tooltip-text);
+        background-color: #222;
+        padding: 0.3em 0.7em;
+        color: #fff;
+        white-space: pre;
+        border-radius: 2px;
+        line-height: 150%;
+        box-shadow: 0 0 8px #999
+    }
+
+    [data-tooltip]:after {
+        display: block;
+        content: "";
+        width: 0;
+        height: 0;
+        border-width: 8px;
+        border-style: solid;
+        border-color: transparent
+    }
+
+    [data-tooltip]:hover:after, [data-tooltip]:hover:before {
+        opacity: 1
+    }
+
+    [data-tooltip=left]:after, [data-tooltip=left]:before, [data-tooltip=right]:after, [data-tooltip=right]:before {
+        top: 50%;
+        transform: translate(0, -50%);
+        -webkit-transform: translate(0, -50%);
+        -moz-transform: translate(0, -50%);
+        -ms-transform: translate(0, -50%)
+    }
+
+    [data-tooltip=bottom]:after, [data-tooltip=bottom]:before, [data-tooltip=top]:after, [data-tooltip=top]:before {
+        left: 50%;
+        transform: translate(-50%, 0);
+        -webkit-transform: translate(-50%, 0);
+        -moz-transform: translate(-50%, 0);
+        -ms-transform: translate(-50%, 0)
+    }
+
+    [data-tooltip=left]:before {
+        right: 100%
+    }
+
+    [data-tooltip=left]:after {
+        left: -1px;
+        border-right-width: 0;
+        border-left-color: #222
+    }
+
+    [data-tooltip=left]:hover:after, [data-tooltip=left]:hover:before {
+        transform: translate(-12px, -50%);
+        -webkit-transform: translate(-12px, -50%);
+        -moz-transform: translate(-12px, -50%);
+        -ms-transform: translate(-12px, -50%)
+    }
+
+    [data-tooltip=right]:before {
+        left: 100%
+    }
+
+    [data-tooltip=right]:after {
+        right: -1px;
+        border-left-width: 0;
+        border-right-color: #222
+    }
+
+    [data-tooltip=right]:hover:after, [data-tooltip=right]:hover:before {
+        transform: translate(12px, -50%);
+        -webkit-transform: translate(12px, -50%);
+        -moz-transform: translate(12px, -50%);
+        -ms-transform: translate(12px, -50%)
+    }
+
+    [data-tooltip=top]:before {
+        bottom: 100%
+    }
+
+    [data-tooltip=top]:after {
+        top: -1px;
+        border-bottom-width: 0;
+        border-top-color: #222
+    }
+
+    [data-tooltip=top]:hover:after, [data-tooltip=top]:hover:before {
+        transform: translate(-50%, -12px);
+        -webkit-transform: translate(-50%, -12px);
+        -moz-transform: translate(-50%, -12px);
+        -ms-transform: translate(-50%, -12px)
+    }
+
+    [data-tooltip=bottom]:before {
+        top: 100%
+    }
+
+    [data-tooltip=bottom]:after {
+        bottom: -1px;
+        border-top-width: 0;
+        border-bottom-color: #222
+    }
+
+    [data-tooltip=bottom]:hover:after, [data-tooltip=bottom]:hover:before {
+        transform: translate(-50%, 12px);
+        -webkit-transform: translate(-50%, 12px);
+        -moz-transform: translate(-50%, 12px);
+        -ms-transform: translate(-50%, 12px)
+    }
+
+    [data-tooltip=bottom-left]:after, [data-tooltip=bottom-right]:after, [data-tooltip=top-left]:after, [data-tooltip=top-right]:after {
+        left: 50%;
+        transform: translate(-50%, 0);
+        -webkit-transform: translate(-50%, 0);
+        -moz-transform: translate(-50%, 0);
+        -ms-transform: translate(-50%, 0)
+    }
+
+    [data-tooltip=top-left]:before, [data-tooltip=top-right]:before {
+        bottom: 100%
+    }
+
+    [data-tooltip=top-left]:after, [data-tooltip=top-right]:after {
+        top: -1px;
+        border-bottom-width: 0;
+        border-top-color: #222
+    }
+
+    [data-tooltip=top-left]:hover:after, [data-tooltip=top-right]:hover:after {
+        transform: translate(-50%, -12px);
+        -webkit-transform: translate(-50%, -12px);
+        -moz-transform: translate(-50%, -12px);
+        -ms-transform: translate(-50%, -12px)
+    }
+
+    [data-tooltip=bottom-left]:before, [data-tooltip=bottom-right]:before {
+        top: 100%
+    }
+
+    [data-tooltip=bottom-left]:after, [data-tooltip=bottom-right]:after {
+        bottom: -1px;
+        border-top-width: 0;
+        border-bottom-color: #222
+    }
+
+    [data-tooltip=bottom-left]:hover:after, [data-tooltip=bottom-right]:hover:after {
+        transform: translate(-50%, 12px);
+        -webkit-transform: translate(-50%, 12px);
+        -moz-transform: translate(-50%, 12px);
+        -ms-transform: translate(-50%, 12px)
+    }
+
+    [data-tooltip=top-left]:before {
+        right: 50%;
+        transform: translate(14px, 0);
+        -webkit-transform: translate(14px, 0);
+        -moz-transform: translate(14px, 0);
+        -ms-transform: translate(14px, 0)
+    }
+
+    [data-tooltip=top-left]:hover:before {
+        transform: translate(14px, -12px);
+        -webkit-transform: translate(14px, -12px);
+        -moz-transform: translate(14px, -12px);
+        -ms-transform: translate(14px, -12px)
+    }
+
+    [data-tooltip=top-right]:before {
+        left: 50%;
+        transform: translate(-14px, 0);
+        -webkit-transform: translate(-14px, 0);
+        -moz-transform: translate(-14px, 0);
+        -ms-transform: translate(-14px, 0)
+    }
+
+    [data-tooltip=top-right]:hover:before {
+        transform: translate(-14px, -12px);
+        -webkit-transform: translate(-14px, -12px);
+        -moz-transform: translate(-14px, -12px);
+        -ms-transform: translate(-14px, -12px)
+    }
+
+    [data-tooltip=bottom-left]:before {
+        right: 50%;
+        transform: translate(14px, 0);
+        -webkit-transform: translate(14px, 0);
+        -moz-transform: translate(14px, 0);
+        -ms-transform: translate(14px, 0)
+    }
+
+    [data-tooltip=bottom-left]:hover:before {
+        transform: translate(14px, 12px);
+        -webkit-transform: translate(14px, 12px);
+        -moz-transform: translate(14px, 12px);
+        -ms-transform: translate(14px, 12px)
+    }
+
+    [data-tooltip=bottom-right]:before {
+        left: 50%;
+        transform: translate(-14px, 0);
+        -webkit-transform: translate(-14px, 0);
+        -moz-transform: translate(-14px, 0);
+        -ms-transform: translate(-14px, 0)
+    }
+
+    [data-tooltip=bottom-right]:hover:before {
+        transform: translate(-14px, 12px);
+        -webkit-transform: translate(-14px, 12px);
+        -moz-transform: translate(-14px, 12px);
+        -ms-transform: translate(-14px, 12px)
+    }
+</style>
+<style>
+    .rack {
+        ext-align: center;
+        width: 100%;
+        border-collapse: collapse;
+        table-layout: fixed;
+    }
+
+    .rack tr {
+        border: 3px solid #0094ff;
+    }
+
+    .rack tr td {
+        width: 100%;
+        min-height: 30px;
+        font-size: 5px;
+        border: 3px solid #0094ff;
+        padding-bottom: 2px;
+        padding-top: 2px;
+        font-weight: bold;
+        word-break: break-all;
+        text-overflow: ellipsis;
+        word-wrap: break-word;
+
+    }
+    .greenclass {
+        background-color: green;
+    }
+    .redclass {
+        background-color: red;
+    }
+</style>
+<div class="modal-content">
+    <div class="modal-header">
+        <button class="close" ng-click="cancel()" type="button">
+            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+        </button>
+        <h4 class="modal-title">机柜视图</h4>
+    </div>
+    <div class="modal-body">
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox">
+                        <div class="ibox-content">
+                            <form class="form-inline" role="form">
+                                <div class="form-group">
+                                    <label for="class">区域</label> <select chosen
+                                                                          class="chosen-select"
+                                                                          data-placeholder-text-single="'请选择...'"
+                                                                          disable-search="false"
+                                                                          id="class"
+                                                                          ng-model="catRootSel"
+                                                                          ng-options="item.name for item in catRootOpt"
+                                                                          no-results-text="'没有找到相应条目'"
+                                                                          style="width: 120px;">
+                                    <option value=""></option>
+                                </select>
+                                </div>
+                                <button class="btn btn-sm btn-primary" ng-click="query()"
+                                        type="submit">查询
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="margin:0 auto;display:table;text-align:center">
+                <div style="overflow:hidden;float:left;width:100%!important;">
+                    <div ng-repeat="rack in data" style="width:200px;float:left;padding-right:8px;">
+                        <div class="ibox" style="min-height:500px;border:2px solid black;">
+                            <div class="ibox-title"
+                                 style="color:black;font-weight: bold;margin-top:0px;padding:0px;text-align:center;min-height:25px;height:8px!important;">
+                                {{rack.rackname}}
+                            </div>
+                            <div class="ibox-content"
+                                 style="padding:0px;text-align:center;width:100%;border-top:2px solid black;">
+                                <table class="rack">
+                                    <tr ng-repeat="res in rack.items" ng-click="itemclick()">
+                                        <td data-tooltip="bottom"
+                                            data-tooltip-text="详细信息: &#010 编号:{{res.uuid}} &#010 编号2:{{res.fs20}} &#010 类型:{{res.classname}} &#010 品牌:{{res.brandstr}} &#010 型号:{{res.model}} &#010 状态:{{res.recyclestr}} &#010 序列:{{res.sn}} &#010 机架:{{res.frame}} &#010 IP:{{res.ip}}"
+                                            ng-class="res.recycle=='inuse'?'greenclass':'redclass'">
+                                            <div style="text-align:center;color:black;">{{res.classname}}/{{res.model}}
+                                            </div>
+                                            <div style="text-align:center;color:darkred">
+                                                frame:{{res.frame}},ip:{{res.ip}}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="clear:both"></div>
+        </div>
+    </div>
+</div>

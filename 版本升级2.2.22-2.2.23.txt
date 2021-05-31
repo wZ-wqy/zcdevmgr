@@ -1,0 +1,281 @@
+update sys_params set value='2.2.23' where id='version';
+ALTER TABLE res_loanreturn ADD rmark varchar(500) NULL;
+alter table sys_user_info add approval varchar(50) null;
+ALTER TABLE res ADD batch varchar(100) NULL COMMENT '批次';
+
+
+-- auto-generated definition
+CREATE TABLE `res_inspection_pitem` (
+  `id` varchar(50) NOT NULL,
+  `busid` varchar(50) DEFAULT NULL COMMENT '单据编号',
+  `type` varchar(50) DEFAULT NULL COMMENT '类型',
+  `resid` varchar(50) DEFAULT NULL COMMENT '资产ID',
+  `status` varchar(50) DEFAULT NULL COMMENT '状态',
+  `mark` varchar(50) DEFAULT NULL COMMENT '备注',
+  `actionuserid` varchar(50) DEFAULT NULL COMMENT '巡检人ID',
+  `actionusername` varchar(50) DEFAULT NULL COMMENT '巡检人',
+  `actiontime` datetime DEFAULT NULL COMMENT '巡检人时间',
+  `pics` varchar(500) DEFAULT NULL COMMENT '图片',
+  `loc` varchar(100) DEFAULT NULL COMMENT '位置',
+  `od` decimal(10,0) DEFAULT NULL COMMENT '顺序',
+  `method` varchar(50) DEFAULT NULL COMMENT '方式',
+  `create_by` varchar(50) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `update_by` varchar(50) DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  `dr` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+-- auto-generated definition
+CREATE TABLE `res_inspection_plan` (
+  `id` varchar(50) NOT NULL,
+  `name` varchar(50) DEFAULT NULL COMMENT '计划单据名称',
+  `busid` varchar(50) DEFAULT NULL COMMENT '单据ID',
+  `retention` decimal(10,0) DEFAULT NULL COMMENT '周期',
+  `method` varchar(50) DEFAULT NULL COMMENT '自由巡检 free 固定巡检 fix',
+  `status` varchar(50) DEFAULT NULL COMMENT '状态',
+  `cron` varchar(100) DEFAULT NULL COMMENT '周期',
+  `actionusers` varchar(500) DEFAULT NULL COMMENT '巡检人员',
+  `mark` varchar(50) DEFAULT NULL COMMENT '备注',
+  `create_by` varchar(50) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `update_by` varchar(50) DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  `dr` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+ -- auto-generated definition
+CREATE TABLE `res_inspection_user` (
+  `id` varchar(50) NOT NULL,
+  `busid` varchar(50) DEFAULT NULL COMMENT '单据ID',
+  `userid` varchar(50) DEFAULT NULL COMMENT '巡检人员',
+  `create_by` varchar(50) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `update_by` varchar(50) DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  `dr` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+-- auto-generated definition
+CREATE TABLE `res_purchase` (
+  `id` varchar(50) NOT NULL COMMENT '主键',
+  `name` varchar(50) DEFAULT NULL COMMENT '类目主名称',
+  `status` varchar(50) DEFAULT NULL COMMENT '状态',
+  `busid` varchar(50) DEFAULT NULL COMMENT '单据',
+  `pinst` varchar(50) DEFAULT NULL COMMENT '流程ID',
+  `plan` varchar(50) DEFAULT NULL COMMENT '计划',
+  `zcname` varchar(500) DEFAULT NULL COMMENT '名称',
+  `zcmodel` varchar(500) DEFAULT NULL COMMENT '规格型号',
+  `unit` varchar(50) DEFAULT NULL COMMENT '计量单位',
+  `cnt` varchar(50) DEFAULT NULL COMMENT '数量',
+  `estprice` varchar(50) DEFAULT NULL COMMENT '评估价格',
+  `contractamount` varchar(50) DEFAULT NULL COMMENT '合同金额',
+  `purpose` varchar(500) DEFAULT NULL COMMENT '用途',
+  `reason` varchar(100) DEFAULT NULL COMMENT '原因',
+  `mark` varchar(100) DEFAULT NULL COMMENT '备注',
+  `create_username` varchar(500) DEFAULT NULL COMMENT '创建人用户名',
+  `files` varchar(50) DEFAULT NULL COMMENT '附件',
+  `create_by` varchar(50) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `update_by` varchar(50) DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  `dr` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- auto-generated definition
+CREATE TABLE `sys_approval_meta` (
+  `id` varchar(50) NOT NULL COMMENT '主键',
+  `name` varchar(500) DEFAULT NULL COMMENT '名称',
+  `busid` varchar(50) DEFAULT NULL COMMENT '单据ID',
+  `username` varchar(500) DEFAULT NULL COMMENT '用户名',
+  `provider` varchar(500) DEFAULT NULL COMMENT '提供者',
+  `type` varchar(50) DEFAULT NULL COMMENT '类型',
+  `nodeid` varchar(50) DEFAULT NULL COMMENT '组织节点',
+  `approvalid` varchar(50) DEFAULT NULL COMMENT '审批节点ID',
+  `approvalcode` varchar(50) DEFAULT NULL COMMENT '审批角色',
+  `userid` varchar(500) DEFAULT NULL COMMENT '用户',
+  `mark` varchar(500) DEFAULT NULL COMMENT '备注',
+  `create_by` varchar(50) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  `update_by` varchar(50) DEFAULT NULL,
+  `dr` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- auto-generated definition
+CREATE TABLE `sys_approval_node` (
+  `id` varchar(50) NOT NULL COMMENT '主键',
+  `node` varchar(50) DEFAULT NULL COMMENT '审批节点名称',
+  `code` varchar(50) DEFAULT NULL COMMENT '审批节点编码',
+  `cat` varchar(50) DEFAULT NULL COMMENT '节点分类',
+  `mark` varchar(500) DEFAULT NULL COMMENT '备注',
+  `create_by` varchar(50) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  `update_by` varchar(50) DEFAULT NULL,
+  `dr` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `sanind1` (`code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+-- auto-generated definition
+CREATE TABLE `sys_user_approval` (
+  `id` varchar(50) NOT NULL COMMENT '主键',
+  `userid` varchar(50) DEFAULT NULL COMMENT '用户ID',
+  `nodeid` varchar(50) DEFAULT NULL COMMENT '组织ID',
+  `approvalid` varchar(50) DEFAULT NULL COMMENT '审批节点ID',
+  `approvalcode` varchar(50) DEFAULT NULL COMMENT '审批节点编码',
+  `dr` char(1) DEFAULT NULL,
+  `create_by` varchar(50) DEFAULT NULL,
+  `update_by` varchar(50) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `sys_approval_busi` (
+  `id` varchar(50) NOT NULL,
+  `code` varchar(50) DEFAULT NULL,
+  `name` varchar(500) DEFAULT NULL,
+  `webapproval` varchar(50) DEFAULT NULL,
+  `mobileapproval` varchar(50) DEFAULT NULL,
+  `mark` varchar(50) DEFAULT NULL,
+  `dr` varchar(1) DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `create_by` varchar(50) DEFAULT NULL,
+  `update_by` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `approvalbus` (`code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+drop table res_allocate_item;
+CREATE TABLE `res_allocate_item` (
+  `id` varchar(50) NOT NULL COMMENT '主键',
+  `status` varchar(50) DEFAULT NULL COMMENT '办理状态',
+  `busuuid` varchar(50) DEFAULT NULL COMMENT '单据号',
+  `allocateid` varchar(50) DEFAULT NULL COMMENT ' 调拨人',
+  `resid` varchar(50) DEFAULT NULL COMMENT '资产ID',
+  `touseduserid` varchar(50) DEFAULT NULL COMMENT '去使用人',
+  `tousedusername` varchar(100) DEFAULT NULL COMMENT '去属于公司',
+  `tousedpartid` varchar(50) DEFAULT NULL COMMENT '去使用部门',
+  `tousedpartname` varchar(100) DEFAULT NULL COMMENT '去使用部门',
+  `tousedcompid` varchar(50) DEFAULT NULL COMMENT '去使用公司',
+  `tousedcompname` varchar(100) DEFAULT NULL COMMENT '去使用部门',
+  `tobelongcompid` varchar(50) DEFAULT NULL COMMENT '去所属公司',
+  `tobelongcompname` varchar(100) DEFAULT NULL COMMENT '去所属公司',
+  `tobelongpartid` varchar(50) DEFAULT NULL COMMENT '去所属部门',
+  `tobelongpartname` varchar(100) DEFAULT NULL COMMENT '去所属部门',
+  `toloc` varchar(50) DEFAULT NULL COMMENT '去区域',
+  `tolocname` varchar(100) DEFAULT NULL COMMENT '去区域',
+  `tolocdtl` varchar(100) DEFAULT NULL COMMENT '去位置',
+  `frombelongcompid` varchar(50) DEFAULT NULL COMMENT '从属公司',
+  `frombelongcompname` varchar(100) DEFAULT NULL COMMENT '从所属公司',
+  `fcompid` varchar(50) DEFAULT NULL COMMENT '从使用公司',
+  `fcompname` varchar(500) DEFAULT NULL COMMENT '从使用公司',
+  `floc` varchar(50) DEFAULT NULL COMMENT '从区域',
+  `flocname` varchar(500) DEFAULT NULL COMMENT '从区域',
+  `flocdtl` varchar(500) DEFAULT NULL COMMENT '从位置',
+  `busdate` datetime DEFAULT NULL COMMENT '调出时间',
+  `acttime` datetime DEFAULT NULL COMMENT '调入时间',
+  `frecycle` varchar(50) DEFAULT NULL COMMENT '调拨前状态',
+  `dr` varchar(1) DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `create_by` varchar(50) DEFAULT NULL,
+  `update_by` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+drop table res_collectionreturn;
+CREATE TABLE `res_collectionreturn` (
+  `id` varchar(50) NOT NULL COMMENT '主键',
+  `name` varchar(500) DEFAULT NULL COMMENT '单据名称',
+  `busuuid` varchar(50) DEFAULT NULL COMMENT '单据ID',
+  `bustype` varchar(50) DEFAULT NULL COMMENT '类型',
+  `busdate` datetime DEFAULT NULL COMMENT '领用时间',
+  `status` varchar(50) DEFAULT NULL COMMENT '办理状态',
+  `pinst` varchar(50) DEFAULT NULL COMMENT '流程审批',
+  `cruserid` varchar(50) DEFAULT NULL COMMENT '领用人ID/退库人ID',
+  `crusername` varchar(100) DEFAULT NULL COMMENT '领用人/退库人',
+  `processuserid` varchar(50) DEFAULT NULL COMMENT '处理人ID',
+  `processusername` varchar(100) DEFAULT NULL COMMENT '处理人',
+  `tusedcompanyid` varchar(50) DEFAULT NULL COMMENT '使用公司',
+  `tusedcompanyname` varchar(50) DEFAULT NULL COMMENT '使用公司',
+  `tpartid` varchar(50) DEFAULT NULL COMMENT '部门',
+  `tpartname` varchar(50) DEFAULT NULL COMMENT '部门',
+  `tuseduserid` varchar(50) DEFAULT NULL COMMENT '领用人ID',
+  `tusedusername` varchar(50) DEFAULT NULL COMMENT '领用人ID',
+  `tloc` varchar(50) DEFAULT NULL COMMENT '区域',
+  `tlocname` varchar(50) DEFAULT NULL COMMENT '区域',
+  `tlocdtl` varchar(50) DEFAULT NULL COMMENT '位置',
+  `returndate` datetime DEFAULT NULL COMMENT '预计退还时间',
+  `rreturndate` datetime DEFAULT NULL COMMENT '实际退还时间',
+  `mark` varchar(100) DEFAULT NULL COMMENT '备注',
+  `dr` varchar(1) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `create_by` varchar(50) DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  `update_by` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='资产领用退库';
+
+
+drop table res_collectionreturn_item;
+CREATE TABLE `res_collectionreturn_item` (
+  `id` varchar(50) NOT NULL COMMENT '主键',
+  `busuuid` varchar(50) DEFAULT NULL COMMENT '单据',
+  `busdate` datetime DEFAULT NULL COMMENT '领用时间',
+  `resid` varchar(50) DEFAULT NULL COMMENT '资产ID',
+  `cruserid` varchar(50) DEFAULT NULL COMMENT '领用人ID/退库人ID',
+  `crusername` varchar(100) DEFAULT NULL COMMENT '领用人/退库人',
+  `processuserid` varchar(50) DEFAULT NULL COMMENT '处理人ID',
+  `processusername` varchar(100) DEFAULT NULL COMMENT '处理人',
+  `fusedcompanyid` varchar(50) DEFAULT NULL COMMENT '使用公司',
+  `fusedcompanyname` varchar(50) DEFAULT NULL COMMENT '使用公司',
+  `fpartid` varchar(50) DEFAULT NULL COMMENT '部门',
+  `fpartname` varchar(50) DEFAULT NULL COMMENT '部门',
+  `fuseduserid` varchar(50) DEFAULT NULL COMMENT '领用人',
+  `fusedusername` varchar(50) DEFAULT NULL COMMENT '领用人',
+  `floc` varchar(50) DEFAULT NULL COMMENT '区域',
+  `flocname` varchar(50) DEFAULT NULL COMMENT '区域',
+  `flocdtl` varchar(50) DEFAULT NULL COMMENT '位置',
+  `tusedcompanyid` varchar(50) DEFAULT NULL COMMENT '公司',
+  `tusedcompanyname` varchar(50) DEFAULT NULL COMMENT '公司',
+  `tpartid` varchar(50) DEFAULT NULL COMMENT '部门',
+  `tpartname` varchar(50) DEFAULT NULL COMMENT '部门',
+  `tuseduserid` varchar(50) DEFAULT NULL COMMENT '使用人',
+  `tusedusername` varchar(50) DEFAULT NULL COMMENT '使用人',
+  `tloc` varchar(50) DEFAULT NULL COMMENT '区域',
+  `tlocname` varchar(50) DEFAULT NULL COMMENT '区域',
+  `tlocdtl` varchar(50) DEFAULT NULL COMMENT '位置',
+  `returndate` datetime DEFAULT NULL COMMENT '预计退库时间',
+  `rreturndate` datetime DEFAULT NULL COMMENT '实际退库实际',
+  `isreturn` varchar(2) DEFAULT NULL COMMENT '是否退库',
+  `returnuuid` varchar(50) DEFAULT NULL COMMENT '退库单据',
+  `mark` varchar(100) DEFAULT NULL COMMENT '备注',
+  `dr` varchar(1) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `create_by` varchar(50) DEFAULT NULL,
+  `update_time` datetime DEFAULT NULL,
+  `update_by` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='资产领用退库明细';
+
+
+
+
+
+

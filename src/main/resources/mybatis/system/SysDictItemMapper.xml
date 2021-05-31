@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dt.module.base.mapper.SysDictItemMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.dt.module.base.entity.SysDictItem">
+        <id column="DICT_ITEM_ID" property="dictItemId" />
+        <result column="DICT_ID" property="dictId" />
+        <result column="NAME" property="name" />
+        <result column="SORT" property="sort" />
+        <result column="MARK" property="mark" />
+        <result column="CODE" property="code" />
+        <result column="CREATE_TIME" property="createTime" />
+        <result column="CREATE_BY" property="createBy" />
+        <result column="UPDATE_TIME" property="updateTime" />
+        <result column="UPDATE_BY" property="updateBy" />
+        <result column="DR" property="dr" />
+    </resultMap>
+
+
+    
+     <select id="selectDictItemByDict"  resultMap="BaseResultMap">  
+		 	select * from sys_dict_item where dr=0 and dict_id=#{dictId} order by sort
+ 	 </select>
+
+</mapper>

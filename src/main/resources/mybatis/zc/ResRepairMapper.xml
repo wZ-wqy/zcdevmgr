@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dt.module.zc.mapper.ResRepairMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.dt.module.zc.entity.ResRepair">
+        <id column="id" property="id" />
+    <result column="dr" property="dr" />
+    <result column="update_time" property="updateTime" />
+    <result column="create_time" property="createTime" />
+    <result column="create_by" property="createBy" />
+    <result column="update_by" property="updateBy" />
+        <result column="freason" property="freason" />
+        <result column="fmark" property="fmark" />
+        <result column="foper_user" property="foperUser" />
+        <result column="fopertime" property="fopertime" />
+        <result column="fuuid" property="fuuid" />
+        <result column="fprocessuser" property="fprocessuser" />
+        <result column="fprocesstime" property="fprocesstime" />
+        <result column="fstatus" property="fstatus" />
+        <result column="flevel" property="flevel" />
+        <result column="frepairtype" property="frepairtype" />
+        <result column="fmoney" property="fmoney" />
+        <result column="pinst" property="pinst"/>
+    </resultMap>
+
+</mapper>

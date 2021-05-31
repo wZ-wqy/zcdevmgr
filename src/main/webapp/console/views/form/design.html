@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>表单设计器cz</title>
+    <meta charset="UTF-8">
+    <link href="http://unpkg.com/k-form-design/lib/k-form-design.css"
+          rel="stylesheet">
+</head>
+<body>
+<div id="app">
+    <k-form-design
+            :showBtnList="[
+    'preview',
+    'importJson',
+    'exportJson',
+    'exportCode',
+    'reset',
+  ]"
+            ref='kfd' title="表单设计器"></k-form-design>
+</div>
+<script src="http://cdn.kcz66.com/vue.min.js"></script>
+<!--	<script-->
+<!--		src="http://unpkg.com/k-form-design/lib/k-form-design.umd.min.js"></script>-->
+<!--	-->
+<script src="http://127.0.0.1:8080/dt/console/plugin/form/k-form-design.umd.min.js"></script>
+<script>
+    let jsonData = {
+        list: [{
+            "type": "input",
+            "name": "单行文本",
+            "options": {"width": "100%", "defaultValue": "", "placeholder": "请输入", "disabled": false},
+            "model": "input_1574002292465",
+            "key": "input_1574002292465",
+            "rules": [{"required": false, "message": "必填项"}]
+        }],
+        "config": {
+            "layout": "horizontal",
+            "labelCol": {"span": 4},
+            "wrapperCol": {"span": 18},
+            "hideRequiredMark": false,
+            "width": "100%",
+            "marginTop": "0px",
+            "marginRight": "0px",
+            "marginBottom": "0px",
+            "marginLeft": "0px"
+        }
+    }
+    let vm = new Vue({
+        el: '#app',
+        data: {
+            jsonData
+        },
+        mounted() {
+            this.init()
+        },
+        methods: {
+            init() {
+                console.log(this);
+                this.$refs.kfd.handleSetData(this.jsonData);
+            },
+            dict() {
+                alert(1);
+            },
+            handleSave(values) {
+                alert(111);
+            },
+            handleSubmit() {
+            }
+        }
+    })
+</script>
+</body>
+</html>

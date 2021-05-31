@@ -1,0 +1,29 @@
+<!-- 通用静态弹出框 -->
+<style>
+    @media ( min-width: 992px) {
+        .modal-blg {
+            width: 95%;
+        }
+    }
+</style>
+<div class="modal-content">
+    <div class="modal-header">
+        <button class="close" ng-click="cancel()">
+            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+        </button>
+        <h4 class="modal-title">{{meta.title}}</h4>
+    </div>
+    <div class="modal-body">
+        <div class="wrapper wrapper-content animated fadeInRight" compile="template" id="formct">
+        </div>
+        <div class="wrapper wrapper-content animated fadeInRight" compile="template" id="formitem">
+        </div>
+    </div>
+    <div class="modal-footer" ng-hide="meta.footer_hide"
+         style="text-align: center">
+        <button class="btn btn-warning" ng-click="cancel()">取消</button>
+        <button class="btn btn-primary" ng-click="sure()"
+                ng-disabled="myForm2.$invalid||myForm.$invalid">确认
+        </button>
+    </div>
+</div>

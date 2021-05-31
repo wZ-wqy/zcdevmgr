@@ -1,0 +1,20 @@
+<div class="text-center pdf-toolbar">
+    <div class="btn-group">
+        <button class="btn btn-white" id="prev" ng-click="goPrevious()"><i class="fa fa-long-arrow-left"></i> <span
+                class="hidden-xs">Previous</span></button>
+        <button class="btn btn-white" id="next" ng-click="goNext()"><i class="fa fa-long-arrow-right"></i> <span
+                class="hidden-xs">Next</span></button>
+        <button class="btn btn-white" id="zoomin" ng-click="zoomIn()"><i class="fa fa-search-minus"></i> <span
+                class="hidden-xs">Zoom In</span></button>
+        <button class="btn btn-white" id="zoomout" ng-click="zoomOut()"><i class="fa fa-search-plus"></i> <span
+                class="hidden-xs">Zoom Out</span></button>
+        <button class="btn btn-white" id="zoomfit" ng-click="fit()"> 100%</button>
+        <span class="btn btn-white hidden-xs">Page: </span>
+        <div class="input-group">
+            <input class="form-control" min=1 ng-model="pageNum" type="text">
+            <div class="input-group-btn">
+                <button class="btn btn-white" id="page_count" type="button">/ {{pageCount}}</button>
+            </div>
+        </div>
+    </div>
+</div>

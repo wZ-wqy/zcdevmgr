@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dt.module.ops.mapper.OpsNodeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.dt.module.ops.entity.OpsNode">
+        <id column="id" property="id" />
+    <result column="dr" property="dr" />
+    <result column="create_by" property="createBy" />
+    <result column="update_by" property="updateBy" />
+    <result column="create_time" property="createTime" />
+    <result column="update_time" property="updateTime" />
+        <result column="name" property="name" />
+        <result column="runenv" property="runenv" />
+        <result column="syslevel" property="syslevel" />
+        <result column="leader" property="leader" />
+        <result column="busitype" property="busitype" />
+        <result column="loc" property="loc" />
+        <result column="ip" property="ip" />
+        <result column="os" property="os" />
+        <result column="osdtl" property="osdtl" />
+        <result column="nodebackup" property="nodebackup" />
+        <result column="middleware" property="middleware" />
+        <result column="middlewarestr" property="middlewarestr" />
+        <result column="db" property="db" />
+        <result column="dbdtl" property="dbdtl" />
+        <result column="execenv" property="execenv" />
+        <result column="monitor" property="monitor" />
+        <result column="pwdstrategy" property="pwdstrategy" />
+        <result column="pwdmark" property="pwdmark" />
+        <result column="mark" property="mark" />
+        <result column="importlabel" property="importlabel" />
+        <result column="label1" property="label1" />
+        <result column="label2" property="label2" />
+        <result column="label3" property="label3" />
+        <result column="label4" property="label4" />
+        <result column="label5" property="label5" />
+        <result column="label6" property="label6" />
+        <result column="status" property="status" />
+        <result column="userdb" property="userdb" />
+        <result column="userapp" property="userapp" />
+        <result column="userother" property="userother" />
+        <result column="useradmin" property="useradmin" />
+        <result column="usernologin" property="usernologin" />
+        <result column="userops" property="userops" />
+        <result column="usermid" property="usermid" />
+        <result column="userdbused" property="userdbused" />
+        <result column="nodebackupdtl" property="nodebackupdtl" />
+        <result column="arch" property="arch"/>
+    </resultMap>
+
+</mapper>

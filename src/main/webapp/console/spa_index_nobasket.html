@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="Expires" content="0">
+	<meta http-equiv="Pragma" content="no-cache">
+	<meta http-equiv="Cache-control" content="no-cache,must-revalidate">
+	<meta http-equiv="Cache" content="no-cache">
+	<title page-title></title>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+	<!-- <link href="css/animate.css" rel="stylesheet"> -->
+	<link id="loadBefore" href="css/style.css?v=80" rel="stylesheet">
+	<link id="loadBefore" href="css/cb.css?v=80" rel="stylesheet">
+	<link id="loadFirst" href="css/beforeload.css" rel="stylesheet">
+	<!--[if IE 9]>
+	<link href="css/application-ie9-part2.css" rel="stylesheet">
+	<![endif]-->
+</head>
+<script>
+	if (window.navigator.userAgent.indexOf("MSIE") >= 1) {
+		window.location.href = "./BrowserInfo.html";
+	}
+</script>
+<body ng-controller="MainCtrl as main" ng-class="cur_skin"
+	  landing-scrollspy id="page-top">
+<div id="beforePage" class="preloader">
+	<div class="cs-loader">
+		<div class="cs-loader-inner">
+			<label> ●</label> <label> ●</label> <label> ●</label> <label>
+			●</label> <label> ●</label> <label> ●</label>
+		</div>
+	</div>
+</div>
+<div ui-view></div>
+<script src="vendor/jquery/dist/jquery.min.js"></script>
+<script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- MetsiMenu -->
+<script src="vendor/metismenu/dist/metisMenu.min.js"></script>
+<!-- SlimScroll -->
+<script src="vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+
+<script
+		data-pace-options='{ "target": ".content-wrap", "ghostTime": 1000 }'
+		src="plugin/pace/pace.min.js"></script>
+<!-- Custom and plugin javascript -->
+<script src="js/base.js?v=80"></script>
+<!-- Main Angular scripts-->
+<script src="vendor/angular/angular.min.js"></script>
+<script src="vendor/angular-sanitize/angular-sanitize.min.js"></script>
+<script src="vendor/oclazyload/dist/ocLazyLoad.min.js"></script>
+<script src="vendor/angular-translate/dist/angular-translate.min.js"></script>
+<script
+		src="vendor/angular-ui-route/angularjs/release/angular-ui-router.min.js"></script>
+<script src="vendor/ng-idle/angular-idle.js"></script>
+<script src="plugin/ui-bootstrap/ui-bootstrap-tpls-1.1.2.min.js"></script>
+<!-- #####################angular插件 #####################-->
+<!-- noticy -->
+<link href="plugin/angular-notify/angular-notify.min.css"
+	  rel="stylesheet">
+<script src="plugin/angular-notify/angular-notify.min.js"></script>
+<!-- loading bar -->
+<link href="vendor/angular-loading-bar/build/loading-bar-center.css"
+	  rel="stylesheet">
+<script src="vendor/angular-loading-bar/build/loading-bar.min.js"></script>
+<!-- dropzone -->
+<link href="vendor/dropzone/dist/min/basic.min.css" rel="stylesheet" />
+<script src="vendor/dropzone/dist/min/dropzone.min.js"></script>
+<!-- chosen -->
+<link href="plugin/chosen/bootstrap-chosen.min.css" rel="stylesheet">
+<script src="vendor/chosen-js/chosen.jquery.min.js"></script>
+<script
+		src="vendor/angular-chosen-localytics/dist/angular-chosen.min.js"></script>
+<!-- jstree -->
+<link href="vendor/jstree/dist/themes/default/style.min.css"
+	  rel="stylesheet" type="text/css" />
+<script src="vendor/jstree/dist/jstree.min.js"></script>
+<script src="vendor/ng-js-tree/dist/ngJsTree.min.js"></script>
+<!--  icheck -->
+<script src="vendor/icheck/icheck.js"></script>
+<link href="vendor/icheck/custom.css" rel="stylesheet" />
+<!--  datatable -->
+<link href="plugin/datatable/dataTables.bootstrap.1.10.16.css"
+	  rel="stylesheet" />
+<script src="vendor/datatables/media/js/jquery.dataTables.min.js"></script>
+<script src="plugin/datatable/dataTables.bootstrap.min.1.10.16.js"></script>
+<script src="vendor/angular-datatables/dist/angular-datatables.min.js"></script>
+
+
+
+<!-- datatable 按钮 -->
+<script src="plugin/datatable/buttons.html51.22.min.js"></script>
+<script src="plugin/datatable/buttons.print1.22.min.js"></script>
+<script src="plugin/datatable/buttons.colVis1.22.min.js"></script>
+<script src="plugin/datatable/angular-datatables.colvis0.6.5.min.js"></script>
+<link href="plugin/datatable/buttons.bootstrap.min.1.2.2.css"
+	  rel="stylesheet" />
+<script src="plugin/datatable/angular-datatables.buttons0.6.2.min.js"></script>
+<script src="plugin/datatable/dataTables.buttons1.22.min.js"></script>
+<!-- datatable自适应 -->
+<script src="vendor/datatables-responsive/js/dataTables.responsive.js"></script>
+<link rel="stylesheet"
+	  href="plugin/datatable/responsive.dataTables.min.css">
+<!-- datatable 选择 -->
+<link
+		href="vendor/datatables-select/dist/css/select.dataTables.min.css"
+		rel="stylesheet" type="text/css" />
+<script src="vendor/datatables-select/dist/js/dataTables.select.min.js"></script>
+<script
+		src="vendor/angular-datatables/dist/plugins/select/angular-datatables.select.min.js"></script>
+<!-- datatable 列固定 -->
+<link href="plugin/datatable/fixedColumns.bootstrap3.2.6.css"
+	  rel="stylesheet">
+<script
+		src="vendor/datatables.net-fixedcolumns/js/dataTables.fixedColumns.min.js"></script>
+<script
+		src="vendor/angular-datatables/dist/plugins/fixedcolumns/angular-datatables.fixedcolumns.min.js"></script>
+<!-- ueditor -->
+<script src="plugin/ueditor/ueditor.config.js"></script>
+<script src="plugin/ueditor/ueditor.all.min.js"></script>
+<script src="vendor/angular-ueditor/dist/angular-ueditor.js"></script>
+<!-- datepick -->
+<script src="plugin/moment/moment.min.js"></script>
+<link href="plugin/datapicker/angular-datapicker.css" rel="stylesheet"
+	  type="text/css" />
+<script src="plugin/datapicker/angular-datepicker.js"></script>
+<!-- angular-confirm -->
+<script src="vendor/angular-confirm/angular-confirm.min.js"></script>
+<!-- angular-localstorage -->
+<script
+		src="vendor/angular-swx-local-storage/release/swx-local-storage.min.js"></script>
+
+<script src="plugin/treegrid/tree-grid-directive.js?v=80"></script>
+<link href="plugin/treegrid/treeGrid.css" rel="stylesheet"
+	  type="text/css" />
+<!-- common app js -->
+<script type="text/javascript" src="js/config_system.js?v=80"></script>
+<script type="text/javascript" src="js/config_cmdb.js?v=80"></script>
+<script type="text/javascript" src="js/config_ops.js?v=80"></script>
+<script type="text/javascript" src="js/app_main.js?v=80"></script>
+<script type="text/javascript" src="js/service_user.js?v=80"></script>
+<script type="text/javascript" src="js/translations.js?v=80"></script>
+<script type="text/javascript" src="js/directives.js?v=80"></script>
+<script type="text/javascript" src="js/controllers.js?v=80"></script>
+</body>
+<script>
+	basket.require({ url:'./plugin/form/vue.min.js?v=80',key:'vue',execute:false});
+	basket.require({ url:'./plugin/form/k-form-design.umd.min.js?v=80',key:'vue-form',execute:false});
+</script>
+</html>

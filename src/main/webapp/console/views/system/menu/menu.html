@@ -1,0 +1,48 @@
+<div ng-controller="sysmenuCtl">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox">
+                    <div class="ibox-content">
+                        <form class="form-inline" role="form">
+                            <div class="form-group">
+                                <label for="class">应用</label> <select chosen class="chosen-select col-sm-10"
+                                                                      data-placeholder-text-single="'请选择...'"
+                                                                      disable-search="true"
+                                                                      ng-model="topMenuSel"
+                                                                      ng-options="item.name for item in topMenuOpt"
+                                                                      no-results-text="'没有找到相应条目'"
+                                                                      style="width: 150px;">
+                                <option value=""></option>
+                            </select>
+                            </div>
+                            <button class="btn btn-sm btn-primary" ng-click="query()"
+                                    type="submit">查询
+                            </button>
+                            <button class="btn btn-sm btn-primary" ng-click="addMasterNode()" ng-show="crud.root_insert"
+                                    type="submit">新增主节点
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox">
+                    <div class="ibox-content">
+                        <tree-grid col-defs="col_defs" expand-level="{{tree_expand_level}}"
+                                   expand-on="expanding_property" expand-to="expand_to"
+                                   icon-leaf="glyphicon glyphicon-globe"
+                                   on-select="my_tree_handler(branch)" tree-control="my_tree"
+                                   tree-data="tree_data"></tree-grid>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

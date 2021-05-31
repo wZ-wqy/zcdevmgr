@@ -1,0 +1,113 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <button class="close" ng-click="cancel()" type="button">
+            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+        </button>
+        <h4 class="modal-title">基本信息</h4>
+    </div>
+    <div class="modal-body">
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <form action="" class="form-horizontal m-t-md " name="myForm"
+                  novalidate>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"><span
+                            class="text-danger">*</span>姓名:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" ng-maxlength="10" ng-model="data.name"
+                               placeholder="请输入姓名" required type="text">
+                        <div class="text-danger"
+                             ng-if="myForm.name.$dirty && myForm.name.$invalid">
+                            <span ng-show="myForm.name.$error.required">输入不能为空 </span> <span
+                                ng-show="myForm.name.$error.maxlength">不能超过10个字符 </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"><span
+                            class="text-danger">*</span>所属:</label>
+                    <div class="col-sm-10">
+                        <select chosen class="chosen-select" data-placeholder-text-multiple="'请选择...'"
+                                data-placeholder-text-single="'请选择...'"
+                                search_contains="true"
+                                disable-search="false" multiple
+                                ng-model="partSel" ng-options="item.routename for item in partOpt"
+                                no-results-text="'没有找到相应条目'"
+                                width=100>
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">手机号:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" ng-model="data.tel" placeholder="请输入手机号"
+                               type="text">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">邮件:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" ng-model="data.mail" placeholder="请输入邮件" type="text">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">岗位:</label>
+                    <div class="col-sm-10">
+                        <select chosen class="chosen-select"
+                                data-placeholder-text-single="'请选择...'"
+                                disable-search="false"
+                                search_contains="true"
+                                ng-model="posSel"
+                                ng-options="item.name for item in posOpt"
+                                no-results-text="'没有找到相应条目'">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">审批节点:</label>
+                    <div class="col-sm-10">
+                        <select chosen multiple class="chosen-select"
+                                data-placeholder-text-multiple="'请选择...'"
+                                data-placeholder-text-single="'请选择...'"
+                                disable-search="false"
+                                search_contains="true"
+                                ng-model="spSel"
+                                ng-options="item.node for item in spOpt"
+                                no-results-text="'没有找到相应条目'">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">状态:</label>
+                    <div class="col-sm-10">
+                        <select chosen class="chosen-select"
+                                data-placeholder-text-single="'请选择...'"
+                                disable-search="true"
+                                ng-model="hrmstatusSel"
+                                ng-options="item.name for item in hrmstatusOpt"
+                                no-results-text="'没有找到相应条目'">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">备注:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control" ng-model="data.mark" placeholder="请输入备注" type="text">
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer" style="text-align: center">
+        <button class="btn btn-warning" ng-click="cancel()">取消</button>
+        <button class="btn btn-primary" ng-click="sure()"
+                ng-disabled="myForm.$invalid">确认
+        </button>
+    </div>
+</div>

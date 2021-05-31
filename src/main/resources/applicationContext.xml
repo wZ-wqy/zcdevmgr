@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:cache="http://www.springframework.org/schema/cache"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context 
+	http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/mvc 
+	http://www.springframework.org/schema/mvc/spring-mvc.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop.xsd
+	http://www.springframework.org/schema/cache 
+	http://www.springframework.org/schema/cache/spring-cache.xsd
+	http://www.springframework.org/schema/task 
+	http://www.springframework.org/schema/task/spring-task.xsd ">
+
+
+	<aop:aspectj-autoproxy proxy-target-class="true" expose-proxy="true"/>
+
+	<context:component-scan
+		base-package="com.dt.core.aop" />
+
+	<!-- 用于实现缓存spring cache扩展 -->
+	<context:component-scan
+		base-package="com.dt.core.cache" />
+
+	<cache:annotation-driven />
+
+	<bean id="ehCacheManager"
+		class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean"
+		p:configLocation="classpath:ehcache.xml" p:shared="true" />
+	<bean id="cacheManager"
+          class="com.dt.core.cache.CustomizedEhCacheCacheManager"
+          p:cacheManager-ref="ehCacheManager">
+    </bean>
+
+
+    <!-- 扫描impl,R实现需要 -->
+    <context:component-scan
+            base-package="com.dt.module.flow.base"/>
+
+    <!-- 流程配置 -->
+    <!--	<bean id="BaseActionHandler" class="com.dt.module.flow.base.BaseActionHandler"></bean>-->
+    <!--	<bean id="BaseTaskListener" class="com.dt.module.flow.base.BaseTaskListener"></bean>-->
+
+
+    <context:annotation-config/>
+
+    <!-- 扫描impl,R实现需要 -->
+    <context:component-scan
+            base-package="com.dt.core.annotion.impl"/>
+
+	<!-- 扫描所有自定义Job -->
+	<context:component-scan
+			base-package="com.dt.module.base.job" />
+
+    <!-- 扫描所有自定义service -->
+	<context:component-scan
+		base-package="**.service" />
+
+	<!-- 扫描所有自定义controller -->
+	<context:component-scan
+		base-package="**.controller" />
+
+	<!-- 扫描所有自定义controller -->
+	<context:component-scan base-package="**.mapper" />
+
+	<!-- 扫描listener -->
+	<context:component-scan
+		base-package="com.dt.module.base.component" />
+
+
+	<!-- 启动时初始化Spring上下文环境工具类 -->
+	<bean id="SpringContextUtil"
+		class="com.dt.core.tool.lang.SpringContextUtil" />
+
+	<!-- 主数据库注入 -->
+	<context:component-scan
+		base-package="com.dt.module.db" />
+
+	<bean id="ApplicationContextListener"
+		class="com.dt.module.base.listener.ApplicationContextListener" />
+
+	<!-- 配置自定义返回注解 -->
+	<bean id="RHttpMessageConverterFactory"
+		class="com.dt.core.annotion.impl.MyRHttpMessageConverter" />
+	<!-- 设置配置方案 -->
+	<mvc:annotation-driven>
+		<!-- 设置不使用默认的消息转换器 -->
+		<mvc:message-converters
+			register-defaults="false">
+			<!-- 配置Spring的转换器 -->
+			<bean factory-bean="RHttpMessageConverterFactory"
+				factory-method="init"
+				class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+			</bean>
+			<bean
+				class="org.springframework.http.converter.StringHttpMessageConverter">
+				<constructor-arg index="0" value="utf-8"></constructor-arg>
+			</bean>
+			<bean
+				class="org.springframework.http.converter.ByteArrayHttpMessageConverter" />
+			<!-- <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/> -->
+			<!-- 避免IE执行AJAX时,返回JSON出现下载文件 -->
+			<!-- 顺便解决了string 返回乱码问题 -->
+			<bean id="fastJsonHttpMessageConverter"
+				class="com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter">
+				<property name="supportedMediaTypes">
+					<list>
+						<!-- 这里顺序不能反，一定先写text/html,不然ie下出现下载提示 -->
+						<value>text/html;charset=UTF-8</value>
+						<value>application/json;charset=UTF-8</value>
+					</list>
+				</property>
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+
+
+	<mvc:resources mapping="/resources/**"
+		location="/resources/" />
+
+
+	<mvc:default-servlet-handler />
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+
+	<!-- 设置动作启用定时任务 -->
+	<task:annotation-driven />
+
+
+</beans>
+ 
+

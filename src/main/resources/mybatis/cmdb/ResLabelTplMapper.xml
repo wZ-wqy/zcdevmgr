@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dt.module.cmdb.mapper.ResLabelTplMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.dt.module.cmdb.entity.ResLabelTpl">
+    <result column="dr" property="dr" />
+    <result column="update_by" property="updateBy" />
+        <result column="create_by" property="createBy"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="id" property="id"/>
+        <result column="type" property="type"/>
+        <result column="picloc" property="picloc"/>
+        <result column="ctlcols" property="ctlcols"/>
+        <result column="ifdef" property="ifdef"/>
+        <result column="ctlcolsstr" property="ctlcolsstr"/>
+        <result column="ctlvalue" property="ctlvalue"/>
+        <result column="conf" property="conf"/>
+        <result column="tplfileid" property="tplfileid"/>
+        <result column="name" property="name"/>
+        <result column="mark" property="mark"/>
+    </resultMap>
+
+</mapper>

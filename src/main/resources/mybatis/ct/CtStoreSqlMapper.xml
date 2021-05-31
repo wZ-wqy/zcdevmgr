@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dt.module.ct.mapper.CtStoreSqlMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.dt.module.ct.entity.CtStoreSql">
+        <id column="STORE_ID" property="storeId" />
+    <result column="CREATE_BY" property="createBy" />
+    <result column="UPDATE_BY" property="updateBy" />
+    <result column="CREATE_TIME" property="createTime" />
+    <result column="UPDATE_TIME" property="updateTime" />
+    <result column="DR" property="dr" />
+        <result column="NAME" property="name" />
+        <result column="CAT_ID" property="catId" />
+        <result column="URI" property="uri" />
+        <result column="URI_PARAMETER" property="uriParameter" />
+        <result column="USER_ID" property="userId" />
+        <result column="SQL" property="sql" />
+        <result column="DB_ID" property="dbId" />
+        <result column="ACL" property="acl" />
+        <result column="MARK" property="mark" />
+        <result column="RETURN_TYPE" property="returnType" />
+        <result column="IS_USED" property="isUsed" />
+        <result column="ALIAS_ID" property="aliasId" />
+    </resultMap>
+
+</mapper>

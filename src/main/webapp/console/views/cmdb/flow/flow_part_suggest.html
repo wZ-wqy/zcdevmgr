@@ -1,0 +1,23 @@
+<div class="panel panel-default" ng-controller="flowsuggestCommonCtl" ng-hide="hidesuggest"
+     style="margin-left: 100px;margin-right: 100px">
+    <div class="panel-heading"><h3 class="panel-title">意见处理区</h3></div>
+    <div class="panel-body" style="padding:0px">
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="item in taskinfodata">
+                <p>
+                    <a class="text-info" style="margin-bottom: 5px">@{{item.assigneename}}
+                        <!--  <span
+                        ng-switch="item.cm_role"> <span
+                            ng-switch-when="owner">-[发起人]</span> <span
+                            ng-switch-when="buyer">-[审批人]</span> <span
+                            ng-switch-when="pt">-[归档]</span> <span ng-switch-default></span>
+                    </span> --> <span>-{{item.taskName}}</span>
+                    </a><br> <span
+                        style="margin-top: 10px; margin-left: 10px">{{item.opinion}}</span>
+                </p>
+                <small class="block text-muted"><i class="fa fa-clock-o"></i>创建时间:{{item.createDate}}</small>
+            </li>
+            <a style="margin-top:15px;margin-left:10px" class="btn btn-primary btn-sm" ng-click="flowreview()">流程预览</a>
+        </ul>
+    </div>
+</div>

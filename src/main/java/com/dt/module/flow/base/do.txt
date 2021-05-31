@@ -1,0 +1,11 @@
+事件 Bean
+http://127.0.0.1:8088/dt/uflo/handlerlist?handler=ProcessEventHandler
+
+//流程在进入和离开时触发
+http://127.0.0.1:8088/dt/uflo/handlerlist?handler=NodeEventHandler
+
+动作 Bean
+http://127.0.0.1:8088/dt/uflo/handlerlist?handler=ActionHandler
+
+任务配置监控 Bean
+http://127.0.0.1:8088/dt/uflo/handlerlist?handler=TaskListener

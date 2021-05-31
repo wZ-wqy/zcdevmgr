@@ -1,0 +1,156 @@
+.hasTopbar .gBqKoW {
+    height: calc(100vh - 50px);
+}
+
+.gBqKoW {
+    position: relative;
+    display: flex;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+    -webkit-font-smoothing: antialiased;
+    height: 100vh;
+    flex-flow: row nowrap;
+    /* 	add by lank */
+    /* 	overflow: hidden; */
+    /* 	text-overflow: ellipsis;
+     flex-shrink: 1; */
+}
+
+/* left */
+.gByVX {
+    order: 0;
+    height: 100%;
+    background-color: rgb(245, 245, 245);
+    overflow-x: hidden;
+    overflow-y: hidden;
+    width: 0px;
+    min-width: 0px;
+    position: relative;
+    z-index: 0;
+    flex: 0 1 auto;
+    transition: width 0.3s ease-in-out 0s, min-width 0.3s ease-in-out 0s;
+}
+
+/* left */
+.FnqzS {
+    order: 0;
+    height: 100%;
+    background-color: rgb(245, 245, 245);
+    /* 	overflow-x: hidden; */
+    overflow-y: auto;
+    width: 240px;
+    min-width: 240px;
+    position: relative;
+    z-index: 0;
+    flex: 0 1 auto;
+    transition: width 0.3s ease-in-out 0s, min-width 0.3s ease-in-out 0s;
+}
+
+.FnqzS .sc-bwzfXH {
+    position: relative;
+    left: 0px;
+    transition: left 0.3s ease-in-out 0s;
+}
+
+.celaRy {
+    width: 210px;
+    min-width: 210px;
+}
+
+/* jt */
+.dHtpPu {
+    width: 0px;
+    height: 64px;
+    position: absolute;
+    top: calc(50% - 32px);
+    /* 	right: -27px;   */
+    z-index: 99;
+    line-height: 46px;
+    cursor: pointer;
+    color: rgb(191, 191, 191);
+    border-width: 9px 9px 9px 20px;
+    border-style: solid;
+    border-color: transparent transparent transparent rgb(235, 235, 235);
+    border-image: initial;
+    border-left: 20px solid rgb(235, 235, 235);
+    transition: right 0.1s ease-in-out 0s, border 0.1s ease 0s;
+}
+
+.TNqaS {
+    order: 0;
+    height: 100%;
+    width: 0px;
+    position: relative;
+    flex: 0 1 auto;
+    z-index: 0;
+}
+
+.cmRdnZ {
+    width: 0px;
+    height: 64px;
+    position: absolute;
+    top: calc(50% - 32px);
+    /*   right: -27px;  */
+    z-index: 99;
+    line-height: 46px;
+    cursor: pointer;
+    color: rgb(191, 191, 191);
+    border-width: 9px 9px 9px 20px;
+    border-style: solid;
+    border-color: transparent transparent transparent rgb(235, 235, 235);
+    border-image: initial;
+    border-left: 15px solid rgb(235, 235, 235);
+    transition: right 0.1s ease-in-out 0s, border 0.1s ease 0s;
+}
+
+.cmRdnZ .sc-bxivhb {
+    width: 12px;
+    position: relative;
+    left: -15px;
+    color: rgb(193, 193, 193);
+    transform: rotate(0deg);
+    transition: transform 0.5s ease-in-out 0s, left 0.1s ease-in-out 0s;
+}
+
+.next-icon {
+    display: inline-block;
+    font-family: NextIcon;
+    font-style: normal;
+    font-weight: 400;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.next-icon.next-xs:before {
+    width: 12px;
+    font-size: 12px;
+    line-height: inherit;
+}
+
+.next-icon-arrow-left:before {
+    content: "\E6A3";
+}
+
+.next-icon:before {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+}
+
+*, :after, :before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+/* right */
+.jexhMp {
+    order: 1;
+    height: 100%;
+    padding-left: 20px;
+    overflow-y: auto;
+    flex: 1 1 auto;
+}

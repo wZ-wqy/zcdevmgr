@@ -1,0 +1,141 @@
+<!-- 上面一行工具栏(支持查询,select),下面单表,table表dtInstance注入有问题  -->
+<style>
+    .chosen-container {
+        width: 150px
+    }
+
+    .chosen-container-single {
+        width: 150px;
+    }
+</style>
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row" ng-show="meta.tools.length>0">
+        <div class="col-lg-12">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <div>
+						<span ng-repeat="item in meta.tools"> <span
+                                ng-switch="item.type"> <span compile="item.template"
+                                                             ng-show="item.show" ng-switch-when="btn"
+                                                             style="line-height: 30px;"> </span> <span
+                                ng-switch-when="btn_query" style="line-height: 30px;">
+									<button class="btn btn-sm btn-primary" ng-click="btn_query()"
+                                            ng-show="item.show" type="submit">{{item.label}}</button>
+							</span> <span ng-switch-when="btn_add" style="line-height: 30px;">
+									<button class="btn btn-sm btn-primary" ng-click="btn_add()"
+                                            ng-show="item.show" type="submit">{{item.label}}</button>
+							</span> <span ng-switch-when="btn_del" style="line-height: 30px;">
+									<button class="btn btn-sm btn-primary" ng-click="btn_del()"
+                                            ng-show="item.show" type="submit">{{item.label}}</button>
+							</span> <span ng-switch-when="btn_modify" style="line-height: 30px;">
+									<button class="btn btn-sm btn-primary" ng-click="btn_modify()"
+                                            ng-show="item.show" type="submit">{{item.label}}</button>
+							</span> <span ng-switch-when="btn_actiona" style="line-height: 30px;">
+									<button class="btn btn-sm btn-primary" ng-click="btn_actiona()"
+                                            ng-show="item.show" type="submit">{{item.label}}</button>
+							</span> <span class="form-inline" ng-show="item.show"
+                                          ng-switch-when="datetime"
+                                          style="line-height: 30px; padding-right: 4px">
+									<div class="form-group">
+										<label ng-hide="item.label_hide">{{item.label}}</label> <input
+                                            auto-close="true" class="form-control" date-change="changeDate"
+                                            date-time format="YYYY-MM-DD" min-view="date"
+                                            ng-model="item.time" time-zone="Asia/Hong_Kong" type="datetime"
+                                            view="year">
+									</div>
+							</span> <span class="form-inline" ng-show="item.show"
+                                          ng-switch-when="input" style="line-height: 30px;">
+									<div class="form-group">
+										<label ng-hide="item.label_hide">{{item.label}}</label> <input
+                                            class="form-control" ng-model="item.ct" placeholder="{{item.placeholder}}"
+                                            type="text">
+									</div>
+							</span> <span class="form-group" ng-show="item.show"
+                                          ng-switch-when="select"
+                                          style="line-height: 30px; padding-right: 4px"> <label
+                                ng-hide="item.label_hide">{{item.label}}</label> <select
+                                chosen class="chosen-select" data-placeholder-text-single="'请选择...'"
+                                disable-search="{{item.disablesearch}}"
+                                search_contains="true"
+                                ng-model="item.dataSel"
+                                ng-options="i.name for i in item.dataOpt" no-results-text="'没有找到相应条目'"
+                                width={{item.width||125}}>
+										<option value=""></option>
+								</select>
+							</span> <!-- ng-switch -->
+						</span> <!-- repeat -->
+						</span>
+                    </div>
+                    <!--第二排 -->
+                    <div>
+						<span ng-repeat="item in meta.toolsbtn"> <span
+                                ng-switch="item.type"> <span compile="item.template"
+                                                             ng-show="item.show" ng-switch-when="btn"
+                                                             style="line-height: 30px;"> </span> <span
+                                ng-switch-when="btn_query" style="line-height: 30px;">
+									<button class="btn btn-sm btn-primary" ng-click="btn_query()"
+                                            ng-show="item.show" type="submit">{{item.label}}</button>
+							</span> <span ng-switch-when="btn_add" style="line-height: 30px;">
+									<button class="btn btn-sm btn-primary" ng-click="btn_add()"
+                                            ng-show="item.show" type="submit">{{item.label}}</button>
+							</span> <span ng-switch-when="btn_del" style="line-height: 30px;">
+									<button class="btn btn-sm btn-primary" ng-click="btn_del()"
+                                            ng-show="item.show" type="submit">{{item.label}}</button>
+							</span> <span ng-switch-when="btn_modify" style="line-height: 30px;">
+									<button class="btn btn-sm btn-primary" ng-click="btn_modify()"
+                                            ng-show="item.show" type="submit">{{item.label}}</button>
+							</span> <span ng-switch-when="btn_actiona" style="line-height: 30px;">
+									<button class="btn btn-sm btn-primary" ng-click="btn_actiona()"
+                                            ng-show="item.show" type="submit">{{item.label}}</button>
+							</span> <span class="form-inline" ng-show="item.show"
+                                          ng-switch-when="datetime"
+                                          style="line-height: 30px; padding-right: 4px">
+									<div class="form-group">
+										<label ng-hide="item.label_hide">{{item.label}}</label> <input
+                                            auto-close="true" class="form-control" date-change="changeDate"
+                                            date-time format="YYYY-MM-DD" min-view="date"
+                                            ng-model="item.time" time-zone="Asia/Hong_Kong" type="datetime"
+                                            view="year">
+									</div>
+							</span> <span class="form-inline" ng-show="item.show"
+                                          ng-switch-when="input" style="line-height: 30px;">
+									<div class="form-group">
+										<label ng-hide="item.label_hide">{{item.label}}</label> <input
+                                            class="form-control" ng-model="item.ct" placeholder="{{item.placeholder}}"
+                                            type="text">
+									</div>
+							</span> <span class="form-group" ng-show="item.show"
+                                          ng-switch-when="select"
+                                          style="line-height: 30px; padding-right: 4px"> <label
+                                ng-hide="item.label_hide">{{item.label}}</label> <select
+                                chosen class="chosen-select" data-placeholder-text-single="'请选择...'"
+                                disable-search="{{item.disablesearch}}"
+                                search_contains="true"
+                                ng-model="item.dataSel"
+                                ng-options="i.name for i in item.dataOpt" no-results-text="'没有找到相应条目'"
+                                width={{item.width||125}}>
+										<option value=""></option>
+								</select>
+							</span> <!-- ng-switch -->
+						</span> <!-- repeat -->
+						</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 上面一行工具栏 -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <table class="table table-hover" datatable="ed"
+                           dt-column-defs="dtColumnDefs" dt-columns="dtColumns"
+                           dt-instance="dtInstance" dt-options="dtOptions">
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 下面一个table -->
+</div>

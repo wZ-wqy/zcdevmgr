@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dt.module.zc.mapper.ResCollectionreturnMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.dt.module.zc.entity.ResCollectionreturn">
+        <id column="id" property="id"/>
+        <result column="dr" property="dr"/>
+        <result column="create_time" property="createTime"/>
+        <result column="create_by" property="createBy"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="update_by" property="updateBy"/>
+        <result column="busuuid" property="busuuid"/>
+        <result column="bustype" property="bustype"/>
+        <result column="busdate" property="busdate"/>
+        <result column="status" property="status"/>
+        <result column="pinst" property="pinst"/>
+        <result column="cruserid" property="cruserid"/>
+        <result column="crusername" property="crusername"/>
+        <result column="processuserid" property="processuserid"/>
+        <result column="processusername" property="processusername"/>
+        <result column="tusedcompanyid" property="tusedcompanyid"/>
+        <result column="tpartid" property="tpartid"/>
+        <result column="tuseduserid" property="tuseduserid"/>
+        <result column="tloc" property="tloc"/>
+        <result column="tlocdtl" property="tlocdtl"/>
+        <result column="returndate" property="returndate"/>
+        <result column="rreturndate" property="rreturndate"/>
+        <result column="mark" property="mark"/>
+        <result column="name" property="name"/>
+
+        <result column="tusedcompanyname" property="tusedcompanyname"/>
+        <result column="tpartname" property="tpartname"/>
+        <result column="tusedusername" property="tusedusername"/>
+        <result column="tlocname" property="tlocname"/>
+    </resultMap>
+
+</mapper>

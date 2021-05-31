@@ -1,0 +1,201 @@
+<style>
+    table {
+        border-collapse: collapse;
+    }
+
+    tr:first-child td {
+        border: none;
+    }
+</style>
+<div ng-controller="servermonitorCtl">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <div class="ibox-tools" style="text-align: left !important">
+                            CPU
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <table class="table  ">
+                            <thead>
+                            <tr>
+                                <th>属性</th>
+                                <th>值</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>核心数</td>
+                                <td>{{data.cpu.core}}</td>
+                            </tr>
+                            <tr>
+                                <td>用户使用率</td>
+                                <td>{{data.cpu.usrusage}}</td>
+                            </tr>
+                            <tr>
+                                <td>系统使用率</td>
+                                <td>{{data.cpu.sysusage}}</td>
+                            </tr>
+                            <tr>
+                                <td>当前使用率</td>
+                                <td>{{data.cpu.usage}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <div class="ibox-tools" style="text-align: left !important">
+                            内存
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <table class="table  ">
+                            <thead>
+                            <tr>
+                                <th>属性</th>
+                                <th>内存</th>
+                                <th>JVM</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>总内存</td>
+                                <td>{{data.mem.totalmem}}</td>
+                                <td>{{data.jvm.jvmtotal}}</td>
+                            </tr>
+                            <tr>
+                                <td>已用内存</td>
+                                <td>{{data.mem.used}}</td>
+                                <td>{{data.jvm.jvmused}}</td>
+                            </tr>
+                            <tr>
+                                <td>剩余内存</td>
+                                <td>{{data.mem.aliable}}</td>
+                                <td>{{data.jvm.jvmfree}}</td>
+                            </tr>
+                            <tr>
+                                <td>使用率</td>
+                                <td>{{data.mem.usage}}</td>
+                                <td>{{data.jvm.jvmusage}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <div class="ibox-tools" style="text-align: left !important">
+                            服务器信息
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <table class="table  ">
+                            <tbody>
+                            <tr>
+                                <td style=" border-top-width: 0px;">服务器名称</td>
+                                <td style=" border-top-width: 0px;">{{data.sysinfo.hostname}}</td>
+                                <td style=" border-top-width: 0px;">操作系统</td>
+                                <td style=" border-top-width: 0px;">{{data.sysinfo.osname}}</td>
+                            </tr>
+                            <tr>
+                                <td>服务器IP</td>
+                                <td>{{data.sysinfo.ip}}</td>
+                                <td>系统架构</td>
+                                <td>{{data.sysinfo.osarch}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <div class="ibox-tools" style="text-align: left !important">
+                            Java虚拟机信息
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <table class="table ">
+                            <tbody>
+                            <tr>
+                                <td style=" border-top-width: 0px;">Java名称</td>
+                                <td style=" border-top-width: 0px;">{{data.jvm.javaname}}</td>
+                                <td style=" border-top-width: 0px;">Java版本</td>
+                                <td style=" border-top-width: 0px;">{{data.jvm.javaversion}}</td>
+                            </tr>
+                            <tr>
+                                <td>启动时间</td>
+                                <td>{{data.jvm.starttime}}</td>
+                                <td>运行时间</td>
+                                <td>{{data.jvm.uptime}}</td>
+                            </tr>
+                            <tr>
+                                <td>安装路径</td>
+                                <td>{{data.jvm.jdkhome}}</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>项目路径</td>
+                                <td>{{data.jvm.dir}}</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <div class="ibox-tools" style="text-align: left !important">
+                            磁盘状态
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>盘符路径</th>
+                                <th>文件系统</th>
+                                <th>盘符类型</th>
+                                <th>总大小</th>
+                                <th>可用大小</th>
+                                <th>已用大小</th>
+                                <th>使用率</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="x in data.sysfiles">
+                                <td>{{x.DirName}}</td>
+                                <td>{{x.SysTypeName}}</td>
+                                <td>{{x.TypeName}}</td>
+                                <td>{{x.Total}}</td>
+                                <td>{{x.Free}}</td>
+                                <td>{{x.Used}}</td>
+                                <td>{{x.usage}}%</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

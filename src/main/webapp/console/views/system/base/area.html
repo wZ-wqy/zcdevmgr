@@ -1,0 +1,44 @@
+<div ng-controller="demoCtl">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox">
+                    <div class="ibox-content">
+                        <form class="form-inline" role="form">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label"><span
+                                        style="color: red">*</span>产品图:</label>
+                                <div class="col-sm-10">
+                                    <input auto-close="true" class="form-control"
+                                           date-change="changeDate" date-time
+                                           format="YYYY-MM-DD" min-view="date" ng-model="data.stime"
+                                           style="width: 160px;!important" time-zone="Asia/Hong_Kong" type="datetime"
+                                           view="date">
+                                </div>
+                            </div>
+                            <button class="btn btn-sm btn-primary" ng-click="query()"
+                                    type="submit">刷新
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="ibox">
+                    <div class="ibox-content" style="min-height: 250px;">
+                        <div js-tree="treeConfig" ng-model="treeData" tree="treeInstance"
+                             tree-events="ready:readyCB;create_node:createNodeCB"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dt.module.zc.mapper.ResInventoryItemMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.dt.module.zc.entity.ResInventoryItem">
+        <id column="id" property="id" />
+    <result column="update_by" property="updateBy" />
+    <result column="create_by" property="createBy" />
+    <result column="create_time" property="createTime" />
+    <result column="update_time" property="updateTime" />
+    <result column="dr" property="dr" />
+        <result column="pdbatchid" property="pdbatchid" />
+        <result column="pdid" property="pdid" />
+        <result column="pdstatus" property="pdstatus" />
+        <result column="pdsyncneed" property="pdsyncneed" />
+        <result column="pdtime" property="pdtime" />
+        <result column="pduserid" property="pduserid" />
+        <result column="pdusername" property="pdusername" />
+        <result column="pdmark" property="pdmark" />
+        <result column="pdflag" property="pdflag" />
+        <result column="resid" property="resid" />
+    </resultMap>
+
+</mapper>

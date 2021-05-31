@@ -1,0 +1,59 @@
+<!-- <script src="js/common.js?v=70"></script> -->
+<div ng-controller="sysFormSettingCtl">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox">
+                    <div class="ibox-content">
+                        <form class="form-inline" role="form">
+                            <div class="form-group">
+                                <label for="class">类目组 </label> <select chosen
+                                                                        class="chosen-select" data-placeholder-text-single="'请选择...'"
+                                                                        disable-search="true"
+                                                                        id="class"
+                                                                        ng-model="catRootSel"
+                                                                        ng-options="item.name for item in catRootOpt"
+                                                                        no-results-text="'没有找到相应条目'"
+                                                                        style="width: 120px;">
+                                <option value=""></option>
+                            </select>
+                            </div>
+                            <button class="btn btn-sm btn-primary" ng-click="query()"
+                                    type="submit">查询
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="ibox">
+                    <div class="ibox-content" style="min-height: 250px;">
+                        <div js-tree="treeConfig" ng-model="treeData" tree="treeInstance"
+                             tree-events="ready:readyCB;create_node:createNodeCB"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <div class="ibox-tools" style="text-align: left !important">
+                            <a class="btn btn-primary btn-xs" href="" ng-click="itemquery()">刷新</a>
+                            <a class="btn btn-primary btn-xs" href="" ng-click="rowinsert()">新增</a>
+                            <a class="btn btn-primary btn-xs" href="" ng-click="rowupdate()">更新</a>
+                            <a class="btn btn-primary btn-xs" href="" ng-click="rowdel()">删除</a>
+                            <a class="btn btn-primary btn-xs" href="" ng-click="preview()">表单设计</a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <table class="table table-hover" datatable="ed"
+                               dt-column-defs="dtColumnDefs" dt-columns="dtColumns"
+                               dt-instance="dtInstance" dt-options="dtOptions">
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

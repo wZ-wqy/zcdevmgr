@@ -1,0 +1,60 @@
+<script src="js/common.js?v=70"></script>
+<div ng-controller="sysDictSettingCtl">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox">
+                    <div class="ibox-content">
+                        <form class="form-inline" role="form">
+                            <button class="btn btn-sm btn-primary" href="" ng-click="add()"
+                                    ng-show="crud.insert" type="submit">新增
+                            </button>
+                            <button class="btn btn-sm btn-primary" href="" ng-click="update()"
+                                    ng-show="crud.update" type="submit">更新
+                            </button>
+                            <button class="btn btn-sm btn-primary" href="" ng-click="del()"
+                                    ng-show="crud.remove" type="submit">删除
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="position: relative; height: 100%;">
+            <div class="gBqKoW">
+                <div class="FnqzS" id="leftcb" style="background: white;">
+                    <div class="celaRy">
+                        <table class="table table-hover" datatable="ed"
+                               dt-column-defs="dtColumnDefs" dt-columns="dtColumns"
+                               dt-instance="dtInstance" dt-options="dtOptions">
+                        </table>
+                    </div>
+                </div>
+                <div class="TNqaS" id="flagcb">
+					<span class="cmRdnZ"> <i class="fa fa-angle-double-left"
+                                             id="flagcb2"
+                                             style="position: absolute; right: 4px; top: 34%;"></i>
+					</span>
+                </div>
+                <div class="jexhMp">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <div class="ibox-tools" style="text-align: left !important">
+                                <a class="btn btn-primary btn-xs" href="" ng-click="itemquery()">刷新</a>
+                                <a class="btn btn-primary btn-xs" href="" ng-click="row_update()"
+                                   ng-show="crud.item_insert">新增</a>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <table class="table table-hover" datatable="ed2"
+                                   dt-column-defs="dtItemColumnDefs" dt-columns="dtItemColumns"
+                                   dt-instance="dtItemInstance" dt-options="dtItemOptions">
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

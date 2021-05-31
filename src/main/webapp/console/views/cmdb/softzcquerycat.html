@@ -1,0 +1,47 @@
+<script src="js/common.js?v=70"></script>
+<div ng-controller="softzcquerycatCtl">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox">
+                    <div class="ibox-content">
+                        <form class="form-inline" role="form">
+                            <button class="btn btn-sm btn-primary" ng-click="detail()"
+                                    type="submit">详情
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="position: relative; height: 100%;">
+            <div class="gBqKoW">
+                <div class="FnqzS" id="leftcb" style="background: white;">
+                    <div class="celaRy">
+                        <div js-tree="treeConfig"
+                             ng-model="treeData" style="margin-top: 20px; margin-left: 8px" tree="treeInstance"
+                             tree-events="ready:readyCB;create_node:createNodeCB"></div>
+                    </div>
+                </div>
+                <div class="TNqaS" id="flagcb">
+					<span class="cmRdnZ"> <i class="fa fa-angle-double-left"
+                                             id="flagcb2"
+                                             style="position: absolute; right: 4px; top: 34%;"></i> <!--  <i
+						class="next-icon next-icon-arrow-left next-xs sc-bxivhb bUZGRr"></i> -->
+					</span>
+                </div>
+                <div class="jexhMp">
+                    <div class="ibox float-e-margins" tyle="min-height:250px;">
+                        <div class="ibox-content">
+                            <table class="table table-hover" datatable="ed"
+                                   dt-column-defs="dtColumnDefs" dt-columns="dtColumns"
+                                   dt-instance="dtInstance" dt-options="dtOptions">
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

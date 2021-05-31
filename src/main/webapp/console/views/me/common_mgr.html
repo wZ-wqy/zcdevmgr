@@ -1,0 +1,47 @@
+<div ng-controller="meCommonMgrCtl">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox">
+                    <div class="ibox-content">
+                        <form class="form-inline" role="form">
+                            <button class="btn btn-sm btn-primary" ng-click="saveData()"
+                                    type="submit">保存
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>通用设置</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <form class="form-horizontal ng-pristine ng-valid" method="get"
+                              name="myForm" novalidate>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">默认系统:</label>
+                                <div class="col-sm-10">
+                                    <select chosen class="chosen-select" data-placeholder-text-single="'请选择...'"
+                                            disable-search="true" ng-model="systemSel"
+                                            ng-options="item.name for item in systemOpt"
+                                            no-results-text="'没有找到相应条目'">
+                                        <option value=""></option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

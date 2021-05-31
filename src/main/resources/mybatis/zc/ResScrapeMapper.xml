@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dt.module.zc.mapper.ResScrapeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.dt.module.zc.entity.ResScrape">
+        <id column="id" property="id" />
+    <result column="dr" property="dr" />
+    <result column="create_by" property="createBy" />
+    <result column="create_time" property="createTime" />
+    <result column="update_by" property="updateBy" />
+    <result column="update_time" property="updateTime" />
+        <result column="uuid" property="uuid" />
+        <result column="title" property="title" />
+        <result column="processuserid" property="processuserid" />
+        <result column="processusername" property="processusername" />
+        <result column="processdate" property="processdate" />
+        <result column="status" property="status" />
+        <result column="ct" property="ct" />
+        <result column="busidate" property="busidate" />
+        <result column="mark" property="mark" />
+        <result column="cnt" property="cnt" />
+        <result column="pinst" property="pinst"/>
+    </resultMap>
+
+</mapper>

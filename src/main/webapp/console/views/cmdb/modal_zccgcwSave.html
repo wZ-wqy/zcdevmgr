@@ -1,0 +1,198 @@
+<style>
+    @media ( min-width: 992px) {
+        .modal-blg {
+            width: 95%;
+        }
+    }
+</style>
+<div class="modal-content">
+    <div class="modal-header">
+        <button class="close" ng-click="cancel()" type="button">
+            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+        </button>
+        <h4 class="modal-title">财务信息变更</h4>
+    </div>
+    <div class="modal-body">
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <form class="form-inline" role="form">
+                <button class="btn btn-sm btn-primary" ng-click="selectall()"
+                        type="submit">全选
+                </button>
+                <button class="btn btn-sm btn-primary" ng-click="selectnall()"
+                        type="submit">全不选
+                </button>
+            </form>
+            <form action="" class="form-horizontal m-t-md" name="myForm"
+                  novalidate>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">处理人:</label>
+                    <div class="col-sm-10">
+                        <select ng-disabled="ctl.processuser" chosen class="chosen-select"
+                                data-placeholder-text-single="'请选择...'"
+                                disable-search="false"
+                                search_contains="true"
+                                ng-model="adminuserSel"
+                                ng-options="item.name for item in adminuserOpt"
+                                no-results-text="'没有找到相应条目'">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">备注:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control ng-pristine ng-untouched ng-valid ng-empty" name="mark"
+                               ng-model="item.mark" placeholder="请输入备注" type="text">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        <table style="width:100%">
+                            <tr>
+                                <td style="text-align: left">
+                                   <span style="margin-right:5px"><span
+                                           style="font-weight:bold;color:green;margin-right:2px">是否更新</span>
+                        <input icheck ng-model="item.tbelongcompstatus"
+                               type="checkbox"></span>
+                                </td>
+                                <td style="text-align: right"><span style="font-weight:bold">{{'BELONGCOMP' | translate}}:</span>
+                                </td>
+                        </table>
+                    </label>
+                    <div class="col-sm-10">
+                        <select chosen class="chosen-select" data-placeholder-text-multiple="'请选择...'"
+                                data-placeholder-text-single="'请选择...'"
+                                disable-search="false"
+                                search_contains="true"
+                                ng-model="belongcompSel"
+                                ng-options="item.name for item in belongcompOpt"
+                                no-results-text="'没有找到相应条目'">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        <table style="width:100%">
+                            <tr>
+                                <td style="text-align: left">
+                                  <span style="margin-right:5px"><span
+                                          style="font-weight:bold;color:green;margin-right:2px">是否更新</span>
+                        <input icheck ng-model="item.tbuypricestatus"
+                               type="checkbox"></span>
+                                </td>
+                                <td style="text-align: right"><span class="text-danger">*</span>采购单价:</td>
+                        </table>
+                    </label>
+                    <div class="col-sm-10">
+                        <input class="form-control ng-pristine ng-untouched ng-valid ng-empty" name="tbuyprice"
+                               ng-maxlength="100"
+                               ng-model="item.tbuyprice"
+                               placeholder="请输入价格"
+                               type="number">
+                        <div class="text-danger"
+                             ng-if="myForm.tbuyprice.$dirty && myForm.tbuyprice.$invalid">
+                            <span ng-if="myForm.tbuyprice.$error.required"> 输入不能为空 </span> <span
+                                ng-show="myForm.tbuyprice.$error.maxlength">不能超过100个字符 </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        <table style="width:100%">
+                            <tr>
+                                <td style="text-align: left">
+                                   <span style="margin-right:5px"><span
+                                           style="font-weight:bold;color:green;margin-right:2px">是否更新</span>
+                        <input icheck ng-model="item.tnetworthstatus"
+                               type="checkbox"></span>
+                                </td>
+                                <td style="text-align: right"><span class="text-danger">*</span>资产净值:</td>
+                        </table>
+                    </label>
+                    <div class="col-sm-10">
+                        <input class="form-control ng-pristine ng-untouched ng-valid ng-empty" name="tnetworth"
+                               ng-maxlength="100"
+                               ng-model="item.tnetworth"
+                               placeholder="请输入净值"
+                               type="number">
+                        <div class="text-danger"
+                             ng-if="myForm.tnetworth.$dirty && myForm.tnetworth.$invalid">
+                            <span ng-if="myForm.tnetworth.$error.required"> 输入不能为空 </span> <span
+                                ng-show="myForm.tnetworth.$error.maxlength">不能超过100个字符 </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        <table style="width:100%">
+                            <tr>
+                                <td style="text-align: left">
+                                 <span style="margin-right:5px"><span
+                                         style="font-weight:bold;color:green;margin-right:2px">是否更新</span>
+                        <input icheck ng-model="item.taccumulatedstatus"
+                               type="checkbox"></span>
+                                </td>
+                                <td style="text-align: right"><span class="text-danger">*</span>累计折旧:</td>
+                        </table>
+                    </label>
+                    <div class="col-sm-10">
+                        <input class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                               name="taccumulateddepreciation"
+                               ng-maxlength="100"
+                               ng-model="item.taccumulateddepreciation"
+                               placeholder="请输入内容"
+                               type="number">
+                        <div class="text-danger"
+                             ng-if="myForm.taccumulateddepreciation.$dirty && myForm.taccumulateddepreciation.$invalid">
+                            <span ng-if="myForm.taccumulateddepreciation.$error.required"> 输入不能为空 </span> <span
+                                ng-show="myForm.taccumulateddepreciation.$error.maxlength">不能超过100个字符 </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">
+                        <table style="width:100%">
+                            <tr>
+                                <td style="text-align: left">
+                                   <span style="margin-right:5px"><span
+                                           style="font-weight:bold;color:green;margin-right:2px">是否更新</span>
+                        <input icheck ng-model="item.tresidualvaluestatus"
+                               type="checkbox"></span>
+                                </td>
+                                <td style="text-align: right"><span class="text-danger">*</span>设置残值:</td>
+                        </table>
+                    </label>
+                    <div class="col-sm-10">
+                        <input class="form-control ng-pristine ng-untouched ng-valid ng-empty" name="tresidualvalue"
+                               ng-maxlength="100"
+                               ng-model="item.tresidualvalue"
+                               placeholder="请输入内容"
+                               type="number">
+                        <div class="text-danger"
+                             ng-if="myForm.tresidualvalue.$dirty && myForm.tresidualvalue.$invalid">
+                            <span ng-if="myForm.tresidualvalue.$error.required"> 输入不能为空 </span> <span
+                                ng-show="myForm.tresidualvalue.$error.maxlength">不能超过100个字符 </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"></label>
+                    <div class="col-sm-10">
+						<span class="btn btn-primary"
+                              ng-click="review()">资产选择范围</span>
+                        <table class="table table-hover" datatable="ed"
+                               dt-column-defs="dtColumnDefs" dt-columns="dtColumns"
+                               dt-instance="dtInstance" dt-options="dtOptions">
+                        </table>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer" style="text-align:center">
+        <button class="btn btn-warning" ng-click="cancel()">取消</button>
+        <button class="btn btn-primary" ng-click="sure()" ng-disabled="myForm.$invalid">确认
+        </button>
+    </div>
+</div>

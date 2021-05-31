@@ -1,0 +1,57 @@
+<div ng-controller="sysRoleModuleMapCtl">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox">
+                    <div class="ibox-content">
+                        <form class="form-inline" role="form">
+                            <div class="form-group">
+                                <label for="class">分类</label> <select chosen
+                                                                      class="chosen-select" data-placeholder-text-single="'请选择...'" disable-search="true"
+                                                                      id="class" ng-model="topMenuSel"
+                                                                      ng-options="item.name for item in topMenuOpt"
+                                                                      no-results-text="'没有找到相应条目'"
+                                                                      style="width: 150px;">
+                                <option value=""></option>
+                            </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="class">角色</label> <select chosen
+                                                                      class="chosen-select" data-placeholder-text-single="'请选择...'" disable-search="true"
+                                                                      id="class" ng-model="roleSel"
+                                                                      ng-options="item.roleName for item in roleOpt"
+                                                                      no-results-text="'没有找到相应条目'"
+                                                                      style="width: 220px;">
+                                <option value=""></option>
+                            </select>
+                            </div>
+                            <button class="btn btn-sm btn-primary" ng-click="query()"
+                                    ng-show="crud.select" type="submit">查询
+                            </button>
+                            <button class="btn btn-sm btn-primary" ng-click="submit()"
+                                    ng-show="crud.submit" type="submit">提交
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-show="show">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox">
+                        <div class="ibox-content">
+                            <div js-tree="treeConfig" ng-model="treeData"
+                                 should-apply="ignoreModelChanges()" tree="treeInstance"
+                                 tree-events="ready:readyCB;create_node:createNodeCB"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

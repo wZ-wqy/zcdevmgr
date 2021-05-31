@@ -1,0 +1,159 @@
+<!-- ng-valid : 验证通过
+ng-invalid : 验证失败
+ng-valid-[key] : 由$setValidity添加的所有验证通过的值
+ng-invalid-[key] : 由$setValidity添加的所有验证失败的值
+ng-pristine : 表示用户是否修改了表单。如果为 ture ，表示没有修改过； false 表示修改过
+ng-dirty : 控件输入值已变更，布尔型属性，当且仅当用户实际已经修改的表单。不管表单是否通过验证：如果表单有过变动,则true
+ng-touched : 控件已失去焦点
+ng-untouched : 控件未失去焦点
+ng-pending : 任何为满足$asyncValidators的情况
+required
+ng-minlength="5"
+ng-maxlength="20"
+不指定条件myForm.name.$dirty && myForm.name.$invalid 条件都不满足
+ 
+ 
+  <select chosen disable-search="true" ng-model="somefun" name="fun" required>
+      <option></option>
+      <option>Great</option>
+      <option>fun</option>
+      <option>Great fun .. indeed</option>
+    </select>
+    <span ng-if="form.fun.$invalid && form.fun.$touched">
+      Error: {{form.fun.$error}}
+    </span>
+    
+    
+ -->
+<div class="modal-content">
+    <div class="modal-header">
+        <button class="close" ng-click="cancel()" type="button">
+            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+        </button>
+        <h4 class="modal-title">节点</h4>
+    </div>
+    <div class="modal-body">
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <form action="" class="form-horizontal m-t-md " name="myForm"
+                  novalidate>
+                <div ng-show="item.actiontype=='addmaster'">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label"><span
+                                class="text-danger">*</span>主菜单:</label>
+                        <div class="col-sm-10">
+                            <select chosen class="chosen-select" data-placeholder-text-single="'请选择...'"
+                                    disable-search="true" ng-model="topMenuSel"
+                                    ng-options="item.name for item in topMenuOpt" no-results-text="'没有找到相应条目'"
+                                    width="100">
+                                <option value=""></option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"><span
+                            class="text-danger">*</span>名称:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control ng-pristine ng-untouched ng-valid ng-empty" name="name" ng-maxlength="10"
+                               ng-model="item.node_name"
+                               placeholder="请输入名称" required type="text">
+                        <div class="text-danger"
+                             ng-if="myForm.name.$dirty && myForm.name.$invalid">
+                            <span ng-if="myForm.name.$error.required"> 输入不能为空 </span> <span
+                                ng-show="myForm.name.$error.maxlength">不能超过10个字符 </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"><span
+                            class="text-danger">*</span>路径:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control ng-pristine ng-untouched ng-valid ng-empty" name="keyvalue"
+                               ng-maxlength="30"
+                               ng-model="item.keyvalue" placeholder="请输入路径" type="text">
+                        <div class="text-danger"
+                             ng-if="myForm.keyvalue.$dirty && myForm.keyvalue.$invalid">
+                            <span ng-if="myForm.keyvalue.$error.maxlength">不能超过30个字符 </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">参数:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control ng-pristine ng-untouched ng-valid ng-empty" name="params"
+                               ng-maxlength="500"
+                               ng-model="item.params" placeholder="请输入参数" type="text">
+                        <div class="text-danger"
+                             ng-if="myForm.params.$dirty && myForm.params.$invalid">
+                            <span ng-if="myForm.params.$error.maxlength">不能超过500个字符 </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">图片:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control ng-pristine ng-untouched ng-valid ng-empty" name="logo"
+                               ng-maxlength="100"
+                               ng-model="item.logo" placeholder="请输入图片" type="text">
+                        <div class="text-danger"
+                             ng-show="myForm.logo.$dirty && myForm.log.$invalid">
+                            <span ng-show="myForm.logo.$error.maxlength">不能超过20个字符 </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">备注:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control ng-pristine ng-untouched ng-valid ng-empty" name="mark"
+                               ng-maxlength="200"
+                               ng-model="item.mark" placeholder="请输入备注" type="text">
+                        <div class="text-danger"
+                             ng-show="myForm.mark.$dirty && myForm.mark.$invalid">
+                            <span ng-show="myForm.mark.$error.maxlength">不能超过20个字符 </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">前端显示:</label>
+                    <div class="col-sm-10">
+                        <select chosen class="chosen-select"
+                                data-placeholder-text-single="'请选择...'" disable-search="true"
+                                ng-model="showSel" ng-options="item.name for item in showOpt"
+                                no-results-text="'没有找到相应条目'">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">节点类型:</label>
+                    <div class="col-sm-10">
+                        <select chosen class="chosen-select"
+                                data-placeholder-text-single="'请选择...'" disable-search="true"
+                                ng-model="nodeSel" ng-options="item.name for item in nodeOpt"
+                                no-results-text="'没有找到相应条目'">
+                            <option value=""></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">排序:</label>
+                    <div class="col-sm-10">
+                        <input class="form-control ng-pristine ng-untouched ng-valid ng-empty" name="sort"
+                               ng-maxlength="20"
+                               ng-model="item.sort" placeholder="请输入排序" type="number">
+                        <div class="text-danger"
+                             ng-show="myForm.sort.$dirty && myForm.sort.$invalid">
+                            <span ng-show="myForm.sort.$error.maxlength">不能超过20个字符 </span>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer" style="text-align: center">
+        <button class="btn btn-warning" ng-click="cancel()">取消</button>
+        <button class="btn btn-primary" ng-click="sure()"
+                ng-disabled="myForm.$invalid">确认
+        </button>
+    </div>
+</div>

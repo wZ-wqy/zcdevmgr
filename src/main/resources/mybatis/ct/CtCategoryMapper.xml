@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dt.module.ct.mapper.CtCategoryMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.dt.module.ct.entity.CtCategory">
+        <id column="id" property="id" />
+    <result column="dr" property="dr" />
+    <result column="create_by" property="createBy" />
+    <result column="create_time" property="createTime" />
+    <result column="update_by" property="updateBy" />
+    <result column="update_time" property="updateTime" />
+        <result column="root" property="root" />
+        <result column="name" property="name" />
+        <result column="mpic" property="mpic" />
+        <result column="parent_id" property="parentId" />
+        <result column="route" property="route" />
+        <result column="mark" property="mark" />
+        <result column="node_level" property="nodeLevel" />
+        <result column="od" property="od" />
+        <result column="isaction" property="isaction" />
+        <result column="route_name" property="routeName" />
+        <result column="code" property="code" />
+        <result column="type" property="type" />
+        <result column="action" property="action" />
+    </resultMap>
+
+</mapper>

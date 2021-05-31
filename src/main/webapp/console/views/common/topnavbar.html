@@ -1,0 +1,61 @@
+<div class="row border-bottom">
+    <nav class="navbar navbar-static-top" role="navigation"
+         style="background-color: white ;margin-bottom: 0;">
+        <div class="navbar-header">
+            <span minimaliza-sidebar></span>
+            <a style="font-size:14px;margin-top:3px" ng-click="switchSystem(item.menuId)" class="navbar-brand"
+               href="javascript:void(0);" ng-repeat="item in dt_systems | limitTo:6">{{item.name}}</a>
+        </div>
+        <ul class="nav navbar-top-links navbar-right">
+            <li ng-if="dt_systems.length>1" uib-dropdown><a
+                    class="" uib-dropdown-toggle> <i
+                    aria-hidden="true" class="fa fa-dropbox on fa-square"
+                    style="color: #686B6D; padding-left: 3px; padding-right: 3px"></i></a>
+                <ul class="animated fadeInRight m-t-xs" uib-dropdown-menu>
+                    <li><a style="text-align: center">请选择系统切换</a></li>
+                    <li class="divider" role="separator" style="margin-top:2px;margin-bottom:2px"></li>
+                    <li ng-click="switchSystem(item.menuId)"
+                        ng-repeat="item in dt_systems"><a class="fa fa-sitemap"
+                                                          href="javascript:;"><i class="zmdi zmdi-shield-security"></i>
+                        <span style="padding-left: 6px;">{{item.name}}</span></a></li>
+                </ul>
+            </li>
+            <li uib-dropdown><a uib-dropdown-toggle> <span
+                    aria-hidden="true" class="fa fa-themeisle"
+                    style="color: #686B6D; padding-left: 3px; padding-right: 3px"></span></a>
+                <ul class="animated fadeInRight m-t-xs" uib-dropdown-menu>
+                    <li ng-click="change_theme('default')"><a href="javascript:;"
+                                                              systemid="1"><i class="zmdi zmdi-shield-security"></i>
+                        <span
+                                style="padding-left: 6px;">默认主题</span></a></li>
+                    <li ng-click="change_theme('md-skin')"><a href="javascript:;"
+                                                              systemid="1"><i class="zmdi zmdi-shield-security"></i>
+                        <span
+                                style="padding-left: 6px;">Material Design风格</span></a></li>
+                </ul>
+            </li>
+            <li uib-dropdown><a uib-dropdown-toggle>
+			 <span style="font-size:12px;color: #686B6D;">
+						{{sys_user_info.name}}
+			<i aria-hidden="true" class="fa fa-caret-down"></i>
+						</span>
+                <span aria-hidden="true" class="fa fa-user"
+                      style="color: #686B6D; padding-left: 3px; padding-right: 3px"></span></a>
+                <ul class="animated fadeInRight m-t-xs" uib-dropdown-menu>
+                    <li ng-click="fullScreen()"><a class="fa fa-window-maximize"
+                                                   href="javascript:;" systemid="1"><i
+                            class="zmdi zmdi-shield-security"></i> <span
+                            style="padding-left: 6px;">全屏模式</span></a></li>
+                    <li ng-click="changepwd()"><a class="fa fa-key"
+                                                  href="javascript:;" systemid="1"><i
+                            class="zmdi zmdi-shield-security"></i> <span
+                            style="padding-left: 6px;">密码修改</span></a></li>
+                    <li ng-click="logout()"><a class="fa fa-hand-o-right"
+                                               href="javascript:;" systemid="1"><i
+                            class="zmdi zmdi-shield-security"></i> <span
+                            style="padding-left: 6px;">退出登录</span></a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</div>

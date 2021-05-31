@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dt.module.zc.mapper.ResInventoryItemSMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.dt.module.zc.entity.ResInventoryItemS">
+        <id column="id" property="id" />
+    <result column="update_by" property="updateBy" />
+    <result column="create_by" property="createBy" />
+    <result column="create_time" property="createTime" />
+    <result column="update_time" property="updateTime" />
+    <result column="dr" property="dr"/>
+        <result column="pdbatchid" property="pdbatchid" />
+        <result column="pdid" property="pdid" />
+        <result column="resid" property="resid" />
+        <result column="category" property="category"/>
+        <result column="class_id" property="classId" />
+        <result column="type" property="type" />
+        <result column="gj_dl" property="gjDl" />
+        <result column="gj_xl" property="gjXl" />
+        <result column="uuid" property="uuid" />
+        <result column="name" property="name" />
+        <result column="zcsource" property="zcsource" />
+        <result column="model" property="model" />
+        <result column="sn" property="sn" />
+        <result column="version" property="version" />
+        <result column="res_desc" property="resDesc" />
+        <result column="brand" property="brand" />
+        <result column="supplier" property="supplier" />
+        <result column="recycle" property="recycle" />
+        <result column="prerecycle" property="prerecycle" />
+        <result column="env" property="env" />
+        <result column="risk" property="risk" />
+        <result column="buy_time" property="buyTime" />
+        <result column="offline_time" property="offlineTime" />
+        <result column="online_time" property="onlineTime" />
+        <result column="ip" property="ip" />
+        <result column="rwm" property="rwm" />
+        <result column="confdesc" property="confdesc" />
+        <result column="loc" property="loc" />
+        <result column="locshow" property="locshow" />
+        <result column="locdtl" property="locdtl" />
+        <result column="rack" property="rack" />
+        <result column="frame" property="frame" />
+        <result column="belong_company_id" property="belongCompanyId" />
+        <result column="belong_part_id" property="belongPartId" />
+        <result column="used_company_id" property="usedCompanyId" />
+        <result column="part_id" property="partId" />
+        <result column="used_userid" property="usedUserid" />
+        <result column="mgr_part_id" property="mgrPartId" />
+        <result column="maintain_userid" property="maintainUserid" />
+        <result column="headuserid" property="headuserid" />
+        <result column="buy_price" property="buyPrice" />
+        <result column="net_worth" property="netWorth" />
+        <result column="zc_cnt" property="zcCnt" />
+        <result column="actionstatus" property="actionstatus" />
+        <result column="wb" property="wb" />
+        <result column="wb_auto" property="wbAuto" />
+        <result column="wbout_date" property="wboutDate" />
+		<result column="bfout_date" property="bfoutDate" />
+        <result column="wbsupplier" property="wbsupplier" />
+        <result column="wbct" property="wbct" />
+        <result column="status" property="status" />
+        <result column="changestatus" property="changestatus" />
+        <result column="importlabel" property="importlabel" />
+        <result column="img" property="img" />
+        <result column="attach" property="attach" />
+        <result column="mark" property="mark" />
+        <result column="changestate" property="changestate" />
+        <result column="review_userid" property="reviewUserid" />
+        <result column="review_date" property="reviewDate" />
+        <result column="fs1" property="fs1" />
+        <result column="fs2" property="fs2" />
+        <result column="fs3" property="fs3" />
+        <result column="fs4" property="fs4" />
+        <result column="fs5" property="fs5" />
+        <result column="fs6" property="fs6" />
+        <result column="fs7" property="fs7" />
+        <result column="fs8" property="fs8" />
+        <result column="fs9" property="fs9" />
+        <result column="fs10" property="fs10" />
+        <result column="fs11" property="fs11" />
+        <result column="fs12" property="fs12" />
+        <result column="fs13" property="fs13" />
+        <result column="fs14" property="fs14" />
+        <result column="fs15" property="fs15" />
+        <result column="fs16" property="fs16" />
+        <result column="fs17" property="fs17" />
+        <result column="fs18" property="fs18" />
+        <result column="fs19" property="fs19" />
+        <result column="fs20" property="fs20" />
+        <result column="fi1" property="fi1" />
+        <result column="fi2" property="fi2" />
+        <result column="fi3" property="fi3" />
+        <result column="fi4" property="fi4" />
+        <result column="fi5" property="fi5" />
+        <result column="fi6" property="fi6" />
+        <result column="fi7" property="fi7" />
+        <result column="fi8" property="fi8" />
+        <result column="fi9" property="fi9" />
+        <result column="fi10" property="fi10" />
+        <result column="fi11" property="fi11" />
+        <result column="fi12" property="fi12" />
+        <result column="fi13" property="fi13" />
+        <result column="fi14" property="fi14" />
+        <result column="fi15" property="fi15" />
+        <result column="fi16" property="fi16" />
+        <result column="fi17" property="fi17" />
+        <result column="fi18" property="fi18" />
+        <result column="fi19" property="fi19" />
+        <result column="fi20" property="fi20" />
+        <result column="fd1" property="fd1" />
+        <result column="fd2" property="fd2" />
+        <result column="fd3" property="fd3" />
+        <result column="lastinventorytime" property="lastinventorytime"/>
+    </resultMap>
+
+</mapper>

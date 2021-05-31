@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dt.module.zc.mapper.ResInoutMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.dt.module.zc.entity.ResInout">
+    <result column="dr" property="dr" />
+    <result column="update_by" property="updateBy" />
+    <result column="create_by" property="createBy" />
+    <result column="create_time" property="createTime" />
+    <result column="update_time" property="updateTime" />
+        <result column="id" property="id" />
+        <result column="type" property="type" />
+        <result column="uuid" property="uuid" />
+        <result column="title" property="title" />
+        <result column="action" property="action" />
+        <result column="status" property="status" />
+        <result column="cnt" property="cnt" />
+        <result column="zcsource" property="zcsource" />
+        <result column="suppliername" property="suppliername" />
+        <result column="buytime" property="buytime" />
+        <result column="price" property="price" />
+        <result column="operuserid" property="operuserid" />
+        <result column="operusername" property="operusername" />
+        <result column="busidate" property="busidate" />
+        <result column="rdate" property="rdate" />
+        <result column="compid" property="compid" />
+        <result column="loc" property="loc" />
+        <result column="warehouse" property="warehouse" />
+        <result column="usedcompid" property="usedcompid" />
+        <result column="usedpartid" property="usedpartid" />
+        <result column="useduserid" property="useduserid" />
+        <result column="inloc" property="inloc" />
+        <result column="inwarehouse" property="inwarehouse" />
+        <result column="label1" property="label1" />
+        <result column="label2" property="label2" />
+        <result column="remark" property="remark" />
+        <result column="belongcompid" property="belongcompid" />
+    </resultMap>
+
+</mapper>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <title></title>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+    <script src="../../../vendor/jquery/dist/jquery.min.js"></script>
+    <script src="../../../vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container-fluid" style="margin-top: 10px;">
+    <div id="tabdata"></div>
+</div>
+</body>
+<script>
+    function buildHtml(udata) {
+        var html = "<table id=\"udatatable\" class=\"table table-bordered\" >";
+        html = html
+            + "<thead style=\"background-color:#696969\"> <th>名称</th> <th>用户</th>  <th>类型</th><th>状态</th>  <th>联系方式</th> <th>备注</th> <th>账户操作</th><th>节点操作</th>  </thead>  <tbody>";
+        for (var i = 0; i < udata.length; i++) {
+            var userdata = udata[i].users;
+            var userlength = udata[i].users.length;
+            if (userlength > 0) {
+                for (var j = 0; j < userdata.length; j++) {
+                    html = html + "<tr>";
+                    if (j == 0) {
+                        html = html
+                            + "<td style=\"font-weight:bold;width:165px!important;vertical-align: middle; \" rowspan=\""
+                            + userlength + "\"   >" + udata[i].name
+                            + "</td>";
+                    }
+                    html = html
+                        + "<td style=\"width:80px!important; vertical-align: middle;\">"
+                        + userdata[j].attr_value + "</td>";
+                    html = html
+                        + "<td  style=\"width:100px!important; vertical-align: middle;\" >"
+                        + userdata[j].type + "</td>";
+                    var statusstr = "未知";
+                    if (userdata[j].status == "enable") {
+                        html = html
+                            + "<td  style=\"width:80px!important ; vertical-align: middle;color:green;font-weight:bold\" >启用</td>";
+                    } else if (userdata[j].status == "disable") {
+                        html = html
+                            + "<td  style=\"width:80px!important; vertical-align: middle;color:red;font-weight:bold\" >停用</td>";
+                    } else {
+                        html = html
+                            + "<td  style=\"width:80px!important; vertical-align: middle;color:red;font-weight:bold\" >未知</td>";
+                    }
+                    html = html
+                        + "<td style=\"width:130px!important; vertical-align: middle;\">"
+                        + userdata[j].contact + "</td>";
+                    html = html
+                        + "<td style=\"vertical-align: middle;\">"
+                        + (userdata[j].mark == undefined ?
+                            "" : userdata[j].mark) + "</td>";
+                    html = html
+                        + "<td style=\"font-weight:bold;width:100px!important;vertical-align: middle; \"> <div class=\"btn-group\">    <button ng-click=\"saveitem('"
+                        + userdata[j].id
+                        + "','"
+                        + udata[i].class_id
+                        + "','"
+                        + udata[i].id
+                        + "')\" class=\"btn-white btn btn-xs\">更新</button><button ng-click=\"delitem('"
+                        + userdata[j].id
+                        + "')\" class=\"btn-white btn btn-xs\">删除</button> </div></td>";
+                    if (j != 0) {
+                    } else {
+                        html = html
+                            + "<td rowspan=\""
+                            + userlength
+                            + "\" style=\"width:170px!important;vertical-align:middle;\" > <div class=\"btn-group\"><button ng-click=\"saveitem(null,'"
+                            + udata[i].class_id
+                            + "','"
+                            + udata[i].id
+                            + "')\" class=\"btn-white btn btn-xs\">新增(账户)</button>  <button ng-click=\"addNode('"
+                            + udata[i].id
+                            + "')\" class=\"btn-white btn btn-xs\">更新</button> <button ng-click=\"delNode('"
+                            + udata[i].id
+                            + "')\" class=\"btn-white btn btn-xs\">删除</button></div></td>";
+                    }
+                    html = html + "</tr>";
+                }
+            } else {
+                html = html + "<tr>";
+                html = html
+                    + "<td style=\"font-weight:bold;width:170px!important\"> "
+                    + udata[i].name + " </td>";
+                // html = html + "<td style=\"width:50px!important\">"
+                // + udata[i].ip + "</td>";
+                html = html + "<td></td>";
+                html = html + "<td></td>";
+                html = html + "<td></td>";
+                html = html + "<td></td>";
+                html = html + "<td></td>";
+                html = html + "<td></td>";
+                html = html
+                    + "<td style=\"width:180px!important; vertical-align: middle;\" > <div class=\"btn-group\"> <button ng-click=\"saveitem(null,'"
+                    + udata[i].class_id
+                    + "','"
+                    + udata[i].id
+                    + "')\" class=\"btn-white btn btn-xs\">新增(账户)</button> <button ng-click=\"addNode('"
+                    + udata[i].id
+                    + "')\" class=\"btn-white btn btn-xs\">更新</button> <button ng-click=\"delNode('"
+                    + udata[i].id
+                    + "')\" class=\"btn-white btn btn-xs\">删除</button>   </div></td>";
+                html = html + "</tr>";
+            }
+        }
+        html = html + "</tbody></table>";
+        return html;
+    }
+
+    var project = "/dt";
+    if (localStorage) {
+        var html = localStorage.getItem("cmdbcontactlistdata");
+        console.log(html);
+        if (html == null) {
+            var ps = {};
+            ps.classCode = "outercontact";
+            ps.attrCode = "contact";
+            //如果是新页面打开则加载所有数据
+            $.ajax({
+                type: "POST",
+                url: project + "/api/base/queryResAllUsers.do",
+                data: ps,
+                dataType: 'json',
+                success: function (res) {
+                    if (res.success) {
+                        html = buildHtml(res.data);
+                        console.log(html);
+                        $("#tabdata").html(html);
+                        $("#udatatable tr :last-child").remove();
+                        $("#udatatable tr :nth-child(7)").remove();
+                    } else {
+                        alert("取数失败!");
+                    }
+                }
+            });
+        } else {
+            $("#tabdata").html(html);
+            $("#udatatable tr :last-child").remove();
+            $("#udatatable tr :nth-child(7)").remove();
+        }
+    } else {
+        alert("不支持localStorage,无数据显示")
+    }
+</script>
+</html>

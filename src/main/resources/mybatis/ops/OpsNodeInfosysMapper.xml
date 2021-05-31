@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dt.module.ops.mapper.OpsNodeInfosysMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.dt.module.ops.entity.OpsNodeInfosys">
+        <id column="id" property="id" />
+    <result column="dr" property="dr" />
+    <result column="create_time" property="createTime" />
+    <result column="create_by" property="createBy" />
+    <result column="update_time" property="updateTime" />
+    <result column="update_by" property="updateBy" />
+        <result column="name" property="name" />
+        <result column="about" property="about" />
+        <result column="status" property="status" />
+        <result column="ifmain" property="ifmain" />
+        <result column="opsmethod" property="opsmethod" />
+        <result column="devmethod" property="devmethod" />
+        <result column="tcontact" property="tcontact" />
+        <result column="bcontact" property="bcontact" />
+        <result column="bpart" property="bpart" />
+        <result column="lastdrilldate" property="lastdrilldate" />
+        <result column="ondatestr" property="ondatestr" />
+        <result column="downdatestr" property="downdatestr" />
+        <result column="os" property="os" />
+        <result column="db" property="db" />
+        <result column="app" property="app" />
+        <result column="grade" property="grade" />
+        <result column="rto" property="rto" />
+        <result column="rpo" property="rpo" />
+        <result column="Hardware" property="Hardware" />
+        <result column="bkmethod" property="bkmethod" />
+        <result column="sameplacebkmethod" property="sameplacebkmethod" />
+        <result column="diffplacebkmethod" property="diffplacebkmethod" />
+        <result column="type" property="type" />
+        <result column="label1" property="label1" />
+        <result column="label2" property="label2" />
+        <result column="label3" property="label3" />
+        <result column="label4" property="label4" />
+        <result column="mark" property="mark" />
+    </resultMap>
+
+</mapper>

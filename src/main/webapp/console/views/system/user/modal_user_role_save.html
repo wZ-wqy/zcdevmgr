@@ -1,0 +1,42 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <button class="close" ng-click="cancel()" type="button">
+            <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+        </button>
+        <h4 class="modal-title">权限设置</h4>
+    </div>
+    <div class="modal-body">
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <select bs-duallistbox multiple
+                    bootstrap2="{{ settings.bootstrap2 }}"
+                    move-on-select="{{ settings.moveOnSelect }}"
+                    preserve-selection="{{ settings.preserveSelection }}"
+                    move-selected-label="{{ settings.moveSelectedLabel }}"
+                    move-all-label="{{ settings.moveAllLabel }}"
+                    remove-selected-label="{{ settings.removeSelectedLabel }}"
+                    remove-all-label="{{ settings.removeAllLabel }}"
+                    non-selected-list-label="{{ settings.nonSelectedListLabel }}"
+                    selected-list-label="{{ settings.selectedListLabel }}"
+                    postfix="{{ settings.postfix }}"
+                    select-min-height="{{ settings.selectMinHeight }}"
+                    filter="{{ settings.filter }}"
+                    filter-values="{{ settings.filterValues }}"
+                    filter-non-selected="settings.filterNonSelected"
+                    filter-selected="settings.filterSelected"
+                    filter-placeholder="{{ settings.filterPlaceholder }}"
+                    filter-clear="{{ settings.filterClear }}"
+                    info-all="{{ settings.infoAll }}"
+                    info-filtered="{{ settings.infoFiltered }}"
+                    info-empty="{{ settings.infoEmpty }}"
+                    ng-model="roleSel" ng-options="id as name for (id, name) in userRoles"></select>
+        </div>
+    </div>
+    <div class="modal-footer" style="text-align: center">
+        <button class="btn btn-warning" ng-click="cancel()">取消</button>
+        <button class="btn btn-primary" ng-click="sure()"
+                ng-disabled="myForm.$invalid">确认
+        </button>
+    </div>
+</div>
+
+

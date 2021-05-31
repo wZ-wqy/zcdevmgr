@@ -1,0 +1,117 @@
+<link href="./plugin/form/k-form-design.css" rel="stylesheet">
+<div ng-controller="flowdetailCtl" style="background-color: #F0FFFF">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div style="margin-left:80px;margin-right:80px" class="tabs-container" name="myForm" novalidate>
+            <uib-tabset>
+                <uib-tab index="0">
+                    <uib-tab-heading>
+                        表单信息
+                    </uib-tab-heading>
+                    <div class="panel-body">
+                        <fieldset class="form-horizontal">
+                            <div class="row">
+                                <div class="wrapper wrapper-content animated fadeInRight">
+                                    <div id="app">
+                                        <k-form-build :value="jsonData" @submit="handleSubmit" disabled="true"
+                                                      ref='kfb'></k-form-build>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group" ng-hide="ctl.areazclisthide">
+                                <label class="col-sm-2 control-label"><span
+                                        class="text-danger">*</span>资产列表:</label>
+                                <div class="col-sm-10">
+                                    <table class="table table-hover" datatable="ed"
+                                           dt-column-defs="dtColumnDefs" dt-columns="dtColumns"
+                                           dt-instance="dtInstance" dt-options="dtOptions">
+                                    </table>
+                                </div>
+                            </div>
+                            <div ng-hide="ctl.areasuggesthide" class="panel panel-default"
+                                 style="margin-left: 100px;margin-right: 100px">
+                                <div class="panel-heading"><h3 class="panel-title">意见处理区</h3></div>
+                                <div class="panel-body" style="padding:0px">
+                                    <ul class="list-group">
+                                        <li class="list-group-item" ng-repeat="item in spsugguest">
+                                            <p>
+                                                <a class="text-info" style="margin-bottom: 5px">@{{item.assigneename}}
+                                                    <!--  <span
+                                                    ng-switch="item.cm_role"> <span
+                                                        ng-switch-when="owner">-[发起人]</span> <span
+                                                        ng-switch-when="buyer">-[审批人]</span> <span
+                                                        ng-switch-when="pt">-[归档]</span> <span ng-switch-default></span>
+                                                </span> --> <span>-{{item.taskName}}</span>
+                                                </a><br> <span
+                                                    style="margin-top: 10px; margin-left: 10px">{{item.opinion}}</span>
+                                            </p>
+                                            <small class="block text-muted"><i
+                                                    class="fa fa-clock-o"></i>处理时间:{{item.endDate}}</small>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div ng-hide="ctl.areaspprocesshide" class="panel panel-default"
+                                 style="margin-left: 100px;margin-right: 100px">
+                                <div class="panel-heading"><h3 class="panel-title">审批区</h3></div>
+                                <div class="panel-body" style="padding:0px">
+                                    <div ng-switch="data.pstatus">
+                                        <div ng-switch-when="rollback"></div>
+                                        <div ng-switch-default>
+                                            <div class="form-group" style="margin-top:10px;margin-right:10px">
+                                                <label class="col-sm-2 control-label"><span
+                                                        class="text-danger">*</span>审批意见:</label>
+                                                <div class="col-sm-10">
+										        <textarea
+                                                        class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                                                        ng-model="spsuggest"
+                                                        placeholder="请输入审批意见" style="padding-bottom: 50px"
+                                                        type="text"> </textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel-footer">
+                                    <div style="text-align:center">
+                                        <div ng-switch="data.pstatus">
+                                            <div ng-switch-when="rollback">
+                                                <button class="btn btn-primary btn-sm" ng-click="submit()">提交审批</button>
+                                            </div>
+                                            <div ng-switch-default>
+                                                <button class="btn btn-warning btn-sm" ng-click="rollback()">退回</button>
+                                                <button class="btn btn-danger btn-sm" ng-click="refuse()">拒绝</button>
+                                                <button class="btn btn-success btn-sm" ng-click="agreen()">同意</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </uib-tab>
+                <uib-tab index="1" select="selectFlow()">
+                    <uib-tab-heading>
+                        流程信息
+                    </uib-tab-heading>
+                    <div class="panel-body">
+                        <iframe allowtransparency="yes" border="0" frameborder="no"
+                                height="800px" width="800px" marginheight="0" marginwidth="0"
+                                ng-src="{{url}}" scrolling="yes" style="margin-bottom: 50px"
+                                width="90%"></iframe>
+                    </div>
+                </uib-tab>
+            </uib-tabset>
+        </div>
+    </div>
+</div>
+<script src="vendor/basket/basket.0.5.2.full.min.js"></script>
+<script>
+    basket
+        .require({url: './plugin/form/vue.min.js', key: 'vue'})
+        .then(function () {
+            basket.require({url: './plugin/form/k-form-design.umd.min.js', key: 'vue-form'});
+        }, function (error) {
+            console.log('######', error);
+        });
+</script>
+

@@ -1,0 +1,71 @@
+<div ng-controller="areaRackCtl">
+    <div class="wrapper wrapper-content animated fadeInRight">
+
+
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox">
+                    <div class="ibox-content">
+                        <form class="form-inline" role="form">
+                            <div class="form-group">
+                                <label for="class">区域</label> <select chosen
+                                                                        class="chosen-select"
+                                                                        data-placeholder-text-single="'请选择...'"
+                                                                        disable-search="true"
+                                                                        id="class1"
+                                                                        search_contains="true"
+                                                                        ng-model="areaSel"
+                                                                        ng-options="item.name for item in areaOpt"
+                                                                        no-results-text="'没有找到相应条目'"
+                                                                        style="width: 120px;">
+                                <option value=""></option>
+                                      </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="class">位置</label> <select chosen
+                                                                      class="chosen-select"
+                                                                      data-placeholder-text-single="'请选择...'"
+                                                                      disable-search="true"
+                                                                      id="class2"
+                                                                      ng-model="locSel"
+                                                                      ng-options="item.name for item in locOpt"
+                                                                      no-results-text="'没有找到相应条目'"
+                                                                      style="width: 120px;">
+                                <option value=""></option>
+                            </select>
+                            </div>
+
+
+                            <button class="btn btn-sm btn-primary" ng-click="query()"
+                                    type="submit">查询
+                            </button>
+                            <button class="btn btn-sm btn-primary" ng-click="add()"
+                                    type="submit">机柜配置
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox">
+                    <div class="ibox-content">
+                        <table class="table table-hover" datatable="ed"
+                               dt-column-defs="dtColumnDefs" dt-columns="dtColumns"
+                               dt-instance="dtInstance" dt-options="dtOptions">
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

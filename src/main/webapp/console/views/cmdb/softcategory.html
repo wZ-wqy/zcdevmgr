@@ -1,0 +1,174 @@
+<script src="js/common.js?v=70"></script>
+<div ng-controller="cmdbsoftCateSettingCtl">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox">
+                    <div class="ibox-content">
+                        <form class="form-inline" role="form">
+                            <div class="form-group">
+                                <label for="class">类目组 </label> <select chosen
+                                                                        class="chosen-select"
+                                                                        data-placeholder-text-single="'请选择...'"
+                                                                        disable-search="true"
+                                                                        id="class"
+                                                                        ng-model="catRootSel"
+                                                                        ng-options="item.name for item in catRootOpt"
+                                                                        no-results-text="'没有找到相应条目'"
+                                                                        style="width: 120px;">
+                                <option value=""></option>
+                            </select>
+                            </div>
+                            <button class="btn btn-sm btn-primary" ng-click="query()"
+                                    type="submit">查询
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="position: relative; height: 100%;">
+            <div class="gBqKoW">
+                <div class="FnqzS" id="leftcb" style="background: white;">
+                    <div class="celaRy">
+                        <div js-tree="treeConfig"
+                             ng-model="treeData" style="margin-top: 20px; margin-left: 8px" tree="treeInstance"
+                             tree-events="ready:readyCB;create_node:createNodeCB"></div>
+                    </div>
+                </div>
+                <div class="TNqaS" id="flagcb">
+					<span class="cmRdnZ"> <i class="fa fa-angle-double-left"
+                                             id="flagcb2"
+                                             style="position: absolute; right: 4px; top: 34%;"></i> <!--  <i
+						class="next-icon next-icon-arrow-left next-xs sc-bxivhb bUZGRr"></i> -->
+					</span>
+                </div>
+                <div class="jexhMp">
+                    <div class="ibox float-e-margins" tyle="min-height:250px;">
+                        <div class="ibox-title">
+                            <div class="ibox-tools" style="text-align: left !important">
+                                <button class="btn btn-primary btn-xs" ng-click="saveItem()"
+                                        ng-disabled="myForm.$invalid" type="submit">保存
+                                </button>
+                                <button class="btn btn-primary btn-xs" ng-click="addattr()"
+                                        ng-disabled="myForm.$invalid" type="submit">新增属性
+                                </button>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <form class="form-horizontal ng-pristine ng-valid" method="get"
+                                  name="myForm" novalidate style="min-height: 250px;">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">编号:</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control ng-pristine ng-untouched ng-valid ng-empty form-control"
+                                               ng-disabled="true"
+                                               ng-model="item.id"
+                                               placeholder="系统自动生成" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">路径:</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                                               ng-disabled="true"
+                                               ng-model="item.route_name"
+                                               placeholder="系统自动生成" type="text"
+                                        >
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label"><span
+                                            class="text-danger">*</span>名称:</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                                               name="name" ng-maxlength="100"
+                                               ng-model="item.name"
+                                               placeholder="请输入名称" required type="text"
+                                        >
+                                        <div class="text-danger"
+                                             ng-if="myForm.name.$dirty && myForm.name.$invalid">
+                                            <span ng-if="myForm.name.$error.required"> 输入不能为空 </span> <span
+                                                ng-show="myForm.name.$error.maxlength">不能超过100个字符 </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">编码:</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                                               name="name"
+                                               ng-model="item.code" placeholder="请输入编码" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label"><span
+                                            class="text-danger">*</span>类型:</label>
+                                    <div class="col-sm-10">
+                                        <select chosen class="chosen-select" data-placeholder-text-single="'请选择...'"
+                                                disable-search="true" ng-model="typeSel"
+                                                ng-options="item.name for item in typeOpt"
+                                                no-results-text="'没有找到相应条目'">
+                                            <option value=""></option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label"><span
+                                            class="text-danger">*</span>价值:</label>
+                                    <div class="col-sm-10">
+                                        <select chosen class="chosen-select" data-placeholder-text-single="'请选择...'"
+                                                disable-search="true" ng-model="categorylevelSel"
+                                                ng-options="item.name for item in categorylevelOpt"
+                                                no-results-text="'没有找到相应条目'">
+                                            <option value=""></option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label"><span
+                                            class="text-danger">*</span>状态:</label>
+                                    <div class="col-sm-10">
+                                        <select chosen class="chosen-select" data-placeholder-text-single="'请选择...'"
+                                                disable-search="true" ng-model="actionSel"
+                                                ng-options="item.name for item in actionOpt"
+                                                no-results-text="'没有找到相应条目'">
+                                            <option value=""></option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">备注:</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                                               ng-model="item.mark"
+                                               placeholder="请输入备注" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">扩展属性:</label>
+                                    <div class="col-sm-10">
+                                        <table class="table table-hover" datatable="ed"
+                                               dt-column-defs="dtColumnDefs" dt-columns="dtColumns"
+                                               dt-instance="dtInstance" dt-options="dtOptions">
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">继承属性:</label>
+                                    <div class="col-sm-10">
+                                        <table 2 class="table table-hover"
+                                               datatable="ed2" dt-column-defs="dtColumnDefs2" dt-columns="dtColumns2"
+                                               dt-instance="dtInstance" dt-options="dtOptions2">
+                                        </table>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
